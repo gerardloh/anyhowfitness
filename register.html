@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/register.css">
+    <!-- <script src="js/register.js" defer></script> -->
+    <title>Registration Form</title>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" 
+    crossorigin="anonymous">
+</head>
+<body>
+    <div class="alert" style="display: none;">
+        This is an alert message.
+    </div>
+    <form action="forum.html" class="form" id="registrationForm">
+        <!-- Progress bar -->
+        <div class="progressbar">
+            <div class="progress" id="progress"></div>
+            <div class="progress-step progress-step-active" data-title="Registration"></div>
+            <div class="progress-step" data-title="Your details"></div>
+            <div class="progress-step" data-title="Health History"></div>
+            <div class="progress-step" data-title="Lifestyle & Nutrition"></div>
+        </div>
+
+        <!-- Steps -->
+        <div class="form-step form-step-active" data-step="1">
+            <!-- Step 1 Fields -->
+            <h1 class="display mb-3">Register with us!</h1>
+            <div class="row input-group">
+                <div class="col form-group">
+                    <label for="name">Full name:</label>
+                    <input id="name" type="text" class="form-control" aria-describedby="nameHelp" placeholder="Full Name">
+                </div>
+            </div>
+            <div class="row input-group">
+                <div class="col form-group">
+                    <label for="emailId">Email address</label>
+                    <input id="emailId" type="email" class="form-control" placeholder="johndoe.2022@scis.smu.edu.sg">
+                </div>
+            </div>
+            <div class="row input-group">
+                <div class="col form-group">
+                    <label for="birthdate">Date of Birth:</label>
+                    <input id="birthdate" class="form-control" type="date" placeholder="Enter birth date">
+                </div>
+                <div class="col form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input id="phoneNumber" type="number" class="form-control" placeholder="+65 9123 4567">
+                </div>
+            </div>
+
+            <div class="row input-group">
+                <div class="col form-group">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" class="form-control" id="InputPassword1" placeholder="Password">
+                </div>
+                <div class="col form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input id="confirmPassword" type="password" class="form-control" placeholder="Password">
+                </div>
+            </div>
+            <div class="row">
+                <span class="display-inline"><input type="checkbox" id="t&c"><small>By creating your account, you agree to the <a href="">Terms of Service</a> and <a href="">Privacy Policy</a></small></span>
+            </div>
+            <div class="form-group btns-group">
+                <a href="#" class="btn btn-primary btn-next">Next</a>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="form-step" data-step="2">
+            <!-- Step 2 Fields -->
+            <h1 class="display m">Thanks for registering with us!</h1>
+            <p class="display">Let's get started on your journey to fitness by filling in the required information below. It will allow us to curate a personalized plan for you!</p>
+            <div class="form-group row m-3 p-2">
+                <label for="gender">Gender:</label>
+                <div class="col-md-4">
+                    <input type="radio" id="male" class="gender" value="male" name="gender"> Male
+                </div>
+                <div class="col-md-4">
+                    <input type="radio" id="female" class="gender" value="female" name="gender"> Female
+                </div>
+                <div class="col-md-4">
+                    <input type="radio" id="other" class="gender" value="other" name="gender"> Other
+                </div>
+            </div>
+
+            <div class="form-group row m-3 p-2">
+                <label for="exerciseDays">How many days per week do you currently exercise?</label>
+                <input type="range" class="form-range" name="exerciseDaysCount" id="exerciseDays" min="0" max="7" required>
+                <div class="output-container">
+                    <output for="exerciseDays" class="output">0 days</output>
+                    <output for="exerciseDays" class="output">1 days</output>
+                    <output for="exerciseDays" class="output">2 days</output>
+                    <output for="exerciseDays" class="output">3 days</output>
+                    <output for="exerciseDays" class="output">4 days</output>
+                    <output for="exerciseDays" class="output">5 days</output>
+                    <output for="exerciseDays" class="output">6 days</output>
+                    <output for="exerciseDays" class="output">7 days</output>
+                </div>
+            </div>
+            <div class="form-group row m-3 p-2">
+                <label>How would you rate your current fitness level? (Beginner, Intermediate, Advanced)</label>
+                <input type="range" class="form-range" name="fitnessLevel" id="fitnessLevel" min="1" max="3" required>
+                <div class="output-container">
+                    <output for="fitnessLevel" class="output">Beginner</output>
+                    <output for="fitnessLevel" class="output">Intermediate</output>
+                    <output for="fitnessLevel" class="output">Advanced</output>
+                </div>
+            </div>
+            <div class="form-group row m-3 p-2">
+                <label>What type of exercises do you currently perform? <br>(Cardio, Strength Training, Yoga, Pilates, Other)</label>
+                <select class="form-control form-select" name="exercise" id="exerciseSelection" required multiple>
+                    <option value="cardio">Cardio</option>
+                    <option value="strength">Strength Training</option>
+                    <option value="yoga">Yoga</option>
+                    <option value="pilates">Pilates</option>
+                    <option value="other">Others</option>
+                </select>
+            </div>
+            <div class="form-group btns-group">
+                <a href="#" class="btn btn-outline-primary btn-prev">Previous</a>
+                <a href="#" class="btn btn-primary btn-next">Next</a>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="form-step" data-step="3">
+            <!-- Step 3 Fields -->
+            <h1>Lifestyle</h1>
+            <div class="form-group row m-3 p-2">
+                <label for="allergies">Do you have any known allergies? If yes, please provide details.</label>
+                <textarea class="form-control" name="allergies" id="allergies"></textarea>
+            </div>
+            <div class="form-group row m-3 p-2">
+                <label for="dietaryRestrictions">Do you have any dietary restrictions or preferences? If yes, please provide details.</label>
+                <textarea class="form-control" name="dietaryRestrictions" id="dietaryRestrictions"></textarea>
+            </div>
+            <div class="form-group row m-3 p-2">
+                <label for="eatingHabitsRating">On a scale of 1-10, how would you rate your current eating habits? (1=Unhealthy, 10=Very Healthy)</label>
+                <input type="range" class="form-control-range" name="eatingHabitsRating" id="eatingHabitsRating" min="1" max="10">
+                <div class="output-container">
+                    <output for="eatingHabitsRating" class="output">1</output>
+                    <output for="eatingHabitsRating" class="output">2</output>
+                    <output for="eatingHabitsRating" class="output">3</output>
+                    <output for="eatingHabitsRating" class="output">4</output>
+                    <output for="eatingHabitsRating" class="output">5</output>
+                    <output for="eatingHabitsRating" class="output">6</output>
+                    <output for="eatingHabitsRating" class="output">7</output>
+                    <output for="eatingHabitsRating" class="output">8</output>
+                    <output for="eatingHabitsRating" class="output">9</output>
+                    <output for="eatingHabitsRating" class="output">10</output>
+                </div>
+            </div>
+            <div class="form-group btns-group">
+                <a href="#" class="btn btn-outline-primary btn-prev">Previous</a>
+                <a href="#" class="btn btn-primary btn-next">Next</a>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="form-step" data-step="4">
+            <!-- Step 4 Fields -->
+            <h1>Training Preferences</h1>
+            <div class="form-group row m-3 p-2">
+                <label for="week">Select the days of the week you're available:</label>
+                <select multiple class="form-control" name="week[]" id="week">
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+            </div>
+            
+            <div class="form-group row m-3 p-2">
+                <label for="times">Select your available time slots:</label>
+                <select multiple class="form-control" name="times[]" id="times">
+                    <option value="Morning">Morning</option>
+                    <option value="Afternoon">Afternoon</option>
+                    <option value="Evening">Evening</option>
+                </select>
+            </div>
+            <div class="form-group row m-3 p-2">
+                <label for="trainingLocation">What is your preferred training location? (Gym, Outdoors, Home, Virtual)</label>
+                <input type="text" class="form-control" name="trainingLocation" id="trainingLocation">
+                <input type="checkbox"> Enable location tracking while using the app
+            </div>
+
+            <div class="form-group row m-3 p-2">
+                <label for="trainerInterest">Are you interested in working with a personal trainer or joining group classes?</label>
+                <select class="form-control" name="trainerInterest" id="trainerInterest">
+                    <option value="personalTrainer">Personal Trainer</option>
+                    <option value="groupClasses">Group Classes</option>
+                    <option value="selfWorkout">By Myself</option>
+                </select>
+            </div>
+
+            <div class="form-group btns-group">
+                <a href="#" class="btn btn-outline-primary btn-prev">Previous</a>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </form>
+    <script>
+        const prevBtns = document.querySelectorAll(".btn-prev"); 
+        const nextBtns = document.querySelectorAll(".btn-next");
+        const progress = document.getElementById("progress"); 
+        const formSteps = document.querySelectorAll(".form-step"); 
+        const progressSteps = document.querySelectorAll(".progress-step"); 
+
+        let formStepsNum = 0; 
+
+        // Iterate through nextBtns collection onclick
+        nextBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+            formStepsNum++;
+            updateFormSteps();
+            updateProgressbar();
+            });
+        });
+
+        //Iterate through prevBtns collection onclick
+        prevBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                formStepsNum--; 
+                updateFormSteps(); 
+                updateProgressbar(); 
+            });
+        });
+
+        //Helper fnc 1 - removes and applies to next step 
+        function updateFormSteps(){
+            formSteps.forEach((formStep) => {
+                formStep.classList.contains("form-step-active") && formStep.classList.remove("form-step-active");
+            });
+            formSteps[formStepsNum].classList.add("form-step-active");
+        }
+
+        //Helper fnc 2
+        function updateProgressbar() {
+            progressSteps.forEach((progressStep, index) => {
+                if (index < formStepsNum + 1){
+                    progressStep.classList.add("progress-step-active");
+                } else {
+                    progressStep.classList.remove("progress-step-active");
+                }
+                });
+                const progressActive = document.querySelectorAll(".progress-step-active");
+
+                progress.style.width = ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
+        }
+    </script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+        const firebaseConfig = {
+        apiKey: "AIzaSyAuv9pHvIhlo_wNj4tdkzNanWoGtQ-5-t4",
+        authDomain: "is216-g2.firebaseapp.com",
+        databaseURL: "https://is216-g2-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "is216-g2",
+        storageBucket: "is216-g2.appspot.com",
+        messagingSenderId: "426453655797",
+        appId: "1:426453655797:web:26878838329ce6c02365bc",
+        measurementId: "G-HYZ4GSYP9Y"
+        };
+        
+            
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app)
+            
+            
+            document.getElementById('registrationForm').addEventListener('submit', submitForm);
+            
+            function submitForm(e) {
+            e.preventDefault();
+            const name = getElementVal('name');
+            const emailId = getElementVal('emailId');
+            const birthdate = getElementVal('birthdate');
+            const phoneNumber = getElementVal('phoneNumber');
+            const password = getElementVal('password');
+            const gender = document.getElementsByName('gender');
+            const exerciseDaysCount = getElementVal('exerciseDays');
+            const fitnessLevel = getElementVal('fitnessLevel');
+            const exerciseSelection = getSelectedOptions('exerciseSelection');
+            const allergies = getElementVal('allergies');
+            const dietaryRestrictions = getElementVal('dietaryRestrictions');
+            const eatingHabitsRating = getElementVal('eatingHabitsRating');
+            const week = getSelectedOptions('week');
+            const times = getSelectedOptions('times');
+            const trainingLocation = getElementVal('trainingLocation');
+            const trainerInterest = getElementVal('trainerInterest');
+
+            createUserWithEmailAndPassword(auth, emailId, password)
+                    .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+                    var id = user.uid
+                    function writeUserData(id, name, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel, exerciseSelection, allergies, dietaryRestrictions, eatingHabitsRating, week, times, trainerInterest, trainingLocation) {
+                    const db = getDatabase();
+                    set(ref(db, 'userData/' + id), {
+                        username: name,
+                        birthday: birthdate,
+                        phone: phoneNumber,
+                        gender: gender,
+                        exerciseDaysCounter: exerciseDaysCount,
+                        fitnesslevel: fitnessLevel,
+                        selectedExercises: exerciseSelection,
+                        allergies: allergies,
+                        diet: dietaryRestrictions,
+                        eatingHabits: eatingHabitsRating,
+                        week: week,
+                        time: times,
+                        trainerInterest: trainerInterest,
+                        trainingLocation : trainingLocation
+                    });
+                    }
+                    writeUserData(id, name, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel, exerciseSelection, allergies, dietaryRestrictions, eatingHabitsRating, week, times, trainerInterest, trainingLocation)
+                    //enable alert
+                    document.querySelector(".alert").style.display = "block";
+                    
+                    //remove the alert
+                    setTimeout(() => {
+                    document.querySelector(".alert").style.display = "none";
+                    }, 3000);
+                    
+                    //reset the form
+                    document.getElementById("registrationForm").reset();
+                    location.replace("login.html")
+                    console.log(user)
+                    console.log("Success!")
+                    // ...
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.log(errorMessage)
+                    });
+            
+            
+            console.log(
+                name,
+                emailId,
+                birthdate,
+                phoneNumber,
+                password,
+                gender,
+                exerciseDaysCount,
+                fitnessLevel,
+                exerciseSelection,
+                allergies,
+                dietaryRestrictions,
+                eatingHabitsRating,
+                week,
+                times,
+                trainingLocation,
+                trainerInterest
+            );
+            
+            
+            }
+            
+            
+            
+            function getElementVal(id) {
+            return document.getElementById(id).value;
+            }
+            
+            function getSelectedOptions(selectId) {
+                const selectElement = document.getElementById(selectId);
+                const selectedOptions = [];
+                for (let i = 0; i < selectElement.options.length; i++) {
+                    const option = selectElement.options[i];
+                    if (option.selected) {
+                    selectedOptions.push(option.value);
+                    }
+                }
+                return selectedOptions;
+                }
+      
+    </script>
+
+    
+</body>
+</html>
