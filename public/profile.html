@@ -1,0 +1,511 @@
+
+<!--Website: wwww.codingdung.com-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="css/profilestyle.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    body {
+    background-image: url("images/bgprofile.png");
+    background-size: cover; /* Scale the image to cover the entire viewport */
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+<div class="container light-style flex-grow-1 container-p-y">
+        
+        <h4 style="color: aliceblue;" class="font-weight-bold py-3 mb-4">
+            My Profile Page
+        </h4>
+
+<div class="card overflow-hidden">
+
+<div class="row no-gutters row-bordered row-border-light">
+
+<!-- =========================
+        Left-side Bar   
+============================== -->
+<div class="col-md-3 pt-0">
+    <div class="list-group list-group-flush account-settings-links">
+        <a class="list-group-item list-group-item-action active" data-toggle="list"
+            href="#account-general">General</a>
+        <a class="list-group-item list-group-item-action" data-toggle="list"
+            href="#account-change-password">Change password</a>
+        <a class="list-group-item list-group-item-action" data-toggle="list"
+            href="#fitness-details">Fitness details</a>
+        <a class="list-group-item list-group-item-action" data-toggle="list"
+            href="#health-history">Health history</a>
+        <a class="list-group-item list-group-item-action" data-toggle="list"
+            href="#lifestyle-nutrition">Lifestyle & Nutrition</a>
+        <a class="list-group-item list-group-item-action" data-toggle="list"
+            href="#training-preferences">Training Preferences</a>
+        <a class="list-group-item list-group-item-action" data-toggle="list"
+            href="#account-notifications">Notifications</a>
+    </div>
+</div>
+
+<!-- ============================== -->
+
+                
+<div class="col-md-9">
+    <div class="tab-content">
+
+
+<!-- =========================
+            General 
+============================== -->
+<div class="tab-pane fade active show" id="account-general">
+    <div class="card-body media align-items-center">
+        <img src="images/image.jpg" alt
+            class="d-block ui-w-80">
+        <div class="media-body ml-4">
+            <label class="btn btn-outline-primary">
+                Upload new photo
+                <input type="file" class="account-settings-fileinput">
+            </label> &nbsp; &nbsp;
+            <!-- <button type="button" class="btn btn-default md-btn-flat">Reset</button> -->
+            <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+        </div>
+    </div>
+    <hr class="border-light m-0">
+
+    <div class="card-body">
+
+        <div style="display: flex;">
+            <div style="flex: 1;">
+                <div class="form-group">
+                    <label class="form-label">Username:</label>
+                    <input type="text" class="form-control" id="username" >
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Email address:</label>
+            <input type="text" class="form-control mb-1"  id="email">
+            <!-- <div class="alert alert-warning mt-3">
+                Your email is not confirmed. Please check your inbox.<br>
+                <a href="javascript:void(0)">Resend confirmation</a>
+            </div> -->
+        </div>
+        <!-- <div class="form-group">
+            <label class="form-label">Company</label>
+            <input type="text" class="form-control" value="Company Ltd.">
+        </div> -->
+
+        <div class="form-group">
+            <label class="form-label">Date of Birth:</label>
+            <input type="date" class="form-control"  id="dob">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Phone Number:</label>
+            <input type="tel" class="form-control" id="phone">
+        </div>
+
+    </div>
+</div>
+
+
+<!-- =========================
+         Change Password
+============================== -->
+<div class="tab-pane fade" id="account-change-password">
+    <div class="card-body pb-2">
+        <div class="form-group">
+            <label class="form-label">Current password</label>
+            <input type="password" class="form-control">
+        </div>
+        <div class="form-group">
+            <label class="form-label">New password</label>
+            <input type="password" class="form-control">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Repeat new password</label>
+            <input type="password" class="form-control">
+        </div>
+    </div>
+</div>
+
+
+<!-- =========================
+        Fitness Details
+============================== -->
+<div class="tab-pane fade" id="fitness-details">
+
+<br>
+
+<label for="exerciseDays">How many days per week do you currently exercise?</label>
+
+    <div class="checkbox-group">
+        <label for="exerciseDays0">
+            <input type="radio" class="form-check-input" name="exerciseDaysCount" id="exerciseDays0" value="0" required>
+            0 day
+        </label>
+        <label for="exerciseDays1">
+            <input type="radio" class="form-check-input" name="exerciseDaysCount" id="exerciseDays1" value="1" required>
+            1 days
+        </label>
+        <label for="exerciseDays2">
+            <input type="radio" class="form-check-input" name="exerciseDaysCount" id="exerciseDays2" value="2" required>
+            2 days
+        </label>
+        <label for="exerciseDays3">
+            <input type="radio" class="form-check-input" name="exerciseDaysCount" id="exerciseDays3" value="3" required>
+            3 days
+        </label>
+        <label for="exerciseDays4">
+            <input type="radio" class="form-check-input" name="exerciseDaysCount" id="exerciseDays4" value="4" required>
+            4 days
+        </label>
+        <label for="exerciseDays5">
+            <input type="radio" class="form-check-input" name="exerciseDaysCount" id="exerciseDays5" value="5" required>
+            5 days
+        </label>
+        <label for="exerciseDays6">
+            <input type="radio" class="form-check-input" name="exerciseDaysCount" id="exerciseDays6" value="6" required>
+            6 days
+        </label>
+        <label for="exerciseDays7">
+            <input type="radio" class="form-check-input" name="exerciseDaysCount" id="exerciseDays7" value="7" required>
+            7 days
+        </label>
+    </div>
+               
+<br>
+<label>How would you rate your current fitness level? (Beginner, Intermediate, Advanced)</label>
+
+    <div class="radio-group">
+        <label for="fitnessLevel1">
+            <input type="radio" class="form-check-input" name="fitnessLevel" id="fitnessLevel1" value="Beginner"  required>
+            Beginner
+        </label>
+        <label for="fitnessLevel2">
+            <input type="radio" class="form-check-input" name="fitnessLevel" id="fitnessLevel2" value="Intermediate" required>
+            Intermediate
+        </label>
+        <label for="fitnessLevel3">
+            <input type="radio" class="form-check-input" name="fitnessLevel" id="fitnessLevel3" value="Advanced" required>
+            Advanced
+        </label>
+    </div>
+
+<div class="form-group row m-3 p-2">
+    <label>What type of exercises do you currently perform? <br>(Cardio, Strength Training, Yoga, Pilates, Other)</label>
+    <select class="form-control form-select" name="exercise" id="exerciseSelection" required multiple>
+        <option value="cardio">Cardio</option>
+        <option value="strength">Strength Training</option>
+        <option value="yoga">Yoga</option>
+        <option value="pilates">Pilates</option>
+        <option value="other">Others</option>
+    </select>
+</div>
+    
+                
+    <hr class="border-light m-0">
+</div>
+
+
+<!-- =========================
+        Health History
+============================== -->
+<div class="tab-pane fade" id="health-history">
+    <div class="form-group row m-3 p-2">
+        <label>Do you have any known allergies? If yes, please provide details.</label>
+        <textarea class="form-control" name="allergies" id="allergies"></textarea>
+    </div>
+</div>
+
+
+<!-- =========================
+    Lifestyle & Nutrition
+============================== -->
+<div class="tab-pane fade" id="lifestyle-nutrition">
+    <br>
+    <label for="exerciseDays">On a scale of 1-10, how would you rate your current eating habits? (1=Unhealthy, 10=Very Healthy)</label>
+    <div class="checkbox-group">
+        <label for="eatingHabits0">
+            <input type="radio" class="form-check-input" name="eatingHabits" id="eatingHabits0" value="0" required>
+            0 
+        </label>
+        <label for="eatingHabits1">
+            <input type="radio" class="form-check-input" name="eatingHabits" id="eatingHabits1" value="1" required>
+            1 
+        </label>
+        <label for="eatingHabits2">
+            <input type="radio" class="form-check-input" name="eatingHabits" id="eatingHabits2" value="2" required>
+            2 
+        </label>
+        <label for="eatingHabits3">
+            <input type="radio" class="form-check-input" name="eatingHabits" id="eatingHabits3" value="3" required>
+            3 
+        </label>
+        <label for="eatingHabits4">
+            <input type="radio" class="form-check-input" name="eatingHabits" id="eatingHabits4" value="4" required>
+            4 
+        </label>
+        <label for="eatingHabits5">
+            <input type="radio" class="form-check-input" name="eatingHabits" id="eatingHabits5" value="5" required>
+            5 
+        </label>
+        <label for="eatingHabits6">
+            <input type="radio" class="form-check-input" name="eatingHabits" id="eatingHabits6" value="6" required>
+            6 
+        </label>
+        <label for="eatingHabits7">
+            <input type="radio" class="form-check-input" name="eatingHabits" id="eatingHabits7" value="7" required>
+            7 
+        </label>
+        <label for="eatingHabits8">
+            <input type="radio" class="form-check-input" name="eatingHabits" id="eatingHabits8" value="8" required>
+            8
+        </label>
+        <label for="eatingHabits9">
+            <input type="radio" class="form-check-input" name="eatingHabits" id="eatingHabits9" value="9" required>
+            9
+        </label>
+        <label for="eatingHabits10">
+            <input type="radio" class="form-check-input" name="eatingHabits" id="eatingHabits10" value="10" required>
+            10
+        </label>
+    </div>
+
+    <div class="form-group row m-3 p-2">
+        <label>Do you have any dietary restrictions or preferences? If yes, please provide details.</label>
+        <textarea class="form-control" name="restrictions" id="restrictions"></textarea>
+    </div>
+
+</div>
+
+
+<!-- =========================
+    Training Preferences
+============================== -->
+<div class="tab-pane fade" id="training-preferences">
+    
+    <div class="form-group row m-3 p-2">
+        <label>Select the days of the week you're available:</label>
+        <select class="form-control form-select" name="days" id="days" required multiple>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+        </select>
+    </div>
+
+    <div class="form-group row m-3 p-2">
+        <label>Select your available time slots:</label>
+        <select class="form-control form-select" name="Time" id="Time" required multiple>
+            <option value="Morning">Morning</option>
+            <option value="Afternoon">Afternoon</option>
+            <option value="Evening">Evening</option>
+            <option value="Feel">When I feel like it</option>
+        </select>
+    </div>
+
+    <div class="form-group row m-3 p-2">
+        <label>Select your preferred training location:</label>
+        <select class="form-control form-select" name="location" id="location" required multiple>
+            <option value="Gym">Gym</option>
+            <option value="Outdoors">Outdoors</option>
+            <option value="Home">Home</option>
+            <option value="Virtual">Virtual</option>
+        </select>
+    </div>
+
+    <label for="interest">Are you interested in working with a personal trainer or joining group classes?</label>
+    <div class="checkbox-group">
+        <label for="interest0">
+            <input type="radio" class="form-check-input" name="interest0" id="interest0" value="0" required>
+            Personal Trainer
+        </label>
+        <label for="interest1">
+            <input type="radio" class="form-check-input" name="interest1" id="interest1" value="1" required>
+            Group Classes
+        </label>
+        <label for="interest2">
+            <input type="radio" class="form-check-input" name="interest2" id="interest2" value="2" required>
+            Be Myself 
+        </label>
+    </div>
+                
+    <br>
+
+        <hr class="border-light m-0">
+    </div>
+
+<!-- =========================
+        Notifications
+============================== -->
+                        <div class="tab-pane fade" id="account-notifications">
+                            <div class="card-body pb-2">
+                                <h6 class="mb-4">Activity</h6>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input type="checkbox" class="switcher-input" checked>
+                                        <span class="switcher-indicator">
+                                            <span class="switcher-yes"></span>
+                                            <span class="switcher-no"></span>
+                                        </span>
+                                        <span class="switcher-label">Notify me when someone replies me</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input type="checkbox" class="switcher-input" checked>
+                                        <span class="switcher-indicator">
+                                            <span class="switcher-yes"></span>
+                                            <span class="switcher-no"></span>
+                                        </span>
+                                        <span class="switcher-label">Notify me when someone answers on my forum
+                                            thread</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input type="checkbox" class="switcher-input">
+                                        <span class="switcher-indicator">
+                                            <span class="switcher-yes"></span>
+                                            <span class="switcher-no"></span>
+                                        </span>
+                                        <span class="switcher-label">Notify me when someone follows me</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <hr class="border-light m-0">
+                            <div class="card-body pb-2">
+                                <h6 class="mb-4">Application</h6>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input type="checkbox" class="switcher-input" checked>
+                                        <span class="switcher-indicator">
+                                            <span class="switcher-yes"></span>
+                                            <span class="switcher-no"></span>
+                                        </span>
+                                        <span class="switcher-label">Weekly Update</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input type="checkbox" class="switcher-input">
+                                        <span class="switcher-indicator">
+                                            <span class="switcher-yes"></span>
+                                            <span class="switcher-no"></span>
+                                        </span>
+                                        <span class="switcher-label">Weekly product updates</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input type="checkbox" class="switcher-input" checked>
+                                        <span class="switcher-indicator">
+                                            <span class="switcher-yes"></span>
+                                            <span class="switcher-no"></span>
+                                        </span>
+                                        <span class="switcher-label">Weekly blog digest</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="text-right mt-3">
+            <button type="button" class="btn btn-primary" id="save">Save changes</button>&nbsp;
+            <button type="button" class="btn btn-default" style="color: aliceblue; background: grey;" id="cancel">Cancel</button>
+        </div>
+
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+        import { getDatabase, ref, child, get, update} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyAuv9pHvIhlo_wNj4tdkzNanWoGtQ-5-t4",
+          authDomain: "is216-g2.firebaseapp.com",
+          databaseURL: "https://is216-g2-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "is216-g2",
+          storageBucket: "is216-g2.appspot.com",
+          messagingSenderId: "426453655797",
+          appId: "1:426453655797:web:26878838329ce6c02365bc",
+          measurementId: "G-HYZ4GSYP9Y"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+	    const database = getDatabase(app)
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/auth.user
+                const uid = user.uid;
+				const dbRef = ref(getDatabase());
+				var link = "userData/" + uid
+				get(child(dbRef, link)).then((snapshot) => {
+				if (snapshot.exists()) {
+					document.getElementById("username").value = snapshot.val().username
+                    document.getElementById("email").value = user.email 
+                    document.getElementById("dob").value = snapshot.val().birthday
+                    document.getElementById("phone").value = snapshot.val().phone
+                    document.getElementById("allergies").value = snapshot.val().allergies
+                    document.getElementById("restrictions").value = snapshot.val().diet
+					console.log(snapshot.val());
+
+                    document.getElementById("save").addEventListener("click", function () {
+                        var uname = document.getElementById("username").value
+                        var link2 = link + "/username"
+                        var updates = {}
+                        updates[link + "/username"] = uname
+                        console.log(updates)
+                        update(dbRef, updates)
+                    })
+
+                    document.getElementById("cancel").addEventListener("click", function () {
+                        window.location.href = "user.html"
+                    })
+				} else {
+					console.log("No data available");
+				}
+				}).catch((error) => {
+				console.error(error);
+				});
+                // ...
+            } else {
+                // User is signed out
+                // ...
+                location.replace("index.html")
+                console.log("wrong")
+            }
+            });
+
+    </script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+
+    </script>
+</body>
+
+</html>

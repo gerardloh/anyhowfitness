@@ -313,6 +313,7 @@
                     const db = getDatabase();
                     set(ref(db, 'userData/' + id), {
                         username: name,
+                        bookmarks: {"meals":[], "workouts":[]},
                         birthday: birthdate,
                         phone: phoneNumber,
                         gender: gender,

@@ -10,11 +10,21 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	<link rel="stylesheet" href="css/login.css">
+	<style>
+		section {
+			background-color: grey;
+			opacity: 85%;
+			width: 70%;
+			margin: auto;
+			margin-top: 8%;
+		}
+	</style>
+
 
   </head>
 
   
-	<body class="img js-fullheight" style="background-image: url(images/bg.jpg);">
+	<body  style="background-image: url(images/login.jpg);">
 	<section class="ftco-section">
 		<div class="container">
 			<!-- <div class="row justify-content-center">
@@ -27,13 +37,13 @@
 					<div class="login-wrap p-0">
 		      	<h3 class="mb-4 text-center">Have an account?</h3>
 
-				<form action="#" class="signin-form">
+				<form action="#" class="signin-form" id="loginform">
 		      		<div class="form-group">
 		      			<input type="email" id="email" class="form-control" placeholder="Email" required>
 		      		</div>
 	            <div class="form-group">
 	              <input id="password-field" type="password" class="form-control" placeholder="Password" required>
-	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password" id="eye"></span>
 	            </div>
 	            <div class="form-group">
 	            	<button type="submit" id="loginbtn"class="form-control btn btn-primary submit px-3">Sign In</button>
@@ -94,16 +104,18 @@
         //Existing Users
         var email = ""
         var password = ""
-        document.getElementById("loginbtn").addEventListener("click", function (){
+        document.getElementById("loginform").addEventListener("submit", function (event){
+			event.preventDefault()
             email = document.getElementById("email").value
             password = document.getElementById("password-field").value
             signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
+                window.location.href = 'user.html'
                 console.log(user)
                 console.log("Success")
-                location.replace("test.html")
+                
                 // ...
             })
             .catch((error) => {
@@ -112,27 +124,21 @@
                 console.log(errorMessage)
             });
 
-            onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // User is signed in, see docs for a list of available properties
-                // https://firebase.google.com/docs/reference/js/auth.user
-                const uid = user.uid;
-                
-                // ...
-            } else {
-                // User is signed out
-                // ...
-                console.log("wrong")
-            }
-            });
+           
                     })
+           
         
       </script>
+	  <script>
+		document.getElementById("eye").addEventListener("click", function () {
+			if (document.getElementById("password-field").type === "password") {
+				document.getElementById("password-field").type = "text";
+			} else {
+				document.getElementById("password-field").type = "password";
+			}
+		})
+	  </script>
 
-  <script src="js/loginjs/jquery.min.js"></script>
-  <script src="js/loginjs/popper.js"></script>
-  <script src="js/loginjs/bootstrap.min.js"></script>
-  <script src="js/loginjs/main.js"></script>
 
 	</body>
 </html>
