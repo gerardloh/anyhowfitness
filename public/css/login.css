@@ -59,7 +59,8 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff; }
+  background-color: #fff; 
+background-size: 100%;}
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -8150,8 +8151,7 @@ body {
     right: 0;
     bottom: 0;
     content: '';
-    background: #000;
-    opacity: .3;
+    
     z-index: -1; }
 
 a {
