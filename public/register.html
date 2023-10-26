@@ -16,63 +16,75 @@
     rel="stylesheet" 
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" 
     crossorigin="anonymous">
+    <style>
+       .progress-step {
+        text-align: center;
+       }
+       #next {
+        margin-top: 7%;
+       }
+       #problems, #error-header {
+        color: red;
+       }
+    </style>
 </head>
 <body>
     <div class="alert" style="display: none;">
         This is an alert message.
     </div>
-    <form action="forum.html" class="form" id="registrationForm">
+    <form action="forum.html" class="form container" id="registrationForm">
         <!-- Progress bar -->
-        <div class="progressbar">
-            <div class="progress" id="progress"></div>
+     
+        <div class="progressbar" >
+            <div class="progress " id="progress"></div>
             <div class="progress-step progress-step-active" data-title="Registration"></div>
             <div class="progress-step" data-title="Your details"></div>
             <div class="progress-step" data-title="Health History"></div>
             <div class="progress-step" data-title="Lifestyle & Nutrition"></div>
         </div>
-
+   
         <!-- Steps -->
         <div class="form-step form-step-active" data-step="1">
             <!-- Step 1 Fields -->
             <h1 class="display mb-3">Register with us!</h1>
             <div class="row input-group">
-                <div class="col form-group">
-                    <label for="name">Full name:</label>
+                <div class="col-sm-12 form-group">
+                    <label for="name"><strong>Full name:*</strong></label>
                     <input id="name" type="text" class="form-control" aria-describedby="nameHelp" placeholder="Full Name">
                 </div>
             </div>
             <div class="row input-group">
-                <div class="col form-group">
-                    <label for="emailId">Email address</label>
+                <div class="col-sm-12 col-lg-12 col-md-12 form-group">
+                    <label for="emailId"><strong>Email address:*</strong></label>
                     <input id="emailId" type="email" class="form-control" placeholder="johndoe.2022@scis.smu.edu.sg">
                 </div>
             </div>
             <div class="row input-group">
                 <div class="col form-group">
-                    <label for="birthdate">Date of Birth:</label>
-                    <input id="birthdate" class="form-control" type="date" placeholder="Enter birth date">
+                    <label for="birthdate"><strong>Date of Birth:*</strong></label>
+                    <input id="birthdate" class="form-control" type="date" placeholder="Enter birth date" style="height:38px;">
                 </div>
                 <div class="col form-group">
-                    <label for="phoneNumber">Phone Number</label>
-                    <input id="phoneNumber" type="number" class="form-control" placeholder="+65 9123 4567">
+                    <label for="phoneNumber"><strong>Phone Number:*</strong></label>
+                    <input id="phoneNumber" type="text" class="form-control" placeholder="+65 9123 4567">
                 </div>
             </div>
 
             <div class="row input-group">
                 <div class="col form-group">
-                    <label for="password">Password</label>
+                    <label for="password"><strong>Password:*</strong></label>
                     <input id="password" type="password" class="form-control" id="InputPassword1" placeholder="Password">
                 </div>
                 <div class="col form-group">
-                    <label for="confirmPassword">Confirm Password</label>
+                    <label for="confirmPassword"><strong>Confirm Password:*</strong></label>
                     <input id="confirmPassword" type="password" class="form-control" placeholder="Password">
                 </div>
             </div>
             <div class="row">
-                <span class="display-inline"><input type="checkbox" id="t&c"><small>By creating your account, you agree to the <a href="">Terms of Service</a> and <a href="">Privacy Policy</a></small></span>
+                <span class="display-inline"><input type="checkbox" id="t&c" onclick="agree(event)"><small>By creating your account, you agree to the <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Terms of Service</a> and <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Privacy Policy</a></small></span>
             </div>
             <div class="form-group btns-group">
-                <a href="#" class="btn btn-primary btn-next">Next</a>
+                <a href="#" class="btn btn-primary btn-next" id="next">Next</a>
             </div>
         </div>
 
@@ -81,10 +93,10 @@
             <!-- Step 2 Fields -->
             <h1 class="display m">Thanks for registering with us!</h1>
             <p class="display">Let's get started on your journey to fitness by filling in the required information below. It will allow us to curate a personalized plan for you!</p>
-            <div class="form-group row m-3 p-2">
-                <label for="gender">Gender:</label>
+            <div class="form-group row  " style="margin-bottom: 2%;">
+                <label for="gender"><strong>Gender:</strong></label>
                 <div class="col-md-4">
-                    <input type="radio" id="male" class="gender" value="male" name="gender"> Male
+                    <input type="radio" id="male" class="gender" value="male" name="gender" checked> Male
                 </div>
                 <div class="col-md-4">
                     <input type="radio" id="female" class="gender" value="female" name="gender"> Female
@@ -94,8 +106,8 @@
                 </div>
             </div>
 
-            <div class="form-group row m-3 p-2">
-                <label for="exerciseDays">How many days per week do you currently exercise?</label>
+            <div class="form-group row" style="margin-bottom: 2%;">
+                <label for="exerciseDays"><strong>How many days per week do you currently exercise?</strong></label>
                 <input type="range" class="form-range" name="exerciseDaysCount" id="exerciseDays" min="0" max="7" required>
                 <div class="output-container">
                     <output for="exerciseDays" class="output">0 days</output>
@@ -108,8 +120,8 @@
                     <output for="exerciseDays" class="output">7 days</output>
                 </div>
             </div>
-            <div class="form-group row m-3 p-2">
-                <label>How would you rate your current fitness level? (Beginner, Intermediate, Advanced)</label>
+            <div class="form-group row " style="margin-bottom: 2%;">
+                <label><strong>How would you rate your current fitness level? (Beginner, Intermediate, Advanced)</strong></label>
                 <input type="range" class="form-range" name="fitnessLevel" id="fitnessLevel" min="1" max="3" required>
                 <div class="output-container">
                     <output for="fitnessLevel" class="output">Beginner</output>
@@ -117,10 +129,10 @@
                     <output for="fitnessLevel" class="output">Advanced</output>
                 </div>
             </div>
-            <div class="form-group row m-3 p-2">
-                <label>What type of exercises do you currently perform? <br>(Cardio, Strength Training, Yoga, Pilates, Other)</label>
+            <div class="form-group row " style="margin-bottom: 2%;">
+                <label><strong>What type of exercises do you currently perform? (Hold down shift to select multiple options)</strong></label>
                 <select class="form-control form-select" name="exercise" id="exerciseSelection" required multiple>
-                    <option value="cardio">Cardio</option>
+                    <option value="cardio" selected>Cardio</option>
                     <option value="strength">Strength Training</option>
                     <option value="yoga">Yoga</option>
                     <option value="pilates">Pilates</option>
@@ -134,19 +146,20 @@
         </div>
 
         <!-- Step 3 -->
+     
         <div class="form-step" data-step="3">
             <!-- Step 3 Fields -->
             <h1>Lifestyle</h1>
-            <div class="form-group row m-3 p-2">
-                <label for="allergies">Do you have any known allergies? If yes, please provide details.</label>
+            <div class="form-group row" style="margin-bottom: 2%;">
+                <label for="allergies"><strong>Do you have any known allergies? If yes, please provide details.</strong></label>
                 <textarea class="form-control" name="allergies" id="allergies"></textarea>
             </div>
-            <div class="form-group row m-3 p-2">
-                <label for="dietaryRestrictions">Do you have any dietary restrictions or preferences? If yes, please provide details.</label>
-                <textarea class="form-control" name="dietaryRestrictions" id="dietaryRestrictions"></textarea>
+            <div class="form-group row " style="margin-bottom: 2%;">
+                <label for="dietaryRestrictions"><strong>Do you have any dietary restrictions or preferences? If yes, please provide details.</strong></label>
+                <textarea class="form-control" name="dietaryRestrictions" id="dietaryRestrictions" ></textarea>
             </div>
-            <div class="form-group row m-3 p-2">
-                <label for="eatingHabitsRating">On a scale of 1-10, how would you rate your current eating habits? (1=Unhealthy, 10=Very Healthy)</label>
+            <div class="form-group row "style="margin-bottom: 2%;">
+                <label for="eatingHabitsRating"><strong>On a scale of 1-10, how would you rate your current eating habits? (1=Unhealthy, 10=Very Healthy)</strong></label>
                 <input type="range" class="form-control-range" name="eatingHabitsRating" id="eatingHabitsRating" min="1" max="10">
                 <div class="output-container">
                     <output for="eatingHabitsRating" class="output">1</output>
@@ -167,14 +180,15 @@
             </div>
         </div>
 
+
         <!-- Step 4 -->
         <div class="form-step" data-step="4">
             <!-- Step 4 Fields -->
             <h1>Training Preferences</h1>
-            <div class="form-group row m-3 p-2">
-                <label for="week">Select the days of the week you're available:</label>
+            <div class="form-group row" style="margin-bottom: 2%;">
+                <label for="week"><strong>Select the days of the week you usually workout(Hold down shift to select multiple options):</strong></label>
                 <select multiple class="form-control" name="week[]" id="week">
-                    <option value="Monday">Monday</option>
+                    <option value="Monday" selected>Monday</option>
                     <option value="Tuesday">Tuesday</option>
                     <option value="Wednesday">Wednesday</option>
                     <option value="Thursday">Thursday</option>
@@ -184,22 +198,21 @@
                 </select>
             </div>
             
-            <div class="form-group row m-3 p-2">
-                <label for="times">Select your available time slots:</label>
+            <div class="form-group row" style="margin-bottom: 2%;">
+                <label for="times"><strong>Select your time of the day that you usually workout(Hold down shift to select multiple options):</strong></label>
                 <select multiple class="form-control" name="times[]" id="times">
-                    <option value="Morning">Morning</option>
+                    <option value="Morning" selected>Morning</option>
                     <option value="Afternoon">Afternoon</option>
                     <option value="Evening">Evening</option>
                 </select>
             </div>
-            <div class="form-group row m-3 p-2">
-                <label for="trainingLocation">What is your preferred training location? (Gym, Outdoors, Home, Virtual)</label>
+            <div class="form-group row " style="margin-bottom: 2%;">
+                <label for="trainingLocation"><strong>What is your preferred training location? (Gym, Outdoors, Home, Virtual)</strong></label>
                 <input type="text" class="form-control" name="trainingLocation" id="trainingLocation">
-                <input type="checkbox"> Enable location tracking while using the app
             </div>
 
-            <div class="form-group row m-3 p-2">
-                <label for="trainerInterest">Are you interested in working with a personal trainer or joining group classes?</label>
+            <div class="form-group row " style="margin-bottom: 2%;">
+                <label for="trainerInterest"><strong>Are you interested in working with a personal trainer or joining group classes?</strong></label>
                 <select class="form-control" name="trainerInterest" id="trainerInterest">
                     <option value="personalTrainer">Personal Trainer</option>
                     <option value="groupClasses">Group Classes</option>
@@ -207,10 +220,12 @@
                 </select>
             </div>
 
-            <div class="form-group btns-group">
+            <div class="form-group btns-group" style="margin-bottom: 2%;"> 
                 <a href="#" class="btn btn-outline-primary btn-prev">Previous</a>
                 <button type="submit" class="btn btn-success">Submit</button>
             </div>
+            <p id="error-header"></p>
+            <ul id="problems"><li>hi</li></ul>
         </div>
     </form>
     <script>
@@ -281,12 +296,48 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const database = getDatabase(app)
-            
+        var terms = ""
+        function agree(event) {
+            terms = event.target.checked
+        }     
             
             document.getElementById('registrationForm').addEventListener('submit', submitForm);
             
             function submitForm(e) {
             e.preventDefault();
+            if (getElementVal('name') == "" || getElementVal('emailId') == "" || getElementVal('password') == "" || getElementVal('confirmPassword') == "" || getElementVal('password').length < 8 || getElementVal('password') != getElementVal('confirmPassword') || terms == false) {
+                var issues = []
+                var output = ""
+                if (getElementVal('name') == "") {
+                    issues.push("Please enter your name")
+                }
+                if (getElementVal("emailId") == "") {
+                    issues.push("Please enter your email")
+                }
+                if (getElementVal('password') == "" ) {
+                    issues.push("Please enter your password")
+                }
+                if (getElementVal('confirmPassword') == "") {
+                    issues.push("Please confirm your password")
+                }
+                if (getElementVal('password') != getElementVal('confirmPassword')) {
+                    issues.push("Passwords do not match")
+                }
+                if (getElementVal('password').length < 8) {
+                    issues.push("Password must be minimum 8 characters")
+                }
+                if (terms == false) {
+                    issues.push("Please agree to the terms and conditions")
+                }
+                for (element of issues) {
+                    output += "<li>"+ element + "</li>"
+                }
+                document.getElementById("error-header").innerText = "Errors:"
+                document.getElementById('problems').innerHTML = output
+            } else {
+            document.getElementById("error-header").innerText = ""
+            document.getElementById('problems').innerHTML = ""
+
             const name = getElementVal('name');
             const emailId = getElementVal('emailId');
             const birthdate = getElementVal('birthdate');
@@ -303,17 +354,22 @@
             const times = getSelectedOptions('times');
             const trainingLocation = getElementVal('trainingLocation');
             const trainerInterest = getElementVal('trainerInterest');
+            const bookmarks = {"meals":[], "workouts":[]};
+            const chosenWorkoutSessions = 0;
+            const completedWorkoutSessions = 0
 
             createUserWithEmailAndPassword(auth, emailId, password)
                     .then((userCredential) => {
                     // Signed up 
                     const user = userCredential.user;
                     var id = user.uid
-                    function writeUserData(id, name, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel, exerciseSelection, allergies, dietaryRestrictions, eatingHabitsRating, week, times, trainerInterest, trainingLocation) {
+                    function writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions, bookmarks, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel, exerciseSelection, allergies, dietaryRestrictions, eatingHabitsRating, week, times, trainerInterest, trainingLocation) {
                     const db = getDatabase();
                     set(ref(db, 'userData/' + id), {
                         username: name,
-                        bookmarks: {"meals":[], "workouts":[]},
+                        chosensessions:chosenWorkoutSessions,
+                        completedsessions: completedWorkoutSessions,
+                        favourites: bookmarks ,
                         birthday: birthdate,
                         phone: phoneNumber,
                         gender: gender,
@@ -371,7 +427,7 @@
                 trainerInterest
             );
             
-            
+                }
             }
             
             

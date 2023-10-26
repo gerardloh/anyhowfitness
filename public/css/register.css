@@ -118,10 +118,13 @@ input {
   /* Form */
 .form {
     width: clamp(700px, 30%, 500px);
-    margin: 0 auto;
-    border: 1px solid #ccc;
-    border-radius: 0.35rem;
-    padding: 1.5rem;
+    width: 500px;
+    margin: auto;
+   
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 3rem;
+    padding-top: 1.25rem;
 }
 
 .form-step {
