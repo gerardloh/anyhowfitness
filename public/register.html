@@ -129,16 +129,7 @@
                     <output for="fitnessLevel" class="output">Advanced</output>
                 </div>
             </div>
-            <div class="form-group row " style="margin-bottom: 2%;">
-                <label><strong>What type of exercises do you currently perform? (Hold down shift to select multiple options)</strong></label>
-                <select class="form-control form-select" name="exercise" id="exerciseSelection" required multiple>
-                    <option value="cardio" >Cardio</option>
-                    <option value="strength">Strength Training</option>
-                    <option value="yoga">Yoga</option>
-                    <option value="pilates">Pilates</option>
-                    <option value="other">Others</option>
-                </select>
-            </div>
+            
             <div class="form-group btns-group">
                 <a href="#" class="btn btn-outline-primary btn-prev">Previous</a>
                 <a href="#" class="btn btn-primary btn-next">Next</a>
@@ -152,28 +143,13 @@
             <h1>Lifestyle</h1>
             <div class="form-group row" style="margin-bottom: 2%;">
                 <label for="allergies"><strong>Do you have any known allergies? If yes, please provide details.</strong></label>
-                <textarea class="form-control" name="allergies" id="allergies"></textarea>
+                <textarea class="form-control" name="allergies" id="allergies">None</textarea>
             </div>
             <div class="form-group row " style="margin-bottom: 2%;">
                 <label for="dietaryRestrictions"><strong>Do you have any dietary restrictions or preferences? If yes, please provide details.</strong></label>
-                <textarea class="form-control" name="dietaryRestrictions" id="dietaryRestrictions" ></textarea>
+                <textarea class="form-control" name="dietaryRestrictions" id="dietaryRestrictions" value="">None</textarea>
             </div>
-            <div class="form-group row "style="margin-bottom: 2%;">
-                <label for="eatingHabitsRating"><strong>On a scale of 1-10, how would you rate your current eating habits? (1=Unhealthy, 10=Very Healthy)</strong></label>
-                <input type="range" class="form-control-range" name="eatingHabitsRating" id="eatingHabitsRating" min="1" max="10">
-                <div class="output-container">
-                    <output for="eatingHabitsRating" class="output">1</output>
-                    <output for="eatingHabitsRating" class="output">2</output>
-                    <output for="eatingHabitsRating" class="output">3</output>
-                    <output for="eatingHabitsRating" class="output">4</output>
-                    <output for="eatingHabitsRating" class="output">5</output>
-                    <output for="eatingHabitsRating" class="output">6</output>
-                    <output for="eatingHabitsRating" class="output">7</output>
-                    <output for="eatingHabitsRating" class="output">8</output>
-                    <output for="eatingHabitsRating" class="output">9</output>
-                    <output for="eatingHabitsRating" class="output">10</output>
-                </div>
-            </div>
+            
             <div class="form-group btns-group">
                 <a href="#" class="btn btn-outline-primary btn-prev">Previous</a>
                 <a href="#" class="btn btn-primary btn-next">Next</a>
@@ -185,30 +161,15 @@
         <div class="form-step" data-step="4">
             <!-- Step 4 Fields -->
             <h1>Training Preferences</h1>
-            <div class="form-group row" style="margin-bottom: 2%;">
-                <label for="week"><strong>Select the days of the week you usually workout(Hold down shift to select multiple options):</strong></label>
-                <select multiple class="form-control" name="week[]" id="week">
-                    <option value="Monday" >Monday</option>
-                    <option value="Tuesday">Tuesday</option>
-                    <option value="Wednesday">Wednesday</option>
-                    <option value="Thursday">Thursday</option>
-                    <option value="Friday">Friday</option>
-                    <option value="Saturday">Saturday</option>
-                    <option value="Sunday">Sunday</option>
-                </select>
-            </div>
+            
             
             <div class="form-group row" style="margin-bottom: 2%;">
-                <label for="times"><strong>Select your time of the day that you usually workout(Hold down shift to select multiple options):</strong></label>
-                <select multiple class="form-control" name="times[]" id="times">
-                    <option value="Morning" >Morning</option>
-                    <option value="Afternoon">Afternoon</option>
-                    <option value="Evening">Evening</option>
-                </select>
+                <label for="chosenWorkoutSessions"><strong>Select the number of sessions you want to complete in the next week:*</strong></label>
+                <input type="number" min="1" max="7" class="form-control" name="chosenWorkoutSessions" id="chosenWorkoutSessions" value="1">
             </div>
             <div class="form-group row " style="margin-bottom: 2%;">
                 <label for="trainingLocation"><strong>What is your preferred training location? (Gym, Outdoors, Home, Virtual)</strong></label>
-                <input type="text" class="form-control" name="trainingLocation" id="trainingLocation">
+                <input type="text" class="form-control" name="trainingLocation" id="trainingLocation" value="Anywhere">
             </div>
 
             <div class="form-group row " style="margin-bottom: 2%;">
@@ -353,16 +314,15 @@
             const gender = document.getElementsByName('gender');
             const exerciseDaysCount = getElementVal('exerciseDays');
             const fitnessLevel = getElementVal('fitnessLevel');
-            const exerciseSelection = getSelectedOptions('exerciseSelection');
+            
             const allergies = getElementVal('allergies');
             const dietaryRestrictions = getElementVal('dietaryRestrictions');
-            const eatingHabitsRating = getElementVal('eatingHabitsRating');
-            const week = getSelectedOptions('week');
-            const times = getSelectedOptions('times');
+            
+            
             const trainingLocation = getElementVal('trainingLocation');
             const trainerInterest = getElementVal('trainerInterest');
-            const bookmarks = {"meals":[], "workouts":[]};
-            const chosenWorkoutSessions = 0;
+            const bookmarks = {"meals":[1], "workouts":[1]};
+            const chosenWorkoutSessions = getElementVal("chosenWorkoutSessions");
             const completedWorkoutSessions = 0
 
             createUserWithEmailAndPassword(auth, emailId, password)
@@ -370,7 +330,7 @@
                     // Signed up 
                     const user = userCredential.user;
                     var id = user.uid
-                    function writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions, bookmarks, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel, exerciseSelection, allergies, dietaryRestrictions, eatingHabitsRating, week, times, trainerInterest, trainingLocation) {
+                    function writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions, bookmarks, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel,  allergies, dietaryRestrictions,  trainerInterest, trainingLocation) {
                     const db = getDatabase();
                     set(ref(db, 'userData/' + id), {
                         username: name,
@@ -382,17 +342,16 @@
                         gender: gender,
                         exerciseDaysCounter: exerciseDaysCount,
                         fitnesslevel: fitnessLevel,
-                        selectedExercises: exerciseSelection,
+                        
                         allergies: allergies,
                         diet: dietaryRestrictions,
-                        eatingHabits: eatingHabitsRating,
-                        week: week,
-                        time: times,
+                     
+                       
                         trainerInterest: trainerInterest,
                         trainingLocation : trainingLocation
                     });
                     }
-                    writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions, bookmarks, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel, exerciseSelection, allergies, dietaryRestrictions, eatingHabitsRating, week, times, trainerInterest, trainingLocation)
+                    writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions, bookmarks, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel,  allergies, dietaryRestrictions,  trainerInterest, trainingLocation)
                     //enable alert
                     document.querySelector(".alert").style.display = "block";
                     
@@ -412,27 +371,12 @@
                         const errorCode = error.code;
                         const errorMessage = error.message;
                         console.log(errorMessage)
+                        document.getElementById("registrationForm").reset();
+                        alert("Please try again!")
                     });
             
             
-            console.log(
-                name,
-                emailId,
-                birthdate,
-                phoneNumber,
-                password,
-                gender,
-                exerciseDaysCount,
-                fitnessLevel,
-                exerciseSelection,
-                allergies,
-                dietaryRestrictions,
-                eatingHabitsRating,
-                week,
-                times,
-                trainingLocation,
-                trainerInterest
-            );
+            
             
                 }
             }
