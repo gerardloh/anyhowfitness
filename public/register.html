@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="row">
-                <span class="display-inline"><input type="checkbox" id="t&c" onclick="agree(event)"><small>By creating your account, you agree to the <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Terms of Service</a> and <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Privacy Policy</a></small></span>
+                <span class="display-inline"><input type="checkbox" id="t&c" ><small>By creating your account, you agree to the <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Terms of Service</a> and <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Privacy Policy</a></small></span>
             </div>
             <div class="form-group btns-group">
                 <a href="#" class="btn btn-primary btn-next" id="next">Next</a>
@@ -225,7 +225,7 @@
                 <button type="submit" class="btn btn-success">Submit</button>
             </div>
             <p id="error-header"></p>
-            <ul id="problems"><li>hi</li></ul>
+            <ul id="problems"></ul>
         </div>
     </form>
     <script>
@@ -276,6 +276,10 @@
 
                 progress.style.width = ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
         }
+       
+        
+        
+         
     </script>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
@@ -296,10 +300,13 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const database = getDatabase(app)
-        var terms = ""
-        function agree(event) {
+        let terms = ""
+        document.getElementById('t&c').addEventListener("click", function(event) {
             terms = event.target.checked
-        }     
+            console.log(terms)
+        })
+         
+          
             
             document.getElementById('registrationForm').addEventListener('submit', submitForm);
             
@@ -329,7 +336,7 @@
                 if (terms == false) {
                     issues.push("Please agree to the terms and conditions")
                 }
-                for (element of issues) {
+                for (var element of issues) {
                     output += "<li>"+ element + "</li>"
                 }
                 document.getElementById("error-header").innerText = "Errors:"
