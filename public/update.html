@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Check-in  </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .title{
+            text-align: left;
+        }
+        #recap{
+            display: block ;
+        }
+        .section {
+            display: none;
+        }
+        
+
+        #inputCounter {
+            font-size: 24px;
+            margin: 20px;
+        }
+
+        #nextBtn,
+        #incrementBtn,
+        #decrementBtn {
+            font-size: 16px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="intro" class="title">
+        <h2>hello rachel! here's your weekly check-in</h2>
+    </div>
+    <div id="prevSessions">
+        how many sessions did u complete this week? 
+        <select id="prevSessionsCompleted"> 
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+    <div id="prevMeals">
+        how many sessions did u complete this week? 
+        <select id="prevSessionsCompleted"> 
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+	<div id="recap" class="section">
+		<h1> Here's your recap from last week: </h1>
+        <!-- collects input frm last week -->
+        <div id="recapContent" class="section">
+           
+        </div>
+
+		<button id="nextBtn" onclick="showSection('sessionCount')">Next</button>
+
+	</div>
+
+    <div id="sessionCount" class="section">
+        <h1>How many sessions would you like to have this week?</h1>
+        
+        <button id="decrementBtn" onclick="updateCounter(-1, 'inputCounter')">-</button>
+        <input type="text" id="sessionCounter" value="0" write>
+        <button id="incrementBtn" onclick="updateCounter(1, 'inputCounter')">+</button>
+
+        <br>
+        <button id="prevBtn" onclick="showSection('recap')">Prev</button>
+        <button id="nextBtn1" onclick="showSection('focusArea')">Next</button>
+    </div>
+
+	<div id="focusArea" class="section">
+		<h1>What areas would you like to focus on this week?</h1>
+
+		<select id="focusAreaOptions" name="focusArea">
+			<option value="strength">Strength</option>
+			<option value="flexibility">flexibility</option>
+			<option value="running">Running</option>
+			<option value="weightLoss">Weight Loss</option>
+			<option value="balance">Balance</option>
+		</select>
+		
+		<br>
+        <button id="prevBtn1" onclick="showSection('sessionCount')">Prev</button>
+        <button id="nextBtn2" onclick="showSection('mealCounter')">Next</button>
+	</div>
+
+    <div id="mealCounter" class="section">
+        <h1>How many meals would you like to prepare this week?</h1>
+        
+        <button id="decrementBtn" onclick="updateCounter(-1, 'inputCounter')">-</button>
+        <input type="text" id="mealCounter" value="0" write>
+        <button id="incrementBtn" onclick="updateCounter(1, 'inputCounter')">+</button>
+
+		<br>
+        <button id="prevBtn2" onclick="showSection()">Prev</button>
+        <button id="nextBtn3" onclick="showSection()">Next</button>
+    </div>
+
+	
+
+    <script>
+        function showSection(specifiedSection){
+            
+            var sections = document.getElementsByClassName("section");
+            console.log(sections);
+            // for (var i=0; i < sections.length; i++){
+            //     var currentSection = document.getElementById(sections[i].id)
+            //     if (specifiedSection != currentSection.id){
+            //         currentSection.style.display = 'none';
+            //     }
+            //     else {
+            //         specifiedSection.style.display = 'block';
+            //     }          
+            // }
+            Array.from(sections).forEach(currentSection => {
+                console.log(currentSection.style.display)
+                if (specifiedSection != currentSection.id){
+                    currentSection.style.display = 'none';
+                }
+                else {
+                    document.getElementById(specifiedSection).style.display = 'block';
+                }   
+            })
+
+        }
+		// function showSessionCountSection(){
+		// 	document.getElementById("recapSection").style.display = "none";
+		// 	document.getElementById("sessionCountSection").style.display = "block";
+		// }
+		// function showFocusAreaSection(){
+		// 	document.getElementById("sessionCountSection").style.display = "none";
+		// 	document.getElementById("focusAreaSection").style.display = "block";
+		// }
+        // function showMealCounterSection() {
+        //     // Hide the session count section and show the meal counter section
+        //     document.getElementById("focusAreaSection").style.display = "none";
+        //     document.getElementById("mealCounterSection").style.display = "block";
+        // }
+		
+
+        function updateCounter(value, counterId) {
+            // Get the current value of the counter
+            var counterElement = document.getElementById(counterId);
+            var currentCount = parseInt(counterElement.value);
+
+            // Update the counter value
+            var newCount = currentCount + value;
+
+            // Ensure the counter doesn't go below 0
+            newCount = Math.max(newCount, 0);
+
+            // Update the counter display
+            counterElement.value = newCount;
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+
+</body>
+</html>
+
