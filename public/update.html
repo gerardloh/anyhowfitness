@@ -54,7 +54,7 @@
             <option value="4">4</option>
         </select>
     </div>
-    <div id="prevMeals">
+    <!-- <div id="prevMeals">
         how many sessions did u complete this week? 
         <select id="prevSessionsCompleted"> 
             <option value="1">1</option>
@@ -62,12 +62,12 @@
             <option value="3">3</option>
             <option value="4">4</option>
         </select>
-    </div>
-	<div id="recap" class="section">
+    </div> -->
+	<!-- <div id="recap" class="section">
 		<h1> Here's your recap from last week: </h1>
-        <!-- collects input frm last week -->
+        
         <div id="recapContent" class="section">
-           
+
         </div>
 
 		<button id="nextBtn" onclick="showSection('sessionCount')">Next</button>
@@ -112,35 +112,35 @@
 		<br>
         <button id="prevBtn2" onclick="showSection()">Prev</button>
         <button id="nextBtn3" onclick="showSection()">Next</button>
-    </div>
+    </div> -->
 
 	
 
     <script>
-        function showSection(specifiedSection){
+        // function showSection(specifiedSection){
             
-            var sections = document.getElementsByClassName("section");
-            console.log(sections);
-            // for (var i=0; i < sections.length; i++){
-            //     var currentSection = document.getElementById(sections[i].id)
-            //     if (specifiedSection != currentSection.id){
-            //         currentSection.style.display = 'none';
-            //     }
-            //     else {
-            //         specifiedSection.style.display = 'block';
-            //     }          
-            // }
-            Array.from(sections).forEach(currentSection => {
-                console.log(currentSection.style.display)
-                if (specifiedSection != currentSection.id){
-                    currentSection.style.display = 'none';
-                }
-                else {
-                    document.getElementById(specifiedSection).style.display = 'block';
-                }   
-            })
+        //     var sections = document.getElementsByClassName("section");
+        //     console.log(sections);
+        //     // for (var i=0; i < sections.length; i++){
+        //     //     var currentSection = document.getElementById(sections[i].id)
+        //     //     if (specifiedSection != currentSection.id){
+        //     //         currentSection.style.display = 'none';
+        //     //     }
+        //     //     else {
+        //     //         specifiedSection.style.display = 'block';
+        //     //     }          
+        //     // }
+        //     Array.from(sections).forEach(currentSection => {
+        //         console.log(currentSection.style.display)
+        //         if (specifiedSection != currentSection.id){
+        //             currentSection.style.display = 'none';
+        //         }
+        //         else {
+        //             document.getElementById(specifiedSection).style.display = 'block';
+        //         }   
+        //     })
 
-        }
+        // }
 		// function showSessionCountSection(){
 		// 	document.getElementById("recapSection").style.display = "none";
 		// 	document.getElementById("sessionCountSection").style.display = "block";
@@ -156,23 +156,181 @@
         // }
 		
 
-        function updateCounter(value, counterId) {
-            // Get the current value of the counter
-            var counterElement = document.getElementById(counterId);
-            var currentCount = parseInt(counterElement.value);
+        // function updateCounter(value, counterId) {
+        //     // Get the current value of the counter
+        //     var counterElement = document.getElementById(counterId);
+        //     var currentCount = parseInt(counterElement.value);
 
-            // Update the counter value
-            var newCount = currentCount + value;
+        //     // Update the counter value
+        //     var newCount = currentCount + value;
 
-            // Ensure the counter doesn't go below 0
-            newCount = Math.max(newCount, 0);
+        //     // Ensure the counter doesn't go below 0
+        //     newCount = Math.max(newCount, 0);
 
-            // Update the counter display
-            counterElement.value = newCount;
-        }
+        //     // Update the counter display
+        //     counterElement.value = newCount;
+        // }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+        const firebaseConfig = {
+        apiKey: "AIzaSyAuv9pHvIhlo_wNj4tdkzNanWoGtQ-5-t4",
+        authDomain: "is216-g2.firebaseapp.com",
+        databaseURL: "https://is216-g2-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "is216-g2",
+        storageBucket: "is216-g2.appspot.com",
+        messagingSenderId: "426453655797",
+        appId: "1:426453655797:web:b36588777f86a6d32365bc",
+        measurementId: "G-QXTL2H3M37"
+        };
+        
+            
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app)
+        let terms = ""
+        document.getElementById('t&c').addEventListener("click", function(event) {
+            terms = event.target.checked
+            console.log(terms)
+        })
+         
+          
+            
+            document.getElementById('registrationForm').addEventListener('submit', submitForm);
+            
+            function submitForm(e) {
+            e.preventDefault();
+            if (getElementVal('name') == "" || getElementVal('emailId') == "" || getElementVal('password') == "" || getElementVal('confirmPassword') == "" || getElementVal('password').length < 8 || getElementVal('password') != getElementVal('confirmPassword') || terms == false) {
+                var issues = []
+                var output = ""
+                if (getElementVal('name') == "") {
+                    issues.push("Please enter your name")
+                }
+                if (getElementVal("emailId") == "") {
+                    issues.push("Please enter your email")
+                }
+                if (getElementVal('password') == "" ) {
+                    issues.push("Please enter your password")
+                }
+                if (getElementVal('confirmPassword') == "") {
+                    issues.push("Please confirm your password")
+                }
+                if (getElementVal('password') != getElementVal('confirmPassword')) {
+                    issues.push("Passwords do not match")
+                }
+                if (getElementVal('password').length < 8) {
+                    issues.push("Password must be minimum 8 characters")
+                }
+                if (terms == false) {
+                    issues.push("Please agree to the terms and conditions")
+                }
+                for (var element of issues) {
+                    output += "<li>"+ element + "</li>"
+                }
+                document.getElementById("error-header").innerText = "Errors:"
+                document.getElementById('problems').innerHTML = output
+            } else {
+            document.getElementById("error-header").innerText = ""
+            document.getElementById('problems').innerHTML = ""
+
+            const name = getElementVal('name');
+            const emailId = getElementVal('emailId');
+            const birthdate = getElementVal('birthdate');
+            const phoneNumber = getElementVal('phoneNumber');
+            const password = getElementVal('password');
+            const gender = document.getElementsByName('gender');
+            const exerciseDaysCount = getElementVal('exerciseDays');
+            const fitnessLevel = getElementVal('fitnessLevel');
+            
+            const allergies = getElementVal('allergies');
+            const dietaryRestrictions = getElementVal('dietaryRestrictions');
+            
+            
+            const trainingLocation = getElementVal('trainingLocation');
+            const trainerInterest = getElementVal('trainerInterest');
+            const bookmarks = {"meals":[1], "workouts":[1]};
+            const chosenWorkoutSessions = getElementVal("chosenWorkoutSessions");
+            const completedWorkoutSessions = 0
+
+            createUserWithEmailAndPassword(auth, emailId, password)
+                    .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+                    var id = user.uid
+                    function writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions, bookmarks, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel,  allergies, dietaryRestrictions,  trainerInterest, trainingLocation) {
+                    const db = getDatabase();
+                    set(ref(db, 'userData/' + id), {
+                        username: name,
+                        chosensessions:chosenWorkoutSessions,
+                        completedsessions: completedWorkoutSessions,
+                        favourites: bookmarks ,
+                        birthday: birthdate,
+                        phone: phoneNumber,
+                        gender: gender,
+                        exerciseDaysCounter: exerciseDaysCount,
+                        fitnesslevel: fitnessLevel,
+                        
+                        allergies: allergies,
+                        diet: dietaryRestrictions,
+                     
+                       
+                        trainerInterest: trainerInterest,
+                        trainingLocation : trainingLocation
+                    });
+                    }
+                    writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions, bookmarks, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel,  allergies, dietaryRestrictions,  trainerInterest, trainingLocation)
+                    //enable alert
+                    document.querySelector(".alert").style.display = "block";
+                    
+                    //remove the alert
+                    setTimeout(() => {
+                    document.querySelector(".alert").style.display = "none";
+                    }, 3000);
+                    
+                    //reset the form
+                    document.getElementById("registrationForm").reset();
+                    location.replace("login.html")
+                    console.log(user)
+                    console.log("Success!")
+                    // ...
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.log(errorMessage)
+                        document.getElementById("registrationForm").reset();
+                        alert("Please try again!")
+                    });
+            
+            
+            
+            
+                }
+            }
+            
+            
+            
+            function getElementVal(id) {
+            return document.getElementById(id).value;
+            }
+            
+            function getSelectedOptions(selectId) {
+                const selectElement = document.getElementById(selectId);
+                const selectedOptions = [];
+                for (let i = 0; i < selectElement.options.length; i++) {
+                    const option = selectElement.options[i];
+                    if (option.selected) {
+                    selectedOptions.push(option.value);
+                    }
+                }
+                return selectedOptions;
+                }
+      
+    </script>
 </body>
 </html>
 
