@@ -45,15 +45,19 @@
     <div id="intro" class="title">
         <h2>hello rachel! here's your weekly check-in</h2>
     </div>
-    <div id="prevSessions">
-        how many sessions did u complete this week? 
-        <select id="prevSessionsCompleted"> 
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-        </select>
-    </div>
+    <div>
+        <form id="prevWeekForm">
+            how many sessions did u complete this week? 
+            <select id="prevSessionsCompleted"> 
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+        
     <!-- <div id="prevMeals">
         how many sessions did u complete this week? 
         <select id="prevSessionsCompleted"> 
@@ -192,125 +196,123 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const database = getDatabase(app)
-        let terms = ""
-        document.getElementById('t&c').addEventListener("click", function(event) {
-            terms = event.target.checked
-            console.log(terms)
-        })
-         
-          
+        // let terms = ""
+        // document.getElementById('t&c').addEventListener("click", function(event) {
+        //     terms = event.target.checked
+        //     console.log(terms)
+        // })     
             
-            document.getElementById('registrationForm').addEventListener('submit', submitForm);
+            document.getElementById('prevWeekForm').addEventListener('submit', submitForm);
             
             function submitForm(e) {
             e.preventDefault();
-            if (getElementVal('name') == "" || getElementVal('emailId') == "" || getElementVal('password') == "" || getElementVal('confirmPassword') == "" || getElementVal('password').length < 8 || getElementVal('password') != getElementVal('confirmPassword') || terms == false) {
+            // if (getElementVal('name') == "" || getElementVal('emailId') == "" || getElementVal('password') == "" || getElementVal('confirmPassword') == "" || getElementVal('password').length < 8 || getElementVal('password') != getElementVal('confirmPassword') || terms == false) {
                 var issues = []
-                var output = ""
-                if (getElementVal('name') == "") {
-                    issues.push("Please enter your name")
-                }
-                if (getElementVal("emailId") == "") {
-                    issues.push("Please enter your email")
-                }
-                if (getElementVal('password') == "" ) {
-                    issues.push("Please enter your password")
-                }
-                if (getElementVal('confirmPassword') == "") {
-                    issues.push("Please confirm your password")
-                }
-                if (getElementVal('password') != getElementVal('confirmPassword')) {
-                    issues.push("Passwords do not match")
-                }
-                if (getElementVal('password').length < 8) {
-                    issues.push("Password must be minimum 8 characters")
-                }
-                if (terms == false) {
-                    issues.push("Please agree to the terms and conditions")
-                }
-                for (var element of issues) {
-                    output += "<li>"+ element + "</li>"
-                }
-                document.getElementById("error-header").innerText = "Errors:"
-                document.getElementById('problems').innerHTML = output
-            } else {
-            document.getElementById("error-header").innerText = ""
-            document.getElementById('problems').innerHTML = ""
+            //     var output = ""
+            //     if (getElementVal('name') == "") {
+            //         issues.push("Please enter your name")
+            //     }
+            //     if (getElementVal("emailId") == "") {
+            //         issues.push("Please enter your email")
+            //     }
+            //     if (getElementVal('password') == "" ) {
+            //         issues.push("Please enter your password")
+            //     }
+            //     if (getElementVal('confirmPassword') == "") {
+            //         issues.push("Please confirm your password")
+            //     }
+            //     if (getElementVal('password') != getElementVal('confirmPassword')) {
+            //         issues.push("Passwords do not match")
+            //     }
+            //     if (getElementVal('password').length < 8) {
+            //         issues.push("Password must be minimum 8 characters")
+            //     }
+                
+            //     for (var element of issues) {
+            //         output += "<li>"+ element + "</li>"
+            //     }
+            //     // document.getElementById("error-header").innerText = "Errors:"
+            //     // document.getElementById('problems').innerHTML = output
+            // } else {
+            // document.getElementById("error-header").innerText = ""
+            // document.getElementById('problems').innerHTML = ""
 
-            const name = getElementVal('name');
-            const emailId = getElementVal('emailId');
-            const birthdate = getElementVal('birthdate');
-            const phoneNumber = getElementVal('phoneNumber');
-            const password = getElementVal('password');
-            const gender = document.getElementsByName('gender');
-            const exerciseDaysCount = getElementVal('exerciseDays');
-            const fitnessLevel = getElementVal('fitnessLevel');
-            
-            const allergies = getElementVal('allergies');
-            const dietaryRestrictions = getElementVal('dietaryRestrictions');
-            
-            
-            const trainingLocation = getElementVal('trainingLocation');
-            const trainerInterest = getElementVal('trainerInterest');
-            const bookmarks = {"meals":[1], "workouts":[1]};
-            const chosenWorkoutSessions = getElementVal("chosenWorkoutSessions");
-            const completedWorkoutSessions = 0
-
-            createUserWithEmailAndPassword(auth, emailId, password)
-                    .then((userCredential) => {
-                    // Signed up 
-                    const user = userCredential.user;
-                    var id = user.uid
-                    function writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions, bookmarks, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel,  allergies, dietaryRestrictions,  trainerInterest, trainingLocation) {
-                    const db = getDatabase();
-                    set(ref(db, 'userData/' + id), {
-                        username: name,
-                        chosensessions:chosenWorkoutSessions,
-                        completedsessions: completedWorkoutSessions,
-                        favourites: bookmarks ,
-                        birthday: birthdate,
-                        phone: phoneNumber,
-                        gender: gender,
-                        exerciseDaysCounter: exerciseDaysCount,
-                        fitnesslevel: fitnessLevel,
-                        
-                        allergies: allergies,
-                        diet: dietaryRestrictions,
-                     
-                       
-                        trainerInterest: trainerInterest,
-                        trainingLocation : trainingLocation
-                    });
-                    }
-                    writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions, bookmarks, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel,  allergies, dietaryRestrictions,  trainerInterest, trainingLocation)
-                    //enable alert
-                    document.querySelector(".alert").style.display = "block";
-                    
-                    //remove the alert
-                    setTimeout(() => {
-                    document.querySelector(".alert").style.display = "none";
-                    }, 3000);
-                    
-                    //reset the form
-                    document.getElementById("registrationForm").reset();
-                    location.replace("login.html")
-                    console.log(user)
-                    console.log("Success!")
-                    // ...
-                    })
-                    .catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
-                        console.log(errorMessage)
-                        document.getElementById("registrationForm").reset();
-                        alert("Please try again!")
-                    });
-            
-            
-            
-            
-                }
+            // const name = getElementVal('name');
+            // const gender = document.getElementsByName('gender');
+            // const exerciseDaysCount = getElementVal('exerciseDays');
+            // const fitnessLevel = getElementVal('fitnessLevel');
+            if (getElementVal('prevSessionsCompleted') == ''){
+                console.log("No input entered");
             }
+            
+            else{
+                var prevSessions = getElementVal('prevSessions');
+                console.log(prevSessions);
+            }
+            
+            
+            // const trainingLocation = getElementVal('trainingLocation');
+            // const trainerInterest = getElementVal('trainerInterest');
+            // const bookmarks = {"meals":[1], "workouts":[1]};
+            // const chosenWorkoutSessions = getElementVal("chosenWorkoutSessions");
+            // const completedWorkoutSessions = 0
+            
+            writePrevSessionData()
+            .then()
+            // createUserWithEmailAndPassword(auth, emailId, password)
+            //         .then((userCredential) => {
+            //         // Signed up 
+            //         const user = userCredential.user;
+            //         var id = user.uid
+            //         function writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions, bookmarks, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel,  allergies, dietaryRestrictions,  trainerInterest, trainingLocation) {
+            //         const db = getDatabase();
+            //         set(ref(db, 'userData/' + id), {
+            //             username: name,
+            //             chosensessions:chosenWorkoutSessions,
+            //             completedsessions: completedWorkoutSessions,
+            //             favourites: bookmarks ,
+            //             birthday: birthdate,
+            //             phone: phoneNumber,
+            //             gender: gender,
+            //             exerciseDaysCounter: exerciseDaysCount,
+            //             fitnesslevel: fitnessLevel,
+                        
+            //             allergies: allergies,
+            //             diet: dietaryRestrictions,
+
+            //             trainerInterest: trainerInterest,
+            //             trainingLocation : trainingLocation
+            //         });
+                    }
+                    // writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions, bookmarks, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel,  allergies, dietaryRestrictions,  trainerInterest, trainingLocation)
+                    // //enable alert
+                    // document.querySelector(".alert").style.display = "block";
+                    
+            //         //remove the alert
+            //         setTimeout(() => {
+            //         document.querySelector(".alert").style.display = "none";
+            //         }, 3000);
+                    
+            //         //reset the form
+            //         document.getElementById("registrationForm").reset();
+            //         location.replace("login.html")
+            //         console.log(user)
+            //         console.log("Success!")
+            //         // ...
+            //         })
+            //         .catch((error) => {
+            //             const errorCode = error.code;
+            //             const errorMessage = error.message;
+            //             console.log(errorMessage)
+            //             document.getElementById("registrationForm").reset();
+            //             alert("Please try again!")
+            //         });
+            
+            
+            
+            
+            //     }
+            // }
             
             
             
@@ -328,8 +330,7 @@
                     }
                 }
                 return selectedOptions;
-                }
-      
+                }     
     </script>
 </body>
 </html>
