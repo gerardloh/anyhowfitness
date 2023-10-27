@@ -22,6 +22,7 @@
 			color: rgb(214, 3, 3);
 			font-weight: bold;
 		}
+		
 		@media (max-width: 768px) {
 		.w-50 {
 			margin: auto;
@@ -49,23 +50,25 @@
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap p-0">
-		      	<h3 class="mb-4 text-center">Have an account?</h3>
+		      	<h3 class="mb-4 text-center" id="login-h3">Have an account?</h3>
 
 				<form action="#" class="signin-form" id="loginform">
 		      		<div class="form-group">
 		      			<input type="email" id="email" class="form-control" placeholder="Email" required>
 		      		</div>
-	            <div class="form-group">
+	            <div class="form-group" id="password-div">
 	              <input id="password-field" type="password" class="form-control" placeholder="Password" required>
 	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password" id="eye"></span>
 	            </div>
 	            <div class="form-group">
+					<button type="button" id="forgetpassbtn"class="form-control btn btn-primary submit px-3" style="display: none;">Reset Password</button>
 	            	<button type="submit" id="loginbtn"class="form-control btn btn-primary submit px-3">Sign In</button>
 	            </div>
 				
-	            <div class="form-group d-md-flex ">
+	            <div class="form-group d-md-flex " id="functions-div">
 	            	<div class="w-50 " id="rmb">
-		            	<label class="checkbox-wrap checkbox-primary">Remember Me
+						<a href="login.html" id="return" style="display:none;">Go back</a>
+		            	<label class="checkbox-wrap checkbox-primary" id="rememberme">Remember Me
 							<input type="checkbox" checked>
 							<span class="checkmark"></span>
 						</label>
@@ -146,6 +149,24 @@
                     })
 		document.getElementById("forgot").addEventListener("click", function (event) {
 			event.preventDefault()
+			document.getElementById("login-h3").innerText = "Enter your email:"
+			document.getElementById("return").style.display = "block"
+			document.getElementById("rememberme").style.display = "none"
+			document.getElementById("forgot").style.display = "none"
+			document.getElementById("password-div").style.display = "none"
+			document.getElementById("forgetpassbtn").style.display = "block"
+			document.getElementById("loginbtn").style.display = "none"
+
+
+
+			
+		})
+		document.getElementById("forgetpassbtn").addEventListener("click", function() {
+			email = email = document.getElementById("email").value
+			if (email == "") {
+				document.getElementById("fail").innerText = "Please enter your email."
+			}else {
+			document.getElementById("fail").innerText = "Password reset sent to the given email!"	
 			sendPasswordResetEmail(auth, email)
 			.then(() => {
 				document.getElementById("fail").innerText = "Password reset sent to your email."
@@ -157,6 +178,7 @@
 				const errorMessage = error.message;
 				// ..
 			});
+			}
 		})
            
         
