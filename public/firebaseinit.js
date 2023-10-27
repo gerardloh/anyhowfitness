@@ -46,6 +46,9 @@ const app = initializeApp(firebaseConfig);
 
 import firebase from "firebase/app"
 import "firebase/firestore";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAuv9pHvIhlo_wNj4tdkzNanWoGtQ-5-t4",
@@ -60,7 +63,10 @@ const firebaseConfig = {
 
 //recondigured to isgt2 database as of 2:16pm 
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app)
 // const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
 // export {timestamp};
