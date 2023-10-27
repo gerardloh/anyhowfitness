@@ -346,7 +346,7 @@ img {
 				const dbRef = ref(getDatabase());
 				var link = "userData/" + uid
 
-                getDownloadURL(ref(storage, uid))
+                /*getDownloadURL(ref(storage, uid))
                 .then((url) => {
                     // `url` is the download URL for 'images/stars.jpg'
 
@@ -357,7 +357,7 @@ img {
                 .catch((error) => {
                     // Handle any errors
                     console.log(error)
-                });
+                }); */
 
 				get(child(dbRef, link)).then((snapshot) => {
 				if (snapshot.exists()) {
