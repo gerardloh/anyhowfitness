@@ -21,6 +21,10 @@
 img {
     max-width: 100px;
 }
+#suck{
+    color:greenyellow;
+    margin-top: 2%;
+}
 </style>
 </head>
 
@@ -124,20 +128,7 @@ img {
          Change Password
 ============================== -->
 <div class="tab-pane fade" id="account-change-password">
-    <div class="card-body pb-2">
-        <div class="form-group">
-            <label class="form-label">Current password:</label>
-            <input type="password" class="form-control" id="curr-pass">
-        </div>
-        <div class="form-group">
-            <label class="form-label">New password:</label>
-            <input type="password" class="form-control" id="new-pass">
-        </div>
-        <div class="form-group">
-            <label class="form-label">Repeat new password:</label>
-            <input type="password" class="form-control" id="cfm-pass">
-        </div>
-    </div>
+    <button type="button" class="btn btn-primary" id="passreset">Click here to get password change email</button>
 </div>
 
 
@@ -305,15 +296,16 @@ img {
         <div class="text-right mt-3">
             <button type="button" class="btn btn-primary" id="save">Save changes</button>&nbsp;
             <button type="button" class="btn btn-default" style="color: aliceblue; background: grey;" id="cancel">Cancel</button>
-            <ul id="epicfails"></ul>
+            
             <ul id="suck"></ul>
         </div>
 
     </div>
     <script type="module">
+        
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateEmail, updatePassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateEmail,  } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
         import { getDatabase, ref, child, get, update} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
         import {getStorage, uploadBytes, getDownloadURL} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-storage.js";
         // TODO: Add SDKs for Firebase products that you want to use
@@ -358,6 +350,20 @@ img {
                     // Handle any errors
                     console.log(error)
                 }); */
+                document.getElementById("passreset").addEventListener("click", function() {
+                    sendPasswordResetEmail(auth, user.email)
+                    .then(() => {
+                        // Password reset email sent!
+                        // ..
+                        document.getElementById("suck").innerHTML = "<li>Password reset email sent!</li>"
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.log(errorMessage)
+                        // ..
+                    });
+                })
 
 				get(child(dbRef, link)).then((snapshot) => {
 				if (snapshot.exists()) {
@@ -380,43 +386,11 @@ img {
                         /*var file = document.getElementById("imagefile").files[0]
                         uploadBytes(ref(storage, uid), file).then((snapshot) => {
                             console.log('Uploaded a blob or file!');
-                            });
-*/
-                        var successmsg = ""
-                        var curr_pass = document.getElementById("curr-pass").value
-                        var new_pass = document.getElementById("new-pass").value
-                        var cfm_pass = document.getElementById("cfm-pass").value
-                        if (curr_pass != "" || new_pass != "" || cfm_pass != "") {
-                            if(new_pass != cfm_pass || new_pass.length <8 || new_pass == "" || curr_pass == "" || cfm_pass =="") {
-                            var epicfails = ""
-                            if (new_pass != cfm_pass) {
-                                epicfails += "<li>Your password confirmation does not match with your new password!</li>"
-                            }
-                            if (new_pass.length <8) {
-                                epicfails += "<li>New password must be at least 8 characters long!</li>"
-                            }
-                            if (new_pass == "") {
-                                epicfails += "<li>New password cannot be empty!</li>"
-                            }
-                            if (cur_pass == "") {
-                                epicfails += "<li>Current password cannot be empty!</li>"
-                            }
-                            if (cfm_pass == "") {
-                                epicfails += "<li>Confirm password cannot be empty!</li>"
-                            }
-                            document.getElementById("epicfails").innerHTML = epicfails
-                            } else {
-                                updatePassword(user, new_pass).then(() => {
-                                // Update successful.
-                                successmsg += "<li>Password update successful!</li>"
+                            });*/
 
-                                }).catch((error) => {
-                                // An error ocurred
-                                console.log(error)
-                                // ...
-                                });
-                            }
-                        }
+                        var successmsg = ""
+                        
+                        
                         var new_email = document.getElementById("email").value
                         if (new_email != "") {
                             updateEmail(auth.currentUser, new_email).then(() => {
