@@ -121,13 +121,12 @@
                 </div>
             </div>
             <div class="form-group row " style="margin-bottom: 2%;">
-                <label><strong>How would you rate your current fitness level? (Beginner, Intermediate, Advanced)</strong></label>
-                <input type="range" class="form-range" name="fitnessLevel" id="fitnessLevel" min="1" max="3" required>
-                <div class="output-container">
-                    <output for="fitnessLevel" class="output">Beginner</output>
-                    <output for="fitnessLevel" class="output">Intermediate</output>
-                    <output for="fitnessLevel" class="output">Advanced</output>
-                </div>
+                <label for="fitnessLevel"><strong>How would you rate your current fitness level? (Beginner, Intermediate, Advanced)</strong></label>
+                <select class="form-control" name="fitnessLevel" id="fitnessLevel">
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
             </div>
             
             <div class="form-group btns-group">
