@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+Fitness Template
+http://www.templatemo.com/tm-487-fitness
+-->
+<title>Fitness - Responsive Blog Page</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- Added by me -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue@next"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+
+<!-- Main css -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Google Font -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lora:700italic' rel='stylesheet' type='text/css'>
+
+
+<style>
+    /* .blog-content {
+      margin-left: auto;
+      margin-right: auto;
+    } */
+ </style>
+  
+
+</head>
+<body>
+
+<!-- =========================
+     PRE LOADER       
+============================== -->
+<div  class="preloader">
+
+	<div class="sk-spinner sk-spinner-pulse"></div>
+
+</div>
+
+
+<!-- =========================
+    NAVIGATION SECTION   
+============================== -->
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+	<div class="container">
+
+		<div class="navbar-header">
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+			</button>
+			<a href="index.html" class="navbar-brand">Fitness</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="index.html#home" class="smoothScroll">Home</a></li>
+				<li><a href="index.html#overview" class="smoothScroll">About</a></li>
+				<li><a href="index.html#trainer" class="smoothScroll">Trainers</a></li>
+			</ul>
+		</div>
+
+	</div>
+</div>
+
+
+<!-- =========================
+    BLOG HEADER SECTION   
+============================== -->
+<section id="blog-header" class="parallax-section">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-offset-2 col-md-8 col-sm-12">
+				<!-- <h1 class="wow bounceIn" data-wow-delay="0.9s">Recipe</h1> -->
+				<h3 class="wow bounceIn" data-wow-delay="1.6s"></h3>
+			</div>
+
+
+		</div>
+	</div>
+</section>
+
+<!-- =========================
+    BLOG SECTION   
+============================== -->
+<section id="blog" class="parallax-section">
+	<div class="container" >
+		<div class="row">
+
+			<div class="col">
+
+				<div class="blog-content wow fadeInUp" data-wow-delay="1s">
+
+                    <div >
+                        <!-- Ingredients -->
+                        <h3>Ingredients</h3>
+                        <ul id="ingredientsList"></ul>
+                    </div>
+
+                    <div style="max-width: 500px; margin-top:20px;">
+                        <!-- Image -->
+                        <img src="" style="width: 100%; height: auto;">
+                    </div>
+
+                    <!-- Instructions -->
+                    <h3>Instructions</h3>
+                    <ol id="instructionsList"></ol>
+
+                    <!-- Video -->
+                    <div id="video-container" style="max-width: 500px; margin-top:20px;"></div>
+				</div>
+
+              
+                
+			</div>
+			
+	</div>
+</section>
+
+
+<!-- =========================
+    FOOTER SECTION   
+============================== -->
+<footer>
+	<div class="container">
+		<div class="row">
+
+			<div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.6s">
+				<h2>About Fitness</h2>
+				<p>Nunc id turpis tincidunt dui volutpat hendrerit et efficitur dolor. Morbi quis tempor felis, ut dictum ipsum. Praesent venenatis rutrum interdum.</p>
+			</div>
+
+			<div class="wow fadeInUp col-md-5 col-sm-4"  data-wow-delay="0.9s">
+				<h2>Sessions</h2>
+					<div>
+						<h5>Morning</h5>
+						<h4>6:00 AM - 11:00 PM</h4>
+					</div>
+					<div>
+						<h5>Evening</h5>
+						<h4>4:00 PM - 9:00 PM</h4>
+					</div>
+			</div>
+
+			<div class="wow fadeInUp col-md-3 col-sm-4" data-wow-delay="1s">
+				<h2>Follow us</h2>
+				<ul class="social-icon">
+					<li><a href="#" class="fa fa-facebook wow fadeIn" data-wow-delay="1s"></a></li>
+					<li><a href="#" class="fa fa-twitter wow fadeInUp" data-wow-delay="1.3s"></a></li>
+					<li><a href="#" class="fa fa-dribbble wow fadeIn" data-wow-delay="1.6s"></a></li>
+					<li><a href="#" class="fa fa-behance wow fadeInUp" data-wow-delay="1.9s"></a></li>
+					<li><a href="#" class="fa fa-google-plus wow fadeIn" data-wow-delay="2s"></a></li>
+				</ul>
+			</div>
+
+			<div class="clearfix"></div>
+
+			<div class="col-md-12 col-sm-12">
+				<p class="copyright-text">Copyright &copy; 2016 Your Company 
+                    
+                    | Design: TemplateMo</p>
+			</div>
+			
+		</div>
+	</div>
+</footer>
+
+<!-- =========================
+     SCRIPTS   
+============================== -->
+
+<script>
+    // Get the meal ID from the query parameter
+    var urlParams = new URLSearchParams(window.location.search);
+    var mealId = urlParams.get("id");
+
+    // Function to fetch and display recipe details based on the meal ID
+    function getRecipeDetails() {
+        var url = "https://www.themealdb.com/api/json/v2/9973533/lookup.php";
+        axios.get(url, {
+            params: {
+                i: mealId
+            }
+        })
+        .then(response => {
+            console.log(response.data)
+            var recipe = response.data.meals[0];
+            displayRecipeName(recipe);
+            displayIngredients(recipe);
+            displayImage(recipe);
+            displayInstructions(recipe.strInstructions);
+            displayVideo(recipe)
+        })
+        .catch(error => {
+            console.error(error);
+            document.getElementById("recipeDetails").innerHTML = "<h2>Failed to fetch recipe details.</h2>";
+        });
+    }
+
+    function displayRecipeName(recipe) {
+        // Update the h3 tag with the recipe name
+        var blogHeaderH3 = document.querySelector("#blog-header h3");
+        if (blogHeaderH3) {
+            blogHeaderH3.innerText = recipe.strMeal;
+        }
+    }
+
+
+
+    function displayIngredients(recipe) {
+        var ingredientsList = document.getElementById("ingredientsList");
+        
+        // Loop through ingredients (strIngredient1 to strIngredient20) and measures (strMeasure1 to strMeasure20)
+        for (var i = 1; i <= 20; i++) {
+            var ingredientKey = "strIngredient" + i;
+            var measureKey = "strMeasure" + i;
+
+            var ingredient = recipe[ingredientKey];
+            var measure = recipe[measureKey];
+
+            // Display the ingredient and measure if both are not null
+            if (ingredient && measure) {
+                var listItem = document.createElement("li");
+                listItem.innerHTML = `${measure} ${ingredient}`;
+                ingredientsList.appendChild(listItem);
+            }
+        }
+    }
+
+    function displayImage(recipe) {
+        
+        // Find the img element
+        var imgElement = document.querySelector("#blog img");
+        
+        // Get the image URL
+        var imageURL = recipe.strMealThumb;
+        if (imgElement && imageURL) {
+            imgElement.src = imageURL;
+        }
+    }
+
+
+    function displayInstructions(instructions) {
+        var instructionsList = document.getElementById("instructionsList");
+
+        // Split the instructions into sentences using full stops as delimiters
+        var instructionSentences = instructions.split('.');
+
+        // Display the instructions as an ordered list
+        if (instructions) {
+            instructionsList.innerHTML = ''; // Clear any previous content
+            instructionSentences.forEach(function (sentence) {
+                if (sentence.trim() !== '') {
+                    var listItem = document.createElement("li");
+                    listItem.innerHTML = sentence.trim();
+                    instructionsList.appendChild(listItem);
+                }
+            });
+        }
+    }
+
+    function displayVideo(recipe) {
+        // Get the YouTube URL from the recipe data
+        var youtubeURL = recipe.strYoutube;
+
+        // Check if a YouTube URL is provided
+        if (youtubeURL) {
+            // Create an iframe element
+            var iframe = document.createElement("iframe");
+
+            // Set the source of the iframe to the correct YouTube URL format
+            var videoId = youtubeURL.split('=')[1]; // Extract the video ID
+            iframe.src = `https://www.youtube.com/embed/${videoId}`;
+
+            // Set the width and height attributes
+            iframe.width = "560"; // You can adjust the width as needed
+            iframe.height = "315"; // You can adjust the height as needed
+
+            // Replace the content of the "video-container" div with the iframe
+            var videoContainer = document.getElementById("video-container");
+            if (videoContainer) {
+                videoContainer.innerHTML = ''; // Clear any previous content
+                videoContainer.appendChild(iframe);
+            }
+        }
+    }
+
+
+    getRecipeDetails();
+
+</script>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.parallax.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/custom.js"></script>
+
+
+
+</body>
+</html>

@@ -296,7 +296,7 @@ http://www.templatemo.com/tm-487-fitness
                         <li class="pricing__feature">Save to your favourites</li>
                         <li class="pricing__feature">Countless yummy meals</li>
                     </ul>
-                    <button class="pricing__action">Take me there!</button>
+                    <button class="pricing__action" id="yum">Take me there!</button>
                 </div>
 			</div>
 
@@ -310,7 +310,7 @@ http://www.templatemo.com/tm-487-fitness
                         <li class="pricing__feature">Save to your favourites</li>
                         <li class="pricing__feature">Track your progress</li>
                     </ul>
-                    <button class="pricing__action"><a href="workout-planner.html">Take me there!</a></button>
+                    <button class="pricing__action" id="shag">Take me there!</button>
                 </div>
 			</div>
 
@@ -410,6 +410,14 @@ http://www.templatemo.com/tm-487-fitness
 <!-- =========================
      SCRIPTS   
 ============================== -->
+<script>
+	document.getElementById("yum").addEventListener("click", function () {
+		window.location.href = 'recipefinder.html'
+	})
+	document.getElementById("shag").addEventListener("click", function () {
+		window.location.href = 'workout-planner.html'
+	})
+</script>
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.parallax.js"></script>
