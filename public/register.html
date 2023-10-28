@@ -242,10 +242,31 @@
          
     </script>
     <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+        const firebaseConfig = {
+        apiKey: "AIzaSyAuv9pHvIhlo_wNj4tdkzNanWoGtQ-5-t4",
+        authDomain: "is216-g2.firebaseapp.com",
+        databaseURL: "https://is216-g2-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "is216-g2",
+        storageBucket: "is216-g2.appspot.com",
+        messagingSenderId: "426453655797",
+        appId: "1:426453655797:web:b36588777f86a6d32365bc",
+        measurementId: "G-QXTL2H3M37"
+        };
         
-        
-    
-        
+            
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app)
+        let terms = ""
+        document.getElementById('t&c').addEventListener("click", function(event) {
+            terms = event.target.checked
+            console.log(terms)
+        })
+         
+          
             
             document.getElementById('registrationForm').addEventListener('submit', submitForm);
             
@@ -340,7 +361,7 @@
                     
                     //reset the form
                     document.getElementById("registrationForm").reset();
-                    location.replace("login.html")
+                    
                     console.log(user)
                     console.log("Success!")
                     // ...
