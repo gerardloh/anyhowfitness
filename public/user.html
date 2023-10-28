@@ -275,7 +275,7 @@ http://www.templatemo.com/tm-487-fitness
                         <li class="pricing__feature">Save to your favourites</li>
                         <li class="pricing__feature">Countless yummy meals</li>
                     </ul>
-                    <button class="pricing__action">Take me there!</button>
+                    <button class="pricing__action" id="yum1">Take me there!</button>
                 </div>
 			</div>
 
@@ -289,7 +289,7 @@ http://www.templatemo.com/tm-487-fitness
                         <li class="pricing__feature">Save to your favourites</li>
                         <li class="pricing__feature">Track your progress</li>
                     </ul>
-                    <button class="pricing__action"><a href="workout-planner.html">Take me there!</a></button>
+                    <button class="pricing__action" id="shag1">Take me there!</button>
                 </div>
 			</div>
 
@@ -419,6 +419,12 @@ http://www.templatemo.com/tm-487-fitness
             if (user) {
                 // User is signed in, see docs for a list of available properties
                 // https://firebase.google.com/docs/reference/js/auth.user
+				document.getElementById("yum1").addEventListener("click", function () {
+					window.location.href = 'recipefinder.html'
+				})
+				document.getElementById("shag1").addEventListener("click", function () {
+					window.location.href = 'workout-planner.html'
+				})
                 const uid = user.uid;
 				const dbRef = ref(getDatabase());
 				var link = "userData/" + uid
