@@ -18,9 +18,8 @@ http://www.templatemo.com/tm-487-fitness
 
 <!-- Main css -->
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/home.css">
-<link rel="stylesheet" href="css/editor.css">
-<link rel="stylesheet" href="css/blog.css">
+<!-- <!-- <link rel="stylesheet" href="css/home.css"> -->
+<link rel="stylesheet" href="css/editor.css"> -->
 
 <!-- Vue 3 -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -66,7 +65,6 @@ http://www.templatemo.com/tm-487-fitness
 				<li><a href="index.html#home" class="smoothScroll">Home</a></li>
 				<li><a href="index.html#overview" class="smoothScroll">About</a></li>
 				<li><a href="index.html#trainer" class="smoothScroll">Workouts</a></li>
-				<li><a href="/editor" class="link smoothScroll">Editor</a></li>
 			</ul>
 		</div>
 
@@ -75,38 +73,24 @@ http://www.templatemo.com/tm-487-fitness
 
 
 <!-- =========================
-    BLOG HEADER SECTION   
+    EDITOR SECTION   
 ============================== -->
-<section id="blog-header" class="parallax-section">
-	<div class="container">
-		<div class="row">
-
-			<div class="col-md-offset-2 col-md-8 col-sm-12">
-				<h3 class="wow bounceIn" data-wow-delay="0.9s">Fitness Blog</h3>
-				<h1 class="wow fadeInUp" data-wow-delay="1.6s">Anyhow Fitness</h1>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- =========================
-    BLOG SECTION   
-============================== -->
-<section class="blogs-section">
-	<div class="banner"></div>
-
+<section class="blogEditor-section">
+    <div class="banner">
+        <input type="file" accept="image/*" id="banner-upload" hidden>
+        <label for="banner-upload" class="banner-upload-btn"><img src="images/upload.png" alt="upload banner"></label>
+    </div>
+    
     <div class="blog">
-        <h1 class="title"></h1>
-        <p class="published"><span>published at - </span></p>
-        <div class="article">
-            
-        </div>
+        <textarea type="text" class="title" placeholder="Blog title..."></textarea>
+        <textarea type="text" class="article" placeholder="Start writing here..."></textarea>
     </div>
 
-    <h1 class="sub-heading">Read more</h1>
-</section>
-<section class="comments-section">
-
+    <div class="blog-options">
+        <button class="btn dark publish-btn">publish</button>
+        <input type="file" accept="image/*" id="image-upload" hidden>
+        <label for="image-upload" class="btn grey upload-btn">Upload Image</label>
+    </div>
 </section>
 
 <!-- =========================
@@ -164,13 +148,35 @@ http://www.templatemo.com/tm-487-fitness
 <script src="js/jquery.parallax.js"></script>
 <script src="js/wow.min.js"></script>
 <script src="js/custom.js"></script>
+<script>
+    const app = Vue.createApp({
+    data(){
+        return{
+            welcomeScreen:{
+            title: "Welcome",
+            blogPost:
+                "Weekly blog articles with all things fitness & nutrition. Register today to never miss a post",
+            welcomeScreen: true, 
+            photo: "coding",
+            },
+            
+        }
+        },
+    
+        computed: {
+        blogPostsFeed(){
+            return this.$store.getters.blogPostsFeed;
+        },
+        blogPostsCards(){
+            return this.$store.getters.blogPostsCards;
+        },
+        user(){
+            return this.$store.state.user;
+        }
+        }
+    });
+</script>
 
-<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
-
-<script src="js/firebase.js"></script>
-<script src="js/home.js"></script>
-<script src="js/blog.js"></script>
 
 
 </body>
