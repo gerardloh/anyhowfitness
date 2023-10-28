@@ -1,5 +1,5 @@
 {
-  "name": "bloggin-site",
+  "name": "anyhowfitness",
   "version": "1.0.0",
   "description": "![Image](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/naxpa0453a6bhd69ci1c.png)",
   "main": "server.js",
@@ -12,5 +12,13 @@
     "express-fileupload": "^1.4.1",
     "express.js": "^1.0.0",
     "nodemon": "^2.0.22"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gerardloh/anyhowfitness.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gerardloh/anyhowfitness/issues"
+  },
+  "homepage": "https://github.com/gerardloh/anyhowfitness#readme"
 }

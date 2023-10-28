@@ -18,21 +18,12 @@ http://www.templatemo.com/tm-487-fitness
 
 <!-- Main css -->
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/home.css">
-<link rel="stylesheet" href="css/editor.css">
-<link rel="stylesheet" href="css/blog.css">
+<link rel="stylesheet" href="css/blogs.css">
 
-<!-- Vue 3 -->
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<!-- Axios -->
-<script src='https://unpkg.com/axios/dist/axios.min.js'></script>
 
 <!-- Google Font -->
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Lora:700italic' rel='stylesheet' type='text/css'>
-
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
 
 </head>
 <body>
@@ -66,7 +57,7 @@ http://www.templatemo.com/tm-487-fitness
 				<li><a href="index.html#home" class="smoothScroll">Home</a></li>
 				<li><a href="index.html#overview" class="smoothScroll">About</a></li>
 				<li><a href="index.html#trainer" class="smoothScroll">Workouts</a></li>
-				<li><a href="/editor" class="link smoothScroll">Editor</a></li>
+				<li><a href="editor.html" class="smoothScroll">Create a Post</a></li>
 			</ul>
 		</div>
 
@@ -80,10 +71,10 @@ http://www.templatemo.com/tm-487-fitness
 <section id="blog-header" class="parallax-section">
 	<div class="container">
 		<div class="row">
-
 			<div class="col-md-offset-2 col-md-8 col-sm-12">
-				<h3 class="wow bounceIn" data-wow-delay="0.9s">Fitness Blog</h3>
-				<h1 class="wow fadeInUp" data-wow-delay="1.6s">Anyhow Fitness</h1>
+				<h3 class="wow bounceIn" data-wow-delay="0.9s">Anyhow Fitness</h3>
+				<h1 class="wow fadeInUp" data-wow-delay="1.6s">Community Forum</h1>
+				<a href="/editor" class="btn btn-light text-light"> Write a Blog</a>
 			</div>
 		</div>
 	</div>
@@ -92,22 +83,15 @@ http://www.templatemo.com/tm-487-fitness
 <!-- =========================
     BLOG SECTION   
 ============================== -->
-<section class="blogs-section">
-	<div class="banner"></div>
-
-    <div class="blog">
-        <h1 class="title"></h1>
-        <p class="published"><span>published at - </span></p>
-        <div class="article">
-            
-        </div>
-    </div>
-
-    <h1 class="sub-heading">Read more</h1>
+<section id="blog" class="parallax-section blogs-section">
+	<div class="blog-card">
+		<img src="images/header.png" class="blog-image" alt="">
+		<h2 class="blog-title">Lorem ipsum dolor sit amet consectetur.</h2>
+		<p class="blog-overview">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt incidunt fugiat quos porro repellat harum. Adipisci tempora corporis rem cum.</p>
+		<a href="#" class="btn dark">read</a>
+	</div>
 </section>
-<section class="comments-section">
 
-</section>
 
 <!-- =========================
     FOOTER SECTION   
@@ -164,14 +148,9 @@ http://www.templatemo.com/tm-487-fitness
 <script src="js/jquery.parallax.js"></script>
 <script src="js/wow.min.js"></script>
 <script src="js/custom.js"></script>
-
-<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
-
 <script src="js/firebase.js"></script>
 <script src="js/home.js"></script>
 <script src="js/blog.js"></script>
-
 
 </body>
 </html>
