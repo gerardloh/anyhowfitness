@@ -64,7 +64,7 @@ http://www.templatemo.com/tm-487-fitness
 				<span class="icon icon-bar"></span>
 				<span class="icon icon-bar"></span>
 			</button>
-			<a href="index.html" class="navbar-brand">Fitness</a>
+			<a href="index.html" class="navbar-brand" id="return">Anyhow Fitness</a>
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
@@ -73,6 +73,7 @@ http://www.templatemo.com/tm-487-fitness
 				<li><a href="index.html#trainer" class="smoothScroll" id="workout3">Workouts</a></li>
 				<li><a href="index.html#blog" class="smoothScroll" id="blog3">Blog</a></li>
 				<li><a href="index.html#price" class="smoothScroll" id="planner3">Planners</a></li>
+				<li><a href="profile.html" class="smoothScroll" id="profilepagelink" style="display: none;">Profile</a></li>
 				<li><a href="login.html" class="smoothScroll" id="log3">Login</a></li>
 			</ul>
 		</div>
@@ -222,8 +223,10 @@ http://www.templatemo.com/tm-487-fitness
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/auth.user
     const uid = user.uid;
+	document.getElementById("return").setAttribute("href", "user.html#home")
+	document.getElementById("profilepagelink").style.display = "block"
 	document.getElementById("home3").setAttribute("href", "user.html#home")
-	document.getElementById("about3").setAttribute("href", "user.html#overview")
+	document.getElementById("about3").style.display = "none"
 	document.getElementById("workout3").setAttribute("href", "user.html#trainer")
 	document.getElementById("blog3").setAttribute("href", "user.html#blog")
 	document.getElementById("planner3").setAttribute("href", "user.html#price")
