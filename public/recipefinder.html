@@ -5,7 +5,7 @@
 Fitness Template
 http://www.templatemo.com/tm-487-fitness
 -->
-<title>Fitness - Responsive Blog Page</title>
+<title>Recipe Finder</title>
 <meta name="description" content="">
 <meta name="author" content="">
 <meta charset="UTF-8">
@@ -55,7 +55,7 @@ http://www.templatemo.com/tm-487-fitness
 				<span class="icon icon-bar"></span>
 				<span class="icon icon-bar"></span>
 			</button>
-			<a href="index.html" class="navbar-brand">Fitness</a>
+			<a href="index.html" class="navbar-brand" id="return">Anyhow Fitness</a>
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
@@ -64,6 +64,7 @@ http://www.templatemo.com/tm-487-fitness
 				<li><a href="index.html#trainer" class="smoothScroll" id="workout5">Workouts</a></li>
 				<li><a href="index.html#blog" class="smoothScroll" id="blog5">Blog</a></li>
 				<li><a href="index.html#price" class="smoothScroll" id="planner5">Planners</a></li>
+                <li><a href="profile.html" class="smoothScroll" id="profilepagelink" style="display: none;">Profile</a></li>
 				<li><a href="login.html" class="smoothScroll" id="log5">Login</a></li>
 			</ul>
 		</div>
@@ -189,19 +190,19 @@ http://www.templatemo.com/tm-487-fitness
 		<div class="row">
 
 			<div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.6s">
-				<h2>About Fitness</h2>
-				<p>Nunc id turpis tincidunt dui volutpat hendrerit et efficitur dolor. Morbi quis tempor felis, ut dictum ipsum. Praesent venenatis rutrum interdum.</p>
+				<h2>About Anyhow Fitness</h2>
+				<p>Anyhow Fitness is not just a company. It is a lifestyle. We aim to promote healthy living by providing suitable workout and meal plans for all.</p>
 			</div>
 
 			<div class="wow fadeInUp col-md-5 col-sm-4"  data-wow-delay="0.9s">
-				<h2>Sessions</h2>
+				<h2>Working Hours</h2>
 					<div>
 						<h5>Morning</h5>
-						<h4>6:00 AM - 11:00 PM</h4>
+						<h4>9:00 AM - 12:00 PM</h4>
 					</div>
 					<div>
-						<h5>Evening</h5>
-						<h4>4:00 PM - 9:00 PM</h4>
+						<h5>Afternoon</h5>
+						<h4>1:00 PM - 6:00 PM</h4>
 					</div>
 			</div>
 
@@ -219,9 +220,7 @@ http://www.templatemo.com/tm-487-fitness
 			<div class="clearfix"></div>
 
 			<div class="col-md-12 col-sm-12">
-				<p class="copyright-text">Copyright &copy; 2016 Your Company 
-                    
-                    | Design: TemplateMo</p>
+				<p class="copyright-text">Copyright &copy; 2023 Anyhow Fitness</p>
 			</div>
 			
 		</div>
@@ -465,8 +464,10 @@ http://www.templatemo.com/tm-487-fitness
                     // User is signed in
                     this.isAuthenticated = true;
                     this.userid = user.uid;
+                    document.getElementById("return").setAttribute("href", "user.html#home")
+                    document.getElementById("profilepagelink").style.display = "block"
                     document.getElementById("home5").setAttribute("href", "user.html#home")
-                    document.getElementById("about5").setAttribute("href", "user.html#overview")
+                    document.getElementById("about5").style.display = "none"
                     document.getElementById("workout5").setAttribute("href", "user.html#trainer")
                     document.getElementById("blog5").setAttribute("href", "user.html#blog")
                     document.getElementById("planner5").setAttribute("href", "user.html#price")
