@@ -6,7 +6,7 @@
 Fitness Template
 http://www.templatemo.com/tm-487-fitness
 -->
-<title>Fitness - Responsive Blog Page</title>
+<title>Workouts</title>
 <meta name="description" content="">
 <meta name="author" content="">
 <meta charset="UTF-8">
@@ -60,7 +60,7 @@ http://www.templatemo.com/tm-487-fitness
 				<span class="icon icon-bar"></span>
 				<span class="icon icon-bar"></span>
 			</button>
-			<a href="index.html" class="navbar-brand">Fitness</a>
+			<a href="index.html" class="navbar-brand" id="return">Anyhow Fitness</a>
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
@@ -69,6 +69,7 @@ http://www.templatemo.com/tm-487-fitness
 				<li><a href="index.html#trainer" class="smoothScroll" id="workout6">Workouts</a></li>
 				<li><a href="index.html#blog" class="smoothScroll" id="blog6">Blog</a></li>
 				<li><a href="index.html#price" class="smoothScroll" id="planner6">Planners</a></li>
+				<li><a href="profile.html" class="smoothScroll" id="profilepagelink" style="display: none;">Profile</a></li>
 				<li><a href="login.html" class="smoothScroll" id="log6">Login</a></li>
 			</ul>
 		</div>
@@ -123,7 +124,7 @@ http://www.templatemo.com/tm-487-fitness
 							<li v-for="component in components">{{component}}</li>
 						</ul>
 						<p>Remember to stay hydrated and practice safety! If you feel uncomfortable at any point in time, please stop and have a rest.</p>
-						<button @click="bookmark === 'Bookmarked' ? removeBookmark() : bookmarkWorkout()" class="btn btn-primary" type="button">{{ bookmark }}</button>
+						<button v-if="isAuthenticated" @click="bookmark === 'Bookmarked' ? removeBookmark() : bookmarkWorkout()" class="btn btn-primary" type="button">{{ bookmark }}</button>
 					</div>
 				</div>
 			</div>
@@ -223,7 +224,7 @@ http://www.templatemo.com/tm-487-fitness
 				  description: '',
 				  url: '',
 				  components: [],
-
+				  isAuthenticated :false,
 				  quotes: ["“All our dreams can come true, if we have the courage to pursue them.” — Walt Disney", 
 				  	"“The secret of getting ahead is getting started.” — Mark Twain",
 					"“I’ve missed more than 9,000 shots in my career. I’ve lost almost 300 games. 26 times I’ve been trusted to take the game winning shot and missed. I’ve failed over and over and over again in my life, and that is why I succeed.” —Michael Jordan", 
@@ -318,6 +319,7 @@ http://www.templatemo.com/tm-487-fitness
             onAuthStateChanged(auth, (user) => {
                 if (user) {
                     // User is signed in
+					this.isAuthenticated  =true
                     this.userid = user.uid;
 					console.log(this.userid)
 
@@ -332,15 +334,16 @@ http://www.templatemo.com/tm-487-fitness
 					}).catch(() => {
 						console.log("Error checking workout bookmark status");
 					});
-
-                    document.getElementById("home5").setAttribute("href", "user.html#home")
-                    document.getElementById("about5").setAttribute("href", "user.html#overview")
-                    document.getElementById("workout5").setAttribute("href", "user.html#trainer")
-                    document.getElementById("blog5").setAttribute("href", "user.html#blog")
-                    document.getElementById("planner5").setAttribute("href", "user.html#price")
-                    document.getElementById("log5").setAttribute("href", "#")
-                    document.getElementById("log5").innerText = "Logout"
-                    document.getElementById("log5").addEventListener("click", function () {
+					document.getElementById("return").setAttribute("href", "user.html#home")
+                    document.getElementById("home6").setAttribute("href", "user.html#home")
+                    document.getElementById("about6").style.display = "none"
+					document.getElementById("profilepagelink").style.display = "block"
+                    document.getElementById("workout6").setAttribute("href", "user.html#trainer")
+                    document.getElementById("blog6").setAttribute("href", "user.html#blog")
+                    document.getElementById("planner6").setAttribute("href", "user.html#price")
+                    document.getElementById("log6").setAttribute("href", "#")
+                    document.getElementById("log6").innerText = "Logout"
+                    document.getElementById("log6").addEventListener("click", function () {
                         signOut(auth).then(() => {
                             // Sign-out successful.
                             location.replace("index.html")
@@ -351,6 +354,7 @@ http://www.templatemo.com/tm-487-fitness
 	            })
                 } else {
                     // User is signed out
+					this.isAuthenticated = false
                     console.log("User is not authenticated");
                 }
             });
