@@ -47,15 +47,169 @@
     </div>
     <div>
         <form id="prevWeekForm">
-            how many sessions did u complete this week? 
+            <!-- how many sessions did u complete this week? 
             <select id="prevSessionsCompleted"> 
+                <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
             </select>
+        </div> -->
+        <button type="submit" >Submit</button>
+        <div class="progressbar" >
+            <div class="progress " id="progress"></div>
+            <div class="progress-step progress-step-active" data-title="Weekly Check-in"></div>
+            <div class="progress-step" data-title="Check-in"></div>
+            <div class="progress-step" data-title="Progress Update"></div>
+            <div class="progress-step" data-title="Goal Setting"></div>
         </div>
-        <button type="submit" class="btn btn-success">Submit</button>
+   
+        <!-- Steps -->
+        <div class="form-step form-step-active" data-step="1">
+            <!-- Step 1 Fields -->
+            <h1 class="display mb-3">Weekly Check-in!</h1>
+            <div class="row input-group">
+                <div class="col-sm-12 form-group">
+                    <label for="prevSessionsCompleted"><strong>How many workouts did you complete last week?</strong></label>
+                    <input id="name" type="text" class="form-control" aria-describedby="nameHelp" placeholder="workoutsCompleted">
+                </div>
+            </div>
+            <!-- <div class="row input-group">
+                <div class="col-sm-12 col-lg-12 col-md-12 form-group">
+                    <label for="emailId"><strong>Email address:*</strong></label>
+                    <input id="emailId" type="email" class="form-control" placeholder="johndoe.2022@scis.smu.edu.sg">
+                </div>
+            </div> -->
+            <!-- <div class="row input-group">
+                <div class="col form-group">
+                    <label for="birthdate"><strong>Date of Birth:*</strong></label>
+                    <input id="birthdate" class="form-control" type="date" placeholder="Enter birth date" style="height:38px;">
+                </div>
+                <div class="col form-group">
+                    <label for="phoneNumber"><strong>Phone Number:*</strong></label>
+                    <input id="phoneNumber" type="text" class="form-control" placeholder="+65 9123 4567">
+                </div>
+            </div> -->
+
+            <!-- <div class="row input-group">
+                <div class="col form-group">
+                    <label for="password"><strong>Password:*</strong></label>
+                    <input id="password" type="password" class="form-control" id="InputPassword1" placeholder="Password">
+                </div>
+                <div class="col form-group">
+                    <label for="confirmPassword"><strong>Confirm Password:*</strong></label>
+                    <input id="confirmPassword" type="password" class="form-control" placeholder="Password">
+                </div>
+            </div> -->
+            <!-- <div class="row">
+                <span class="display-inline"><input type="checkbox" id="t&c" ><small>By creating your account, you agree to the <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Terms of Service</a> and <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Privacy Policy</a></small></span>
+            </div> -->
+            <div class="form-group btns-group">
+                <a href="#" class="btn btn-primary btn-next" id="next">Next</a>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="form-step" data-step="2">
+            <!-- Step 2 Fields -->
+            <h1 class="display m">Focus Areas</h1>
+            <p class="display">Let's get started on your journey to fitness by filling in the required information below.</p>
+            <div class="form-group row  " style="margin-bottom: 2%;">
+                <label for="gender"><strong>Gender:</strong></label>
+                <div class="col-md-4">
+                    <input type="radio" id="male" class="gender" value="male" name="gender" checked> Male
+                </div>
+                <div class="col-md-4">
+                    <input type="radio" id="female" class="gender" value="female" name="gender"> Female
+                </div>
+                <div class="col-md-4">
+                    <input type="radio" id="other" class="gender" value="other" name="gender"> Other
+                </div>
+            </div>
+
+            <div class="form-group row" style="margin-bottom: 2%;">
+                <label for="exerciseDays"><strong>How many days per week do you currently exercise?</strong></label>
+                <input type="range" class="form-range" name="exerciseDaysCount" id="exerciseDays" min="0" max="7" required>
+                <div class="output-container">
+                    <output for="exerciseDays" class="output">0 days</output>
+                    <output for="exerciseDays" class="output">1 days</output>
+                    <output for="exerciseDays" class="output">2 days</output>
+                    <output for="exerciseDays" class="output">3 days</output>
+                    <output for="exerciseDays" class="output">4 days</output>
+                    <output for="exerciseDays" class="output">5 days</output>
+                    <output for="exerciseDays" class="output">6 days</output>
+                    <output for="exerciseDays" class="output">7 days</output>
+                </div>
+            </div>
+            <div class="form-group row " style="margin-bottom: 2%;">
+                <label for="fitnessLevel"><strong>How would you rate your current fitness level? (Beginner, Intermediate, Advanced)</strong></label>
+                <select class="form-control" name="fitnessLevel" id="fitnessLevel">
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+            </div>
+            
+            <div class="form-group btns-group">
+                <a href="#" class="btn btn-outline-primary btn-prev">Previous</a>
+                <a href="#" class="btn btn-primary btn-next">Next</a>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+     
+        <div class="form-step" data-step="3">
+            <!-- Step 3 Fields -->
+            <h1>Lifestyle</h1>
+            <div class="form-group row" style="margin-bottom: 2%;">
+                <label for="allergies"><strong>Do you have any known allergies? If yes, please provide details.</strong></label>
+                <textarea class="form-control" name="allergies" id="allergies">None</textarea>
+            </div>
+            <div class="form-group row " style="margin-bottom: 2%;">
+                <label for="dietaryRestrictions"><strong>Do you have any dietary restrictions or preferences? If yes, please provide details.</strong></label>
+                <textarea class="form-control" name="dietaryRestrictions" id="dietaryRestrictions" value="">None</textarea>
+            </div>
+            
+            <div class="form-group btns-group">
+                <a href="#" class="btn btn-outline-primary btn-prev">Previous</a>
+                <a href="#" class="btn btn-primary btn-next">Next</a>
+            </div>
+        </div>
+
+
+        <!-- Step 4 -->
+        <div class="form-step" data-step="4">
+            <!-- Step 4 Fields -->
+            <h1>Training Preferences</h1>
+            
+            
+            <div class="form-group row" style="margin-bottom: 2%;">
+                <label for="chosenWorkoutSessions"><strong>Select the number of sessions you want to complete in the next week:*</strong></label>
+                <input type="number" min="1" max="7" class="form-control" name="chosenWorkoutSessions" id="chosenWorkoutSessions" value="1">
+            </div>
+            <div class="form-group row " style="margin-bottom: 2%;">
+                <label for="trainingLocation"><strong>What is your preferred training location? (Gym, Outdoors, Home, Virtual)</strong></label>
+                <input type="text" class="form-control" name="trainingLocation" id="trainingLocation" value="Anywhere">
+            </div>
+
+            <div class="form-group row " style="margin-bottom: 2%;">
+                <label for="trainerInterest"><strong>Are you interested in working with a personal trainer or joining group classes?</strong></label>
+                <select class="form-control" name="trainerInterest" id="trainerInterest">
+                    <option value="personalTrainer">Personal Trainer</option>
+                    <option value="groupClasses">Group Classes</option>
+                    <option value="selfWorkout">By Myself</option>
+                </select>
+            </div>
+
+            <div class="form-group btns-group" style="margin-bottom: 2%;"> 
+                <a href="#" class="btn btn-outline-primary btn-prev" id="previous">Previous</a>
+                <button type="submit" class="btn btn-success" id="submit">Submit</button>
+                <button type="btn" class="btn btn-success" style="display: none;" id="gotologin">Go to login page</button>
+            </div>
+            <p id="error-header"></p>
+            <ul id="problems"></ul>
+        </div>
         </form>
         
     <!-- <div id="prevMeals">
@@ -174,13 +328,19 @@
         //     // Update the counter display
         //     counterElement.value = newCount;
         // }
+        
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script>
+
+    </script>
+
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
         import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+
         const firebaseConfig = {
         apiKey: "AIzaSyAuv9pHvIhlo_wNj4tdkzNanWoGtQ-5-t4",
         authDomain: "is216-g2.firebaseapp.com",
@@ -191,146 +351,46 @@
         appId: "1:426453655797:web:b36588777f86a6d32365bc",
         measurementId: "G-QXTL2H3M37"
         };
+        document.addEventListener("DOMContentLoaded", function () {
         
-            
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const database = getDatabase(app)
-        // let terms = ""
-        // document.getElementById('t&c').addEventListener("click", function(event) {
-        //     terms = event.target.checked
-        //     console.log(terms)
-        // })     
-            
-            document.getElementById('prevWeekForm').addEventListener('submit', submitForm);
-            
-            function submitForm(e) {
-            e.preventDefault();
-            // if (getElementVal('name') == "" || getElementVal('emailId') == "" || getElementVal('password') == "" || getElementVal('confirmPassword') == "" || getElementVal('password').length < 8 || getElementVal('password') != getElementVal('confirmPassword') || terms == false) {
-                var issues = []
-            //     var output = ""
-            //     if (getElementVal('name') == "") {
-            //         issues.push("Please enter your name")
-            //     }
-            //     if (getElementVal("emailId") == "") {
-            //         issues.push("Please enter your email")
-            //     }
-            //     if (getElementVal('password') == "" ) {
-            //         issues.push("Please enter your password")
-            //     }
-            //     if (getElementVal('confirmPassword') == "") {
-            //         issues.push("Please confirm your password")
-            //     }
-            //     if (getElementVal('password') != getElementVal('confirmPassword')) {
-            //         issues.push("Passwords do not match")
-            //     }
-            //     if (getElementVal('password').length < 8) {
-            //         issues.push("Password must be minimum 8 characters")
-            //     }
-                
-            //     for (var element of issues) {
-            //         output += "<li>"+ element + "</li>"
-            //     }
-            //     // document.getElementById("error-header").innerText = "Errors:"
-            //     // document.getElementById('problems').innerHTML = output
-            // } else {
-            // document.getElementById("error-header").innerText = ""
-            // document.getElementById('problems').innerHTML = ""
 
-            // const name = getElementVal('name');
-            // const gender = document.getElementsByName('gender');
-            // const exerciseDaysCount = getElementVal('exerciseDays');
-            // const fitnessLevel = getElementVal('fitnessLevel');
-            if (getElementVal('prevSessionsCompleted') == ''){
-                console.log("No input entered");
-            }
-            
-            else{
-                var prevSessions = getElementVal('prevSessions');
-                console.log(prevSessions);
-            }
-            
-            
-            // const trainingLocation = getElementVal('trainingLocation');
-            // const trainerInterest = getElementVal('trainerInterest');
-            // const bookmarks = {"meals":[1], "workouts":[1]};
-            // const chosenWorkoutSessions = getElementVal("chosenWorkoutSessions");
-            // const completedWorkoutSessions = 0
-            
-            writePrevSessionData()
-            .then()
-            // createUserWithEmailAndPassword(auth, emailId, password)
-            //         .then((userCredential) => {
-            //         // Signed up 
-            //         const user = userCredential.user;
-            //         var id = user.uid
-            //         function writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions, bookmarks, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel,  allergies, dietaryRestrictions,  trainerInterest, trainingLocation) {
-            //         const db = getDatabase();
-            //         set(ref(db, 'userData/' + id), {
-            //             username: name,
-            //             chosensessions:chosenWorkoutSessions,
-            //             completedsessions: completedWorkoutSessions,
-            //             favourites: bookmarks ,
-            //             birthday: birthdate,
-            //             phone: phoneNumber,
-            //             gender: gender,
-            //             exerciseDaysCounter: exerciseDaysCount,
-            //             fitnesslevel: fitnessLevel,
-                        
-            //             allergies: allergies,
-            //             diet: dietaryRestrictions,
+    // Initialize Firebase using your configuration
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const database = getDatabase(app);
 
-            //             trainerInterest: trainerInterest,
-            //             trainingLocation : trainingLocation
-            //         });
-                    }
-                    // writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions, bookmarks, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel,  allergies, dietaryRestrictions,  trainerInterest, trainingLocation)
-                    // //enable alert
-                    // document.querySelector(".alert").style.display = "block";
-                    
-            //         //remove the alert
-            //         setTimeout(() => {
-            //         document.querySelector(".alert").style.display = "none";
-            //         }, 3000);
-                    
-            //         //reset the form
-            //         document.getElementById("registrationForm").reset();
-            //         location.replace("login.html")
-            //         console.log(user)
-            //         console.log("Success!")
-            //         // ...
-            //         })
-            //         .catch((error) => {
-            //             const errorCode = error.code;
-            //             const errorMessage = error.message;
-            //             console.log(errorMessage)
-            //             document.getElementById("registrationForm").reset();
-            //             alert("Please try again!")
-            //         });
-            
-            
-            
-            
-            //     }
-            // }
-            
-            
-            
-            function getElementVal(id) {
-            return document.getElementById(id).value;
-            }
-            
-            function getSelectedOptions(selectId) {
-                const selectElement = document.getElementById(selectId);
-                const selectedOptions = [];
-                for (let i = 0; i < selectElement.options.length; i++) {
-                    const option = selectElement.options[i];
-                    if (option.selected) {
-                    selectedOptions.push(option.value);
-                    }
-                }
-                return selectedOptions;
-                }     
+    // Reference to the database node where you want to store the data
+    const sessionsRef = ref(database, 'userdata/sessions'); 
+
+    document.getElementById('prevWeekForm').addEventListener('submit', submitForm);
+
+    function submitForm(e) {
+        e.preventDefault();
+
+        const prevSessions = getElementVal('prevSessionsCompleted');
+
+        if (prevSessions === '0') {
+            console.log("No input entered");
+        } else {
+            console.log(`Previous sessions: ${prevSessions}`);
+
+            // Save the data to Firebase
+            set(sessionsRef, {
+                previousSessions: parseInt(prevSessions),
+                timestamp: new Date().toString()
+            }).then(() => {
+                console.log("Data saved to Firebase");
+            }).catch((error) => {
+                console.error("Error saving data:", error);
+            });
+        }
+    }
+
+    function getElementVal(id) {
+        return document.getElementById(id).value;
+    }
+});
+        //                  //         }     
     </script>
 </body>
 </html>
