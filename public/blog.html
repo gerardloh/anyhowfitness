@@ -1,58 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog : </title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog : </title>
 
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/editor.css">
-    <link rel="stylesheet" href="css/blog.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/editor.css">
+<link rel="stylesheet" href="css/blog.css">
+<link rel="stylesheet" href="css/comment.css">
 
 </head>
 <body>
 
-    <nav class="navbar">
-        <img src="img/logo.png" class="logo" alt="">
-        <ul class="links-container">
-            <li class="link-item"><a href="/" class="link">home</a></li>
-            <li class="link-item"><a href="/editor" class="link">editor</a></li>
-        </ul>
-    </nav>
-    
-    <div class="banner"></div>
+	
+<!-- =========================
+     PRE LOADER       
+============================== -->
+<div  class="preloader">
 
-    <div class="blog">
-        <h1 class="title"></h1>
-        <p class="published"><span>published at - </span></p>
-        <div class="article">
-            
-        </div>
-    </div>
+	<div class="sk-spinner sk-spinner-pulse"></div>
 
-    <h1 class="sub-heading">Read more</h1>
+</div>
 
-    <!-- blog section -->
-    <section class="blogs-section">
-        <!-- <div class="blog-card">
-            <img src="img/header.png" class="blog-image" alt="">
-            <h1 class="blog-title">Lorem ipsum dolor sit amet consectetur.</h1>
-            <p class="blog-overview">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt incidunt fugiat quos porro repellat harum. Adipisci tempora corporis rem cum.</p>
-            <a href="#" class="btn dark">read</a>
-        </div> -->
-    </section>
 
-    <section class="comment-section">
+<!-- =========================
+    NAVIGATION SECTION   
+============================== -->
 
-    </section>
+<div class="navbar navbar-default navbar-fixed-top sticky-navigation" role="navigation">
+	<div class="container">
 
-    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+		<div class="navbar-header">
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+			</button>
+			<a href="#" class="navbar-brand">Anyhow Fitness</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right main-navigation">
+				<li><a href="#home" class="smoothScroll">Home</a></li>
+				<li><a href="#trainer" class="smoothScroll">Workouts</a></li>
+				<li><a href="home.html" class="smoothScroll">Blog</a></li>
+				<li><a href="#price" class="smoothScroll">Planners</a></li>
+				<li><a href="profile.html">Profile</a></li>
+				<li ><a href="#" id="logout">Logout</a></li>
+			</ul>
+		</div>
 
-    <script src="js/firebase.js"></script>
-    <script src="js/home.js"></script>
-    <script src="js/blog.js"></script>
-    
+	</div>
+</div>
+
+<!-- <nav class="navbar">
+<img src="img/logo.png" class="logo" alt="">
+<ul class="links-container">
+	<li class="link-item"><a href="/" class="link">home</a></li>
+	<li class="link-item"><a href="/editor" class="link">editor</a></li>
+</ul>
+</nav> -->
+
+<div class="banner"></div>
+
+<div class="blog">
+<h1 class="title"></h1>
+<p class="published"><span>published at - </span></p>
+<div class="article">
+	
+</div>
+</div>
+
+
+
+<section class="comment-section">
+<template class="reply-input-template">
+	<div class="reply-input container">
+		<img src="images/avatars/image-juliusomo.webp" alt="" class="usr-img">
+		<textarea class="cmnt-input" placeholder="Add a comment..."></textarea>
+		<button class="bu-primary">SEND</button>
+	</div>
+	</template>
+
+	<template class="comment-template">
+	<div class="comment-wrp">
+		<div class="comment container">
+		<div class="c-score">
+			<img src="images/icon-plus.svg" alt="plus" class="score-control score-plus">
+			<p class="score-number">5</p>
+			<img src="images/icon-minus.svg" alt="minus" class="score-control score-minus">
+		</div>
+		<div class="c-controls">
+			<a  class="delete"><img src="images/icon-delete.svg" alt="" class="control-icon">Delete</a>
+			<a  class="edit"><img src="images/icon-edit.svg" alt="" class="control-icon">Edit</a>
+			<a  class="reply"><img src="images/icon-reply.svg" alt="" class="control-icon">Reply</a>
+		</div>
+		<div class="c-user">
+			<img src="images/avatars/image-maxblagun.webp" alt="" class="usr-img">
+			<p class="usr-name">maxblagun</p>
+			<p class="cmnt-at">2 weeks ago</p>    
+		</div>
+		<p class="c-text">
+			<span class="reply-to"></span>
+			<span class="c-body"></span>
+		</p>
+		</div><!--comment-->
+		<div class="replies comments-wrp">
+		</div><!--replies-->
+	</div>
+	</template>
+<main>
+	<div class="comment-section">
+
+	<div class="comments-wrp">
+
+	</div> <!--commentS wrapper-->
+	<div class="reply-input container">
+		<img src="images/avatars/image-juliusomo.webp" alt="" class="usr-img">
+		<textarea class="cmnt-input" placeholder="Add a comment..."></textarea>
+		<button class="bu-primary">SEND</button>
+	</div> <!--reply input-->
+	</div> <!--comment sectio-->
+	
+	<div class="modal-wrp invisible">
+	<div class="modal container">
+		<h3>Delete comment</h3>
+		<p>Are you sure you want to delete this comment? This will remove the comment and cant be undone</p>
+		<button class="yes">YES,DELETE</button>
+		<button class="no">NO,CANCEL</button>
+	</div>
+	</div>
+</main>
+</section>
+
+<h1 class="sub-heading">Read more</h1>
+
+<!-- blog section -->
+<section class="blogs-section">
+<!-- 
+<div class="blog-card">
+	<img src="img/header.png" class="blog-image" alt="">
+	<h1 class="blog-title">Lorem ipsum dolor sit amet consectetur.</h1>
+	<p class="blog-overview">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt incidunt fugiat quos porro repellat harum. Adipisci tempora corporis rem cum.</p>
+	<a href="#" class="btn dark">read</a>
+</div> -->
+</section>
+
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+
+<script src="js/firebase.js"></script>
+<script src="js/home.js"></script>
+<script src="js/blog.js"></script>
+<script src="js/comment.js"></script>
+
 </body>
 </html>
