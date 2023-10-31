@@ -43,7 +43,7 @@ h2 {
 }
 
 blockquote, h3 {
-   font-family: 'Lora', sans-serif;
+  font-family: 'Lora', sans-serif;
   font-style: italic;
 }
 
@@ -93,7 +93,6 @@ a {
 .parallax-section {
   background-attachment: fixed !important;
   background-size: cover !important;
-  background-image: url('../images/bg.jpg') !important;
 }
 
 
@@ -561,8 +560,18 @@ a {
 }
 
 /* blogHome Page Typography */
+.blog-header{
+    margin-top: 60px;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: url(../images/bg.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .blog-card h1{
-  font-size: 4.5rem; 
+    font-size: 4.5rem; 
     line-height: 5.0rem; 
     letter-spacing: 2px;
     text-transform: none; 
@@ -585,7 +594,7 @@ a {
   width:100%; 
   height: 250px; 
   object-fit: cover; 
-  border-radius: 10px; 
+  border-radius: 0px; 
   margin-bottom: 10px; 
 }
 
@@ -599,6 +608,52 @@ a {
   color: #fff; 
 }
 
+/* blog per article typography */
+.blog-card .blog, .blog-card .article {
+  position: relative;
+  height: fit-content;
+  padding-bottom: 0;
+}
+
+.blog-card .article, .blog-card .title {
+  min-height: auto;
+  height: fit-content;
+  padding: 0 10px;
+  white-space: normal;
+}
+
+.blog-card .published {
+  margin: 20px 0 60px;
+  padding: 0 10px;
+  text-transform: capitalize;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.blog-card .published span {
+  font-weight: 700;
+  font-style: normal;
+}
+
+.blog-card .article * {
+  margin: 30px 0;
+  color: #2d2d2d;
+}
+
+.blog-card .article-image {
+  max-width: 100%;
+  display: block;
+  margin: 30px auto;
+  object-fit: contain;
+}
+
+.blog-card .sub-heading {
+  padding: 0 5vw;
+  color: #2d2d2d;
+  font-weight: 500;
+  font-size: 40px;
+  margin-top: 80px;
+}
 /* blog single page */
 
 #blog-header {
