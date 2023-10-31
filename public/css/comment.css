@@ -1,5 +1,5 @@
 
-/* :root {
+:root {
 --Moderate-blue: hsl(238, 40%, 52%);
 --Soft-Red: hsl(358, 79%, 66%);
 --Light-grayish-blue: hsl(239, 57%, 85%);
@@ -11,22 +11,24 @@
 --Very-light-gray: hsl(228, 33%, 97%);
 --White: hsl(0, 0%, 100%);
 }
-* {
+/** {
 padding: 0;
 margin: 0;
 box-sizing: border-box;
 font-family: "Rubik", sans-serif;
 font-size: 16px;
 } */
-p{
-    line-height: 1.5;
-}
-body{
+
+/* body{
     height: 100%;
     width: 100%;
     padding-top: 3rem;
     background-color: var(--Very-light-gray);
+} */
+p{
+    line-height: 1.5;
 }
+
 a{
     cursor: pointer;
     text-decoration: none;
@@ -45,23 +47,36 @@ button:hover{
     padding: .75rem 1.5rem;
     border-radius: 4px;
 }
-.comment-section{
-    padding: 0 1rem;
-}
-.container{
+/* .comment-section{
+    max-width: 60ch;
+    margin: auto;
+} */
+.modal-container{
     border-radius: 8px;
     padding: 1.5rem;
     background-color: var(--White);
-}
-.comments-wrp {
-    display: flex;
-    flex-direction: column;
-}
-.comment-section{
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}  
+/* .comment-section{
     max-width: 75ch;
     margin: auto;
     margin-top: 1rem;
+}  */
+
+.comment-section{
+    overflow: wrap;
+    margin: auto;
+    max-width: 100%;
 }
+
+.comments-wrp {
+    display: flex; 
+    left: -300vh;
+    flex-direction:column;
+}
+
 .comment{
     margin-bottom: 1rem;
     display: grid;
@@ -70,12 +85,17 @@ button:hover{
         "score comment comment"
         "score comment comment"
     ;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto auto;
     gap: 1.5rem;
     row-gap: 1rem;
     color: var(--Grayish-Blue);
 }
 
+#comment-container{
+    background: linear-gradient(to right, rgba(236, 236, 236, 0.8) 0%, rgba(224, 224, 224, 0) 20%, rgba(248, 248, 248, 0) 100%);
+    border-radius: 10px; 
+    padding: 20px;
+}
 .c-score{
     color: var(--Moderate-blue);
     font-weight: 500;
@@ -91,7 +111,7 @@ button:hover{
     background-color: var(--Very-light-gray);
     border-radius: 8px;
     align-self: flex-start;
-}
+} 
 .score-control{
     width: 100%;
     cursor: pointer;
@@ -202,9 +222,9 @@ button:hover{
 }
 
 @media screen and (max-width:640px) {
-    .container{
+    /* .container{
         padding: .75rem;
-    }
+    } */
     .replies{
         padding-left: 1rem;
         margin-left: .5rem;
@@ -256,14 +276,19 @@ button:hover{
 }
 
 .modal{
-    padding: 1.5rem;
-    max-width: 32ch;
+    padding: 10px 50px;
+    max-width: 70ch;
     display: grid;
     gap: 1rem;
     grid-template-areas: 
     "heading heading"
     "body body"
     "no yes";
+    text-align: center;
+    align-items: center;
+    margin: auto; 
+    justify-content: center;
+    height: 60%;
 }
 
 .invisible{
@@ -276,15 +301,17 @@ button:hover{
 }
 .modal button{
     color: var(--White);
-    padding: .75rem;
+    padding: 10px;
     border-radius: 8px;
     border: none;
     font-weight: 500;
+    
+
 }
 .modal p{
     grid-area: body;
     color: var(--Grayish-Blue);
-    line-height: 1.5;
+    /* line-height: 1.5; */
 }
 .modal .yes{
     grid-area: yes;
