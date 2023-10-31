@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+Fitness Template
+http://www.templatemo.com/tm-487-fitness
+-->
+<title>BMI Calculator</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- Added by me -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue@next"></script>
+<script type="module" src="index.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!--  -->
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+
+<!-- Main css -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Google Font -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lora:700italic' rel='stylesheet' type='text/css'>
+
+
+<style>
+    /* .custom-card {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+    } */
+    .wo{
+        color:white
+    }
+    .container-bmi {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            color: black;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px #000;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #result {
+            margin-top: 2%;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+        #caution{
+            margin-top: 2%;
+        }
+    
+</style>
+
+</head>
+<body>
+
+<!-- =========================
+     PRE LOADER       
+============================== -->
+<div  class="preloader">
+
+	<div class="sk-spinner sk-spinner-pulse"></div>
+
+</div>
+
+
+<!-- =========================
+    NAVIGATION SECTION   
+============================== -->
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+	<div class="container">
+
+		<div class="navbar-header">
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+			</button>
+			<a href="index.html" class="navbar-brand" id="return">Anyhow Fitness</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="index.html#home" class="smoothScroll" id="home0">Home</a></li>
+				<li><a href="index.html#overview" class="smoothScroll" id="about">About</a></li>
+				<li><a href="index.html#trainer" class="smoothScroll" id="workout">Workouts</a></li>
+				<li><a href="index.html#blog" class="smoothScroll" id="blog0">Blog</a></li>
+				<li><a href="index.html#price" class="smoothScroll" id="planner">Planners</a></li>
+				<li><a href="profile.html" class="smoothScroll" id="profilepagelink" style="display: none;">Profile</a></li>
+				<li><a href="login.html" class="smoothScroll" id="log">Login</a></li>
+			</ul>
+		</div>
+
+	</div>
+</div>
+
+
+<!-- =========================
+    BLOG HEADER SECTION   
+============================== -->
+<section id="blog-header" class="parallax-section">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-offset-2 col-md-8 col-sm-12">
+				<h3 class="wow bounceIn" data-wow-delay="0.9s">Anyhow Fitness</h3>
+				<h1 class="wow fadeInUp" data-wow-delay="1.6s">BMI Calculator</h1>
+			</div>
+
+
+		</div>
+	</div>
+</section>
+
+<!-- =========================
+    BLOG SECTION   
+============================== -->
+<div id="app">
+<section id="trainer" class="parallax-section">
+	<div class="container">
+
+        <div class="wow fadeInUp col-md-12 col-sm-12" data-wow-delay="1.3s">
+            <h2>Calculate your BMI</h2>
+            <p>See which range you fall in</p>
+            <div class="container-bmi">
+            <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" placeholder="Enter your weight" required>
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" placeholder="Enter your height" required>
+        <button id="calculate">Calculate BMI</button>
+        <div id="result"></div>
+        <p id="desc"></p>
+        </div>
+        <p id="caution">Note: BMI should not be used to calculate health risks in pregnant women, people with a muscular build and the elderly. These BMI values also do not apply to youths below 18 years old.</p>
+    </div>
+        </div>
+        
+
+       
+    </div>
+</section>
+
+
+
+
+
+
+<!-- =========================
+    FOOTER SECTION   
+============================== -->
+<footer>
+	<div class="container">
+		<div class="row">
+
+			<div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.6s">
+				<h2>About Anyhow Fitness</h2>
+				<p>Anyhow Fitness is not just a company. It is a lifestyle. We aim to promote healthy living by providing suitable workout and meal plans for all.</p>
+			</div>
+
+			<div class="wow fadeInUp col-md-5 col-sm-4"  data-wow-delay="0.9s">
+				<h2>Working Hours</h2>
+					<div>
+						<h5>Morning</h5>
+						<h4>9:00 AM - 12:00 PM</h4>
+					</div>
+					<div>
+						<h5>Afternoon</h5>
+						<h4>1:00 PM - 6:00 PM</h4>
+					</div>
+			</div>
+
+			<div class="wow fadeInUp col-md-3 col-sm-4" data-wow-delay="1s">
+				<h2>Follow us</h2>
+				<ul class="social-icon">
+					<li><a href="#" class="fa fa-facebook wow fadeIn" data-wow-delay="1s"></a></li>
+					<li><a href="#" class="fa fa-twitter wow fadeInUp" data-wow-delay="1.3s"></a></li>
+					<li><a href="#" class="fa fa-dribbble wow fadeIn" data-wow-delay="1.6s"></a></li>
+					<li><a href="#" class="fa fa-behance wow fadeInUp" data-wow-delay="1.9s"></a></li>
+					<li><a href="#" class="fa fa-google-plus wow fadeIn" data-wow-delay="2s"></a></li>
+				</ul>
+			</div>
+
+			<div class="clearfix"></div>
+
+			<div class="col-md-12 col-sm-12">
+				<p class="copyright-text">Copyright &copy; 2023 Anyhow Fitness</p>
+			</div>
+			
+		</div>
+	</div>
+</footer>
+
+<!-- =========================
+    SCRIPTS   
+    ============================== -->
+    <script>
+        const calculateButton = document.getElementById("calculate");
+        calculateButton.addEventListener("click", () => {
+            const weight = parseFloat(document.getElementById("weight").value);
+            const height = parseFloat(document.getElementById("height").value) / 100;
+            const bmi = weight / (height * height);
+
+            const resultElement = document.getElementById("result");
+            if (bmi < 18.5) {
+                resultElement.textContent = `Your BMI is: ${bmi.toFixed(2)}`;
+                document.getElementById("desc").innerText = "You are in the underweight range. You may be at risk of nutritional deficiency diseases and osteoporosis."
+                document.getElementById("desc").style.color = "red"
+            } else if (bmi >= 18.5 && bmi <= 22.9) {
+                resultElement.textContent = `Your BMI is: ${bmi.toFixed(2)}`;
+                document.getElementById("desc").innerText = "You are in the normal range."
+                document.getElementById("desc").style.color = "green"
+            } else if ( bmi >= 23.0 && bmi <=29.9 ) {
+                resultElement.textContent = `Your BMI is: ${bmi.toFixed(2)}`;
+                document.getElementById("desc").innerText = "You are in the overweight range. You may be at a moderate risk of heart disease and diabetes."
+                document.getElementById("desc").style.color = "red"
+            } else {
+                resultElement.textContent = `Your BMI is: ${bmi.toFixed(2)}`;
+                document.getElementById("desc").innerText = "You are in the obesse range. You may be at a high risk of heart disease and diabetes."
+                document.getElementById("desc").style.color = "darkred"
+            }
+            
+        })
+    </script>
+
+<script type="module">
+    
+    // Import the functions you need from the SDKs you need
+    
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+    import { getDatabase, ref, set, get, child, update, push, onChildAdded, remove } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+    
+    // Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyAuv9pHvIhlo_wNj4tdkzNanWoGtQ-5-t4",
+        authDomain: "is216-g2.firebaseapp.com",
+        databaseURL: "https://is216-g2-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "is216-g2",
+        storageBucket: "is216-g2.appspot.com",
+        messagingSenderId: "426453655797",
+        appId: "1:426453655797:web:26878838329ce6c02365bc",
+        measurementId: "G-HYZ4GSYP9Y"
+    };
+    
+    const appFB = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const user = auth.currentUser;
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+                // User is signed in
+            
+            this.userid = user.uid;
+            document.getElementById("return").setAttribute("href", "user.html#home")
+            document.getElementById("home0").setAttribute("href", "user.html#home")
+            document.getElementById("about").style.display = "none"
+            document.getElementById("profilepagelink").style.display = "block"
+            document.getElementById("workout").setAttribute("href", "user.html#trainer")
+            document.getElementById("blog0").setAttribute("href", "user.html#blog")
+            document.getElementById("planner").setAttribute("href", "user.html#price")
+            document.getElementById("log").setAttribute("href", "#")
+            document.getElementById("log").innerText = "Logout"
+            document.getElementById("log").addEventListener("click", function () {
+            signOut(auth).then(() => {
+                // Sign-out successful.
+                location.replace("index.html")
+                }).catch((error) => {
+                // An error happened.
+                console.log("Fail")
+                });
+                    })
+                    } else {
+                        // User is signed out
+                    
+                    console.log("User is not authenticated");
+    }
+        });
+
+
+</script>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.parallax.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/custom.js"></script>
+
+
+
+</body>
+</html>
