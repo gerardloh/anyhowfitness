@@ -1,5 +1,5 @@
 
-:root {
+/* :root {
 --Moderate-blue: hsl(238, 40%, 52%);
 --Soft-Red: hsl(358, 79%, 66%);
 --Light-grayish-blue: hsl(239, 57%, 85%);
@@ -17,7 +17,7 @@ margin: 0;
 box-sizing: border-box;
 font-family: "Rubik", sans-serif;
 font-size: 16px;
-}
+} */
 p{
     line-height: 1.5;
 }
