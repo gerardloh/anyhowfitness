@@ -5,7 +5,7 @@
 Fitness Template
 http://www.templatemo.com/tm-487-fitness
 -->
-<title>Workout Planner</title>
+<title>Stretching Workouts</title>
 <meta name="description" content="">
 <meta name="author" content="">
 <meta charset="UTF-8">
@@ -23,15 +23,21 @@ http://www.templatemo.com/tm-487-fitness
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Lora:700italic' rel='stylesheet' type='text/css'>
 
-<!-- Axios -->
-<script src='https://unpkg.com/axios/dist/axios.min.js'></script>
 <!-- Vue 3 -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
 <style>
-	.col-lg-4 {
-		text-align: center;
+	h3 {
+		padding:10px;
 	}
+	.c {
+		margin-top: 4%;
+
 	
+	}
+	footer {
+		margin-top: 4%;
+	}
 </style>
 </head>
 <body>
@@ -62,13 +68,13 @@ http://www.templatemo.com/tm-487-fitness
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="index.html#home" class="smoothScroll" id="home7">Home</a></li>
-				<li><a href="index.html#overview" class="smoothScroll" id="about7">About</a></li>
-				<li><a href="index.html#trainer" class="smoothScroll" id="workout7">Workouts</a></li>
-				<li><a href="index.html#blog" class="smoothScroll" id="blog7">Blog</a></li>
-				<li><a href="index.html#price" class="smoothScroll" id="planner7">Planners</a></li>
+				<<li><a href="index.html#home" class="smoothScroll" id="home3">Home</a></li>
+				<li><a href="index.html#overview" class="smoothScroll" id="about3">About</a></li>
+				<li><a href="index.html#trainer" class="smoothScroll" id="workout3">Workouts</a></li>
+				<li><a href="index.html#blog" class="smoothScroll" id="blog3">Blog</a></li>
+				<li><a href="index.html#price" class="smoothScroll" id="planner3">Planners</a></li>
 				<li><a href="profile.html" class="smoothScroll" id="profilepagelink" style="display: none;">Profile</a></li>
-				<li><a href="login.html" class="smoothScroll" id="log7">Login</a></li>
+				<li><a href="login.html" class="smoothScroll" id="log3">Login</a></li>
 			</ul>
 		</div>
 
@@ -79,13 +85,13 @@ http://www.templatemo.com/tm-487-fitness
 <!-- =========================
     BLOG HEADER SECTION   
 ============================== -->
-<section id="blog-header" class="parallax-section">
+<section id="aerobics-header" class="parallax-section">
 	<div class="container">
 		<div class="row">
 
 			<div class="col-md-offset-2 col-md-8 col-sm-12">
-				<h3 class="wow bounceIn" data-wow-delay="0.9s">Anyhow Fitness</h3>
-				<h1 class="wow fadeInUp" data-wow-delay="1.6s">Exercise Finder</h1>
+				<h3 class="wow bounceIn" data-wow-delay="0.9s">Workouts</h3>
+				<h1 class="wow fadeInUp" data-wow-delay="1.6s">Stretching</h1>
 			</div>
 
 
@@ -96,54 +102,43 @@ http://www.templatemo.com/tm-487-fitness
 <!-- =========================
     BLOG SECTION   
 ============================== -->
-<section id="blog" class="parallax-section">
+<section id="a" class="parallax-section">
 	<div class="container">
-		
+		<div class="row">
 
-			<div class="col-md-12 ">
+			<div class="col-md-12 col-sm-12 text-center" id="app">
+				<h2>Choose your workout</h2>
+				<p>We have a wide variety of workouts to suit your goals and needs!</p>
 
-				<div class="blog-content wow fadeInUp" data-wow-delay="1s">
-                	<h3>Try out our exercise finder!</h3>
+				<div id="filters">
+					<select id="difficulty">
+						<option value="">Please choose a difficulty level.</option>
+						<option value="easy">Easy</option>
+						<option value="medium">Medium</option>
+						<option value="hard">Hard</option>
+					</select>
 					
-					<p>Not sure what exercises to do to target which muscle group? Looking to add more variations to your workouts? Give our exercise finder a try! Simply input the fields with your desired options and our generator will provide some workout suggestions for you with instructions! You can add the exercise type and difficulty fields to the search also.</p>
-
-					<div id="app">
-						
-						<div class="col-lg-4 col-md-4 col-sm-12">
-						Muscle group: <select v-model="selected" v-on:change="getex()" >
-							<option v-for="element of this.muscle_grp">{{element}}</option>
-						</select>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-12">
-						Difficulty: <select v-model="diff" v-on:change="getex()">
-							<option v-for="d of this.diff_types">{{d}}</option>
-						</select>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-12">
-						Type of exercise: <select v-model="typeofexercise" v-on:change="getex()">
-							<option v-for="t of this.typesofexercisecat">{{t}}</option>
-						</select>
-						
-						<button type="button" class="btn btn-primary" v-on:click="refresh()" style="margin-left: 3%;">Refresh</button>
-						</div>
+					<select id="duration">
+						<option value="">Please choose a duration.</option>
+						<option value="short">Short</option>
+						<option value="long">Long</option>
+					</select>
 					
-						<table class="table table-hover" v-if="show">
-							<thead><th>Name</th><th>Type</th><th>Muscle</th><th>Equipment</th><th>Difficulty</th><th>Instructions</th></thead>
-							<tbody>
-								<tr v-for="ex of this.exercises"><td>{{ex.name}}</td><td>{{ex.type}}</td><td>{{ex.muscle}}</td><td>{{ex.equipment}}</td><td>{{ex.difficulty}}</td><td>{{ex.instructions}}</td></tr>
-							</tbody>
-						</table>
-						<h2 id="error"></h2>
-						
-
-					</div>
-				
+					<button id="apply-filters" v-on:click="search()">Apply Filters</button>
 				</div>
-			</div>    
+		
 				
-	</div>            
-				
-				
+				<div v-for="thing in list"  class="wow fadeInUp col-md-6 col-sm-12 c-container c" data-wow-delay="0.9s" v-bind:data-difficulty="thing.difficulty" v-bind:data-duration="thing.duration">
+					<div class="aerobics" >
+					
+						<h3 class="blog-title" >{{thing.title}}</h3>
+						<button type="button" class="btn btn-primary"  v-on:click="redirect($event)" v-bind:id="thing.id">Take me there!</button>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 
 
@@ -195,6 +190,7 @@ http://www.templatemo.com/tm-487-fitness
 <!-- =========================
      SCRIPTS   
 ============================== -->
+
 <script type="module">
 	// Import the functions you need from the SDKs you need
   
@@ -218,9 +214,10 @@ http://www.templatemo.com/tm-487-fitness
         };
   
 	// Initialize Firebase
-	const appfb = initializeApp(firebaseConfig);
-	const database = getDatabase(appfb)
-	const auth = getAuth(appfb);
+	const app = initializeApp(firebaseConfig);
+	const database = getDatabase(app)
+	const auth = getAuth(app);
+
 	onAuthStateChanged(auth, (user) => {
   	if (user) {
     // User is signed in, see docs for a list of available properties
@@ -228,14 +225,14 @@ http://www.templatemo.com/tm-487-fitness
     const uid = user.uid;
 	document.getElementById("return").setAttribute("href", "user.html#home")
 	document.getElementById("profilepagelink").style.display = "block"
-	document.getElementById("home7").setAttribute("href", "user.html#home")
-	document.getElementById("about7").style.display = "none"
-	document.getElementById("workout7").setAttribute("href", "user.html#trainer")
-	document.getElementById("blog7").setAttribute("href", "user.html#blog")
-	document.getElementById("planner7").setAttribute("href", "user.html#price")
-	document.getElementById("log7").setAttribute("href", "#")
-	document.getElementById("log7").innerText = "Logout"
-	document.getElementById("log7").addEventListener("click", function () {
+	document.getElementById("home3").setAttribute("href", "user.html#home")
+	document.getElementById("about3").style.display = "none"
+	document.getElementById("workout3").setAttribute("href", "user.html#trainer")
+	document.getElementById("blog3").setAttribute("href", "user.html#blog")
+	document.getElementById("planner3").setAttribute("href", "user.html#price")
+	document.getElementById("log3").setAttribute("href", "#")
+	document.getElementById("log3").innerText = "Logout"
+	document.getElementById("log3").addEventListener("click", function () {
 		signOut(auth).then(() => {
             // Sign-out successful.
             location.replace("index.html")
@@ -251,71 +248,89 @@ http://www.templatemo.com/tm-487-fitness
     // ...
   }
 });
-</script>
-<script>
-	// <div id='app'></div>
-	const app = Vue.createApp({ 
-		data() { 
-			return { 
-				  // key: value
-				  muscle_grp : ["abdominals" ,"abductors", "adductors" ,"biceps", "calves" ,"chest", "forearms", "glutes", "hamstrings" ,"lats", "lower_back", "middle_back" ,"neck" ,"quadriceps" ,"traps", "triceps"],
-				  selected: "",
-				  exercises: [],
-				  diff: "",
-				  diff_types: ["beginner", "intermediate", "expert"],
-				  typeofexercise: "",
-				  typesofexercisecat: ["cardio", "olympic_weightlifting", "plyometrics", "powerlifitng", "strength", "stretching", "strongman"],
-				  show: false
-				  
-			};
-		}, // data
-		computed: { 
-		     shows() {
-				
-		    }  
-		 }, // computed
-		created() { 
-			
-		},
-		// mounted() { 
-		// },
-		methods: {
-			getex() {
-				const config = {
-				headers: {
-					"X-Api-Key":"mRgDv14nL5040H3lIBNOHw==sHyj6LDnzf0LTs6a"
-				}
-			}
-			var muscle = this.selected
-			var name = ""
-			var difficulty = this.diff
-			var type = this.typeofexercise
-
-			const url = "https://api.api-ninjas.com/v1/exercises?name=" + name +"&muscle=" + muscle + "&difficulty=" + difficulty + "&type=" + type
-			axios.get(url, config)
-				.then(response => {
-					console.log(response.data);
-					this.exercises = response.data
-					if (response.data.length >0) {
-						this.show = true
-						document.getElementById("error").innerText = ""
-					} else {
-						document.getElementById("error").innerText = "No results found."
-						this.show = false
-					}
-				})
-				.catch( error => {
-					console.error(error);
-				});
-			},
-			refresh() {
-				location.reload()
-			}
-		} // methods
-	});
-	const vm = app.mount('#app'); 
+  
 	
-</script>
+  
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `workouts`)).then((snapshot) => {
+	if (snapshot.exists()) {
+		var arr = snapshot.val()
+		var counter = 0
+		var stuff = []
+		for (var element in arr) {
+			if (arr[element].type == "stretching") {
+				counter += 1
+				var title = arr[element].title
+				var id = element
+				var w = arr[element]
+				var difficulty = arr[element].difficulty
+				var duration = arr[element].duration
+				stuff.push({ title, id, difficulty, duration})
+			}
+		}
+	  
+	  // <div id='app'></div>
+	  const app = Vue.createApp({ 
+		  data() { 
+			  return { 
+				    // key: value
+					list: stuff
+			  };
+		  }, // data
+		  // computed: { 
+		  //     derivedProperty() {
+		  //         return false;
+		  //     }  
+		  // }, // computed
+		  // created() { 
+		  // },
+		  // mounted() { 
+		  // },
+		  methods: {
+			  search() {
+				var selectedDifficulty = document.getElementById("difficulty").value;
+				var selectedDuration = document.getElementById("duration").value;
+
+				// Hide all cards
+				var cards = document.querySelectorAll(".c-container");
+				cards.forEach(function (card) {
+					card.style.display = "none";
+					
+				});
+
+				// Show cards that match at least one filter
+				cards.forEach(function (card) {
+					var difficultyMatch = selectedDifficulty === "" || card.getAttribute("data-difficulty") === selectedDifficulty;
+					var durationMatch = selectedDuration === "" || card.getAttribute("data-duration") === selectedDuration;
+					if (difficultyMatch && durationMatch) {
+						card.style.display = "inline-block";
+					
+						console.log(card.classList)
+					}
+				});
+				
+				
+				console.log(document.getElementsByClassName("chosen")[1])
+				
+			  },
+			  redirect(event){
+				var value = event.target.getAttribute("id")
+				localStorage.setItem("selected-workout", value)
+				window.location.href = "workout-pages.html"
+				console.log(event.target.getAttribute("id"))
+			  }
+		  } // methods
+	  });
+	  const vm = app.mount('#app'); 
+	 
+	} else {
+	  console.log("No data available");
+	}
+  }).catch((error) => {
+	console.error(error);
+  });
+	</script>
+	   
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.parallax.js"></script>

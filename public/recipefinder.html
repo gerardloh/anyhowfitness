@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+Fitness Template
+http://www.templatemo.com/tm-487-fitness
+-->
+<title>Recipe Finder</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- Added by me -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue@next"></script>
+<script type="module" src="index.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!--  -->
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+
+<!-- Main css -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Google Font -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lora:700italic' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+<!-- =========================
+     PRE LOADER       
+============================== -->
+<div  class="preloader">
+
+	<div class="sk-spinner sk-spinner-pulse"></div>
+
+</div>
+
+
+<!-- =========================
+    NAVIGATION SECTION   
+============================== -->
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+	<div class="container">
+
+		<div class="navbar-header">
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+			</button>
+			<a href="index.html" class="navbar-brand" id="return">Anyhow Fitness</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="index.html#home" class="smoothScroll" id="home5">Home</a></li>
+				<li><a href="index.html#overview" class="smoothScroll" id="about5">About</a></li>
+				<li><a href="index.html#trainer" class="smoothScroll" id="workout5">Workouts</a></li>
+				<li><a href="index.html#blog" class="smoothScroll" id="blog5">Blog</a></li>
+				<li><a href="index.html#price" class="smoothScroll" id="planner5">Planners</a></li>
+                <li><a href="profile.html" class="smoothScroll" id="profilepagelink" style="display: none;">Profile</a></li>
+				<li><a href="login.html" class="smoothScroll" id="log5">Login</a></li>
+			</ul>
+		</div>
+
+	</div>
+</div>
+
+
+<!-- =========================
+    BLOG HEADER SECTION   
+============================== -->
+<section id="blog-header" class="parallax-section">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-offset-2 col-md-8 col-sm-12">
+				<h3 class="wow bounceIn" data-wow-delay="0.9s">Anyhow Fitness</h3>
+				<h1 class="wow fadeInUp" data-wow-delay="1.6s">MealPrep</h1>
+			</div>
+
+
+		</div>
+	</div>
+</section>
+
+<!-- =========================
+    BLOG SECTION   
+============================== -->
+<section id="blog" class="parallax-section">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-8 col-sm-7">
+
+				<div class="blog-content wow fadeInUp" data-wow-delay="1s">
+
+                	<h3>Welcome to Our Recipe Finder</h3>
+					<p>Discover the perfect meal for a healthier you. Explore a variety of delicious recipes and effortlessly find the ones you can make with ingredients you have.</p>
+                   
+                    <div id="app">
+                        <!-- Ingredient Search -->
+                        <div class="container" style="background-color:#f9f9f9; margin-bottom:10px;">
+                            <div class="row justify-content-center" >
+                                <div class="col-md-7" style="background-color:white;margin:20px;">
+                                    <!-- Ingredient input -->
+                                    <h3>What ingredients would you like to use</h3>
+                                    <div class="input-group mb-3">
+                                        <input style="margin-bottom:10px;" type="text" class="form-control" v-model="ingredientInput" @keyup.enter="addIngredient" id="ingredientInput" placeholder="Enter an ingredient">
+                                    </div>
+                                </div>
+                                <div class="col-md-4" style="background-color:white;margin:20px;">
+                                    <!-- Selected Ingredients List -->
+                                    <h3>Selected Ingredients:</h3>
+                                    <p id="noIngredient" v-if="selectedIngredients.length === 0">No added ingredients</p>
+                                    <ul id="selectedIngredientsList">
+                                        <li v-for="ingredient in selectedIngredients">
+                                            {{ ingredient }}
+                                            <button @click="removeIngredient(ingredient)">Remove</button>
+                                        </li>
+                                    </ul>
+                                    <!-- Clear all button -->
+                                    <div style="padding-bottom:10px;">
+                                        <button @click="clearAll()" class="btn btn-primary" type="button" id="search-button">Clear All</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Suggested recipes -->
+                        <div class="container">
+                            <table class="table table-bordered" v-if="mealList.length > 0">
+                                <thead>
+                                    <tr>
+                                        <td colspan="2">Recipes found based on your selected ingredients: {{mealList.length}}</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="meal in mealList">
+                                        <td><img :src="meal.thumb" style="width:200px;height:auto;"></td>                                   
+                                        <td>
+                                            <a :href="'recipedetails.html?id=' + meal.id" target="_blank">{{ meal.name }}</a><br>
+                                            Ingredients: <br>
+                                            {{ meal.ingredients.join(', ') }} 
+                                            <br><br>                                           
+                                            <button v-if="isAuthenticated" @click="bookmarkRecipe(meal)" :text="bookmarkedMeals.findIndex((m) => m.id === meal.id) !== -1 ? 'Bookmarked' : 'Add to bookmarks'" class="btn btn-primary" type="button">
+                                                {{ bookmarkedMeals.findIndex((m) => m.id === meal.id) !== -1 ? 'Bookmarked' : 'Add to bookmarks' }}
+                                            </button>                                        
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div v-else>
+                                <!-- Display "Searching for recipes" message while searching -->
+                                <p v-if="searchingRecipes">Searching for recipes...</p>
+                                <!-- Display a message if no recipes are found -->
+                                <p v-else>No recipes found based on your selected ingredients.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+				</div>
+
+                
+			</div>	
+	    </div>
+    </div>
+</section>
+
+
+
+
+<div>
+
+</div>
+
+
+<!-- =========================
+    FOOTER SECTION   
+============================== -->
+<footer>
+	<div class="container">
+		<div class="row">
+
+			<div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.6s">
+				<h2>About Anyhow Fitness</h2>
+				<p>Anyhow Fitness is not just a company. It is a lifestyle. We aim to promote healthy living by providing suitable workout and meal plans for all.</p>
+			</div>
+
+			<div class="wow fadeInUp col-md-5 col-sm-4"  data-wow-delay="0.9s">
+				<h2>Working Hours</h2>
+					<div>
+						<h5>Morning</h5>
+						<h4>9:00 AM - 12:00 PM</h4>
+					</div>
+					<div>
+						<h5>Afternoon</h5>
+						<h4>1:00 PM - 6:00 PM</h4>
+					</div>
+			</div>
+
+			<div class="wow fadeInUp col-md-3 col-sm-4" data-wow-delay="1s">
+				<h2>Follow us</h2>
+				<ul class="social-icon">
+					<li><a href="#" class="fa fa-facebook wow fadeIn" data-wow-delay="1s"></a></li>
+					<li><a href="#" class="fa fa-twitter wow fadeInUp" data-wow-delay="1.3s"></a></li>
+					<li><a href="#" class="fa fa-dribbble wow fadeIn" data-wow-delay="1.6s"></a></li>
+					<li><a href="#" class="fa fa-behance wow fadeInUp" data-wow-delay="1.9s"></a></li>
+					<li><a href="#" class="fa fa-google-plus wow fadeIn" data-wow-delay="2s"></a></li>
+				</ul>
+			</div>
+
+			<div class="clearfix"></div>
+
+			<div class="col-md-12 col-sm-12">
+				<p class="copyright-text">Copyright &copy; 2023 Anyhow Fitness</p>
+			</div>
+			
+		</div>
+	</div>
+</footer>
+
+<!-- =========================
+    SCRIPTS   
+    ============================== -->
+
+<script type="module">
+    
+    // Import the functions you need from the SDKs you need
+    
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+    import { getDatabase, ref, set, get, child, update, push, onChildAdded } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+    
+    // Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyAuv9pHvIhlo_wNj4tdkzNanWoGtQ-5-t4",
+        authDomain: "is216-g2.firebaseapp.com",
+        databaseURL: "https://is216-g2-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "is216-g2",
+        storageBucket: "is216-g2.appspot.com",
+        messagingSenderId: "426453655797",
+        appId: "1:426453655797:web:26878838329ce6c02365bc",
+        measurementId: "G-HYZ4GSYP9Y"
+    };
+    
+    const appFB = initializeApp(firebaseConfig);
+    
+    const app = Vue.createApp({
+        data() {
+            return {
+                heading: "Anyhow Fitness",
+                ingredientInput: "",
+                selectedIngredients: [],
+                mealList: [],
+                meal: {     
+                    name: "",
+                    id: "",
+                    thumb: ""
+                },
+                mealIngredients: [],
+                searchingRecipes: false,
+
+                isAuthenticated: false,
+                userid: 'userid1',
+                bookmark: "Add to bookmarks",
+                bookmarkedMeals: [],
+                
+            };
+        },
+        methods: {
+            addIngredient() {
+                if (this.ingredientInput.trim() !== '') {
+                    this.selectedIngredients.push(this.ingredientInput);
+                    this.ingredientInput = '';
+                }
+            },
+            // getRecipes() {
+                //     if (this.selectedIngredients.length > 0) {
+                    //         const ingredients = this.selectedIngredients.join(',');
+                    //         console.log(ingredients)
+                    //         const url = "https://www.themealdb.com/api/json/v2/9973533/filter.php?i=" + encodeURIComponent(ingredients);
+                    //         axios.get(url)
+                    //             .then(response => {
+                        //                 console.log(response.data.meals)
+                        //             this.displayRecipes(response.data.meals);
+                        //             })
+                        //             .catch(error => {
+                            //             console.error(error);
+                            //             });
+                            //     } else {
+                                //         this.mealList = []
+                                //     }
+            // },
+            getRecipes() {
+                if (this.selectedIngredients.length > 0) {
+                    this.searchingRecipes = true; // Set searchingRecipes to true
+                    
+                    const ingredients = this.selectedIngredients.join(',');
+                    const url = "https://www.themealdb.com/api/json/v2/9973533/filter.php?i=" + encodeURIComponent(ingredients);
+                    
+                    axios.get(url)
+                    .then(response => {
+                        this.displayRecipes(response.data.meals);
+                        this.searchingRecipes = false; // Set searchingRecipes back to false when the search is complete
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        this.searchingRecipes = false; // Set searchingRecipes back to false in case of an error
+                    });
+                } else {
+                    this.mealList = [];
+                }
+            },
+            
+            displayRecipes(mealsArr) {
+                this.mealList = mealsArr.map(meal => ({
+                    name: meal.strMeal,
+                    id: meal.idMeal,
+                    thumb: meal.strMealThumb,
+                    ingredients: meal.mealIngredients,
+                }));
+                
+                // Fetch ingredients for each meal
+                for (const meal of this.mealList) {
+                    const mealId = meal.id;
+                    const ingredientsUrl = `https://www.themealdb.com/api/json/v2/9973533/lookup.php?i=${mealId}`;
+                    axios
+                    .get(ingredientsUrl)
+                    .then((response) => {
+                        const mealData = response.data.meals[0];
+                        meal.ingredients = this.extractIngredients(mealData);
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+                }
+                // console.log(this.mealList)
+            },
+            extractIngredients(mealData) {
+                const ingredients = [];
+                for (let i = 1; i <= 20; i++) {
+                    const ingredientKey = "strIngredient" + i;
+                    
+                    const ingredient = mealData[ingredientKey];
+                    
+                    // Display the ingredient if not null
+                    if (ingredient) {
+                        ingredients.push(`${ingredient}`);
+                    }
+                }
+                return ingredients;
+            },
+            removeIngredient(ingredient) {
+                // Find the index of the ingredient in the selectedIngredients array and remove it
+                const index = this.selectedIngredients.indexOf(ingredient);
+                if (index !== -1) {
+                    this.selectedIngredients.splice(index, 1);
+                }
+            },
+            clearAll() {
+                this.selectedIngredients = []; 
+                this.mealList = []; 
+            },
+
+            // Methods to bookmark
+            bookmarkRecipe(meal) {
+                const mealIndex = this.bookmarkedMeals.findIndex((m) => m.id === meal.id);
+                
+                if (mealIndex !== -1) {
+                    // Meal is already bookmarked, so remove it
+                    this.removeBookmark(mealIndex);
+                    console.log(this.bookmarkedMeals)
+                } else {
+                    // Meal is not bookmarked, so add it
+                    this.addBookmark(meal);
+                    console.log(this.bookmarkedMeals)
+                }
+            },
+            addBookmark(meal) {
+                // push to bookmarkedMeals array
+                this.bookmarkedMeals.push(meal); 
+                // Save the list of bookmarked meals to the Firebase Realtime Database
+                this.saveBookmarkedMeals();
+            },
+            removeBookmark(mealIndex) {
+                // Remove it of bookmarked meals to the Firebase Realtime Database
+                const meal = this.bookmarkedMeals[mealIndex];
+                this.removeBookmarkedMeal(meal.id);
+                // splice from bookmarkedMeals array
+                this.bookmarkedMeals.splice(mealIndex, 1);   
+            },
+            saveBookmarkedMeals() {
+                for (const meal of this.bookmarkedMeals) {
+
+                    const db = getDatabase(appFB);
+                    const userid = this.userid;
+                    const mealId = meal.id; // custom key
+
+                    const mealsRef = ref(db, `userData/${userid}/favourites/meals/${mealId}`);
+
+                    // Set the data under your specified key
+                    set(mealsRef, {
+                        name: meal.name,
+                        thumb: meal.thumb,
+                        ingredients: meal.ingredients
+                    });
+                }
+            },
+            removeBookmarkedMeal(mealId) {
+                
+                const db = getDatabase(appFB);
+                const userid = this.userid;
+                
+                const mealRef = ref(db, `userData/${userid}/favourites/meals/${mealId}`);
+                
+                // Remove the data at the specified path
+                set(mealRef, null)
+                .then(() => {
+                    console.log('Data is deleted in Firebase.');
+                })
+                .catch((error) => {
+                    console.error('Error deleting recipe:', error);
+                });
+            },
+            fetchBookmarkedMeals() {
+                const db = getDatabase(appFB);
+                const userid = this.userid; // Replace with your user-specific path
+                const bookmarkedMealsRef = ref(db, `userData/${userid}/favourites/meals`);
+
+                // Use the get() method to retrieve the data
+                get(bookmarkedMealsRef)
+                .then((snapshot) => {
+                    if (snapshot.exists()) {
+                    // Snapshot contains the data under "bookmarkedMeals"
+                    const data = snapshot.val();
+                    // Extract the keys (mealIds) and store them in the bookmarkedMeals array
+                    this.bookmarkedMeals = Object.keys(data).map((mealId) => ({
+                        id: mealId,
+                        name: data[mealId].name,
+                        thumb: data[mealId].thumb,
+                        ingredients: data[mealId].ingredients,
+                    }));
+                    console.log(this.bookmarkedMeals)
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error fetching bookmarked meals: ", error);
+                });
+            },
+        },
+        created() {
+            const auth = getAuth();
+            const user = auth.currentUser;
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    // User is signed in
+                    this.isAuthenticated = true;
+                    this.userid = user.uid;
+                    document.getElementById("return").setAttribute("href", "user.html#home")
+                    document.getElementById("profilepagelink").style.display = "block"
+                    document.getElementById("home5").setAttribute("href", "user.html#home")
+                    document.getElementById("about5").style.display = "none"
+                    document.getElementById("workout5").setAttribute("href", "user.html#trainer")
+                    document.getElementById("blog5").setAttribute("href", "user.html#blog")
+                    document.getElementById("planner5").setAttribute("href", "user.html#price")
+                    document.getElementById("log5").setAttribute("href", "#")
+                    document.getElementById("log5").innerText = "Logout"
+                    document.getElementById("log5").addEventListener("click", function () {
+                        signOut(auth).then(() => {
+                            // Sign-out successful.
+                            location.replace("index.html")
+                            }).catch((error) => {
+                            // An error happened.
+                            console.log("Fail")
+                            });
+	})
+                } else {
+                    // User is signed out
+                    this.isAuthenticated = false;
+                    console.log("User is not authenticated");
+                }
+            });
+            this.fetchBookmarkedMeals();
+        },
+        watch: {
+            selectedIngredients: {
+            handler(newIngredients) {
+                if (newIngredients.length > 0) {
+                this.searchingRecipes = true; // Set searchingRecipes to true when searching
+                const ingredients = newIngredients.join(',');
+                const url = "https://www.themealdb.com/api/json/v2/9973533/filter.php?i=" + encodeURIComponent(ingredients);
+                axios.get(url)
+                    .then(response => {
+                    this.displayRecipes(response.data.meals);
+                    this.searchingRecipes = false; // Set searchingRecipes back to false when the search is complete
+                    })
+                    .catch(error => {
+                    console.error(error);
+                    this.searchingRecipes = false; // Set searchingRecipes back to false in case of an error
+                    });
+                } else {
+                this.mealList = [];
+                }
+            },
+            deep: true,
+            },
+        },
+    }).mount('#app');
+
+</script>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.parallax.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/custom.js"></script>
+
+
+
+</body>
+</html>

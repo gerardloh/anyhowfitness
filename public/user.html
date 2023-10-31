@@ -5,7 +5,7 @@
 Fitness Template
 http://www.templatemo.com/tm-487-fitness
 -->
-<title>Fitness - Responsive HTML Template</title>
+<title>Anyhow Fitness</title>
 <meta name="description" content="">
 <meta name="author" content="">
 <meta charset="UTF-8">
@@ -130,7 +130,7 @@ http://www.templatemo.com/tm-487-fitness
 							<div class="trainer-des">
 								<h2>Strength</h2>
 								<h3>Workouts</h3>
-								<a href="#" class="btn btn-default smoothScroll">Get Started!</a>
+								<a href="strength.html" class="btn btn-default smoothScroll">Get Started!</a>
 								
 							</div>
 						</div>
@@ -145,7 +145,7 @@ http://www.templatemo.com/tm-487-fitness
 							<div class="trainer-des">
 								<h2>Stretching</h2>
 								<h3>Workouts</h3>
-								<a href="#" class="btn btn-default smoothScroll">Get Started!</a>
+								<a href="stretching.html" class="btn btn-default smoothScroll">Get Started!</a>
 								
 							</div>
 						</div>
@@ -160,7 +160,7 @@ http://www.templatemo.com/tm-487-fitness
 							<div class="trainer-des">
 								<h2>Balance</h2>
 								<h3>Workouts</h3>
-								<a href="#" class="btn btn-default smoothScroll">Get Started!</a>
+								<a href="balance.html" class="btn btn-default smoothScroll">Get Started!</a>
 								
 							</div>
 						</div>
@@ -172,35 +172,6 @@ http://www.templatemo.com/tm-487-fitness
 	</div>
 </section>
 
-
-<!-- =========================
-    NEWSLETTER SECTION   
-============================== -->
-<section id="newsletter" class="parallax-section">
-	<div class="container">
-		<div class="row">
-
-			<div class="wow fadeInUp col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10" data-wow-delay="0.9s">
-				<h2>Signup Newsletter</h2>
-				<p>Get discounts for your personal fitness and gym services now.</p>
-				<div class="newsletter_detail">
-					<form action="#" method="post" id="newsletter-signup">
-						<div class="col-md-6 col-sm-6">
-							<input name="name" type="text" class="form-control" id="name" placeholder="Name">
-					  	</div>
-						<div class="col-md-6 col-sm-6">
-							<input name="email" type="email" class="form-control" id="email" placeholder="Email">
-					  	</div>
-						<div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
-							<input name="submit" type="submit" class="form-control" id="submit" value="SEND MESSAGE">
-						</div>
-				  	</form>
-				</div>
-			</div>
-
-		</div>
-	</div>
-</section>
 
 
 <!-- =========================
@@ -276,7 +247,7 @@ http://www.templatemo.com/tm-487-fitness
                         <li class="pricing__feature">Save to your favourites</li>
                         <li class="pricing__feature">Countless yummy meals</li>
                     </ul>
-                    <button class="pricing__action">Take me there!</button>
+                    <button class="pricing__action" id="yum1">Take me there!</button>
                 </div>
 			</div>
 
@@ -290,7 +261,7 @@ http://www.templatemo.com/tm-487-fitness
                         <li class="pricing__feature">Save to your favourites</li>
                         <li class="pricing__feature">Track your progress</li>
                     </ul>
-                    <button class="pricing__action"><a href="workout-planner.html">Take me there!</a></button>
+                    <button class="pricing__action" id="shag1">Take me there!</button>
                 </div>
 			</div>
 
@@ -420,6 +391,12 @@ http://www.templatemo.com/tm-487-fitness
             if (user) {
                 // User is signed in, see docs for a list of available properties
                 // https://firebase.google.com/docs/reference/js/auth.user
+				document.getElementById("yum1").addEventListener("click", function () {
+					window.location.href = 'recipefinder.html'
+				})
+				document.getElementById("shag1").addEventListener("click", function () {
+					window.location.href = 'workout-planner.html'
+				})
                 const uid = user.uid;
 				const dbRef = ref(getDatabase());
 				var link = "userData/" + uid

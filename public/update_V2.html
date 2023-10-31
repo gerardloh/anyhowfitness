@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/register.css">
+    <!-- <script src="js/register.js" defer></script> -->
+    <title>Registration Form</title>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" 
+    crossorigin="anonymous">
+    <style>
+       .progress-step {
+        text-align: center;
+       }
+       #next {
+        margin-top: 7%;
+       }
+       #problems, #error-header {
+        color: red;
+       }
+    </style>
+</head>
+<body>
+    <div id="intro" class="title">
+        <h2>Hello Rachel! Here's your Weekly Check-In</h2>
+    </div>
+
+    <form action="forum.html" class="form container" id="registrationForm">
+
+        <!-- Progress bar -->
+        <div class="progressbar" >
+            <div class="progress " id="progress"></div>
+            <div class="progress-step progress-step-active" data-title="Recap"></div>
+            <div class="progress-step" data-title="Progress Update"></div>
+            <div class="progress-step" data-title="Goal Settings"></div>
+            <div class="progress-step" data-title="Recommendation"></div>
+        </div>
+   
+        <!-- Steps -->
+        <div class="form-step form-step-active" data-step="1">
+            <!-- Step 1 Fields -->
+            <h2 class="display mb-3">Let's complete your Weekly Check-In!</h2> <br><br>
+            
+            <div class="row input-group">
+                <div class="col-sm-12 form-group">
+                    <label for="name"><strong>How many workouts did you complete this week?</strong></label>
+                    <input type="range" class="form-range" name="workoutsCount" id="workouts_thisWeek" min="0" max="5" required>
+                    <div class="output-container">
+                        <output for="exerciseDays" class="output">0 workout</output>
+                        <output for="exerciseDays" class="output">1 workouts</output>
+                        <output for="exerciseDays" class="output">2 workouts</output>
+                        <output for="exerciseDays" class="output">3 workouts</output>
+                        <output for="exerciseDays" class="output">4 workouts</output>
+                        <output for="exerciseDays" class="output">5 workouts</output>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row input-group">
+                <div class="col-sm-12 form-group">
+                    <label for="name"><strong>How many meals did you make this week?</strong></label>
+                    <input type="range" class="form-range" name="mealsCount" id="meals_thisWeek" min="0" max="5" required>
+                    <div class="output-container">
+                        <output for="exerciseDays" class="output">0 meal</output>
+                        <output for="exerciseDays" class="output">1 meals</output>
+                        <output for="exerciseDays" class="output">2 meals</output>
+                        <output for="exerciseDays" class="output">3 meals</output>
+                        <output for="exerciseDays" class="output">4 meals</output>
+                        <output for="exerciseDays" class="output">5 meals</output>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group btns-group">
+                <a href="#" class="btn btn-primary btn-next" id="next">Next</a>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="form-step" data-step="2">
+            <!-- Step 2 Fields -->
+            <h2 class="display m">Let's see your Progress for Last Week!</h2>
+
+            <div class="form-group row" style="margin-bottom: 2%;">
+                <label for="progress"><strong>Here's your progress for last week!</strong></label>
+            </div>
+
+            <div class="form-group row" style="margin-bottom: 2%;">
+                <label for="overall_progress"><strong>Here's your overall progress!</strong></label>
+            </div>
+            
+            <div class="form-group btns-group">
+                <a href="#" class="btn btn-outline-primary btn-prev">Previous</a>
+                <a href="#" class="btn btn-primary btn-next">Next</a>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="form-step" data-step="3">
+            <!-- Step 3 Fields -->
+            <h2 class="display m">Let's set your Goals for Next Week!</h2>
+
+            <div class="form-group row" style="margin-bottom: 2%;">
+                <label for="goals"><strong>How many workouts would you like to complete Next Week?</strong></label>
+                <input type="range" class="form-range" name="workoutsCount" id="workouts_nextWeek" min="0" max="5" required>
+                    <div class="output-container">
+                        <output for="exerciseDays" class="output">0 workout</output>
+                        <output for="exerciseDays" class="output">1 workouts</output>
+                        <output for="exerciseDays" class="output">2 workouts</output>
+                        <output for="exerciseDays" class="output">3 workouts</output>
+                        <output for="exerciseDays" class="output">4 workouts</output>
+                        <output for="exerciseDays" class="output">5 workouts</output>
+                    </div>
+            </div>
+
+            <div class="form-group row" style="margin-bottom: 2%;">
+                <label for="goals"><strong>How many meals would you like to prepare Next Week?</strong></label>
+                <input type="range" class="form-range" name="mealsCount" id="meals_nextWeek" min="0" max="5" required>
+                    <div class="output-container">
+                        <output for="exerciseDays" class="output">0 meal</output>
+                        <output for="exerciseDays" class="output">1 meals</output>
+                        <output for="exerciseDays" class="output">2 meals</output>
+                        <output for="exerciseDays" class="output">3 meals</output>
+                        <output for="exerciseDays" class="output">4 meals</output>
+                        <output for="exerciseDays" class="output">5 meals</output>
+                    </div>
+            </div>
+            
+            <div class="form-group btns-group">
+                <a href="#" class="btn btn-outline-primary btn-prev">Previous</a>
+                <a href="#" class="btn btn-primary btn-next">Next</a>
+            </div>
+        </div>
+
+
+        <!-- Step 4 -->
+        <div class="form-step" data-step="4">
+            <!-- Step 4 Fields -->
+            <h2 class="display m">Here's your recommendations!</h2>
+            
+            <div class="form-group row" style="margin-bottom: 2%;">
+                <label for="recommendations"><strong>Your personalised recommendations:</strong></label>
+            </div>
+
+            <div class="form-group btns-group" style="margin-bottom: 2%;"> 
+                <a href="#" class="btn btn-outline-primary btn-prev" id="previous">Previous</a>
+                <button type="submit" class="btn btn-success" id="submit">Submit</button>
+                <button type="btn" class="btn btn-success" style="display: none;" id="gotologin">Go to login page</button>
+            </div>
+            <p id="error-header"></p>
+            <ul id="problems"></ul>
+        </div>
+    </form>
+
+
+    <script>
+        const prevBtns = document.querySelectorAll(".btn-prev"); 
+        const nextBtns = document.querySelectorAll(".btn-next");
+        const progress = document.getElementById("progress"); 
+        const formSteps = document.querySelectorAll(".form-step"); 
+        const progressSteps = document.querySelectorAll(".progress-step"); 
+
+        let formStepsNum = 0; 
+
+        // Iterate through nextBtns collection onclick
+        nextBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+            formStepsNum++;
+            updateFormSteps();
+            updateProgressbar();
+            });
+        });
+
+        //Iterate through prevBtns collection onclick
+        prevBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                formStepsNum--; 
+                updateFormSteps(); 
+                updateProgressbar(); 
+            });
+        });
+
+        //Helper fnc 1 - removes and applies to next step 
+        function updateFormSteps(){
+            formSteps.forEach((formStep) => {
+                formStep.classList.contains("form-step-active") && formStep.classList.remove("form-step-active");
+            });
+            formSteps[formStepsNum].classList.add("form-step-active");
+        }
+
+        //Helper fnc 2
+        function updateProgressbar() {
+            progressSteps.forEach((progressStep, index) => {
+                if (index < formStepsNum + 1){
+                    progressStep.classList.add("progress-step-active");
+                } else {
+                    progressStep.classList.remove("progress-step-active");
+                }
+                });
+                const progressActive = document.querySelectorAll(".progress-step-active");
+
+                progress.style.width = ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
+        }
+         
+    </script>
+
+
+    <!-- <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+        const firebaseConfig = {
+        apiKey: "AIzaSyAuv9pHvIhlo_wNj4tdkzNanWoGtQ-5-t4",
+        authDomain: "is216-g2.firebaseapp.com",
+        databaseURL: "https://is216-g2-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "is216-g2",
+        storageBucket: "is216-g2.appspot.com",
+        messagingSenderId: "426453655797",
+        appId: "1:426453655797:web:b36588777f86a6d32365bc",
+        measurementId: "G-QXTL2H3M37"
+        };
+        
+            
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app)
+        let terms = ""
+        document.getElementById('t&c').addEventListener("click", function(event) {
+            terms = event.target.checked
+            console.log(terms)
+        })
+         
+          
+            
+            document.getElementById('registrationForm').addEventListener('submit', submitForm);
+            
+            function submitForm(e) {
+            e.preventDefault();
+            if (getElementVal('name') == "" || getElementVal('emailId') == "" || getElementVal('password') == "" || getElementVal('confirmPassword') == "" || getElementVal('password').length < 8 || getElementVal('password') != getElementVal('confirmPassword') || terms == false) {
+                var issues = []
+                var output = ""
+                if (getElementVal('name') == "") {
+                    issues.push("Please enter your name")
+                }
+                if (getElementVal("emailId") == "") {
+                    issues.push("Please enter your email")
+                }
+                if (getElementVal('password') == "" ) {
+                    issues.push("Please enter your password")
+                }
+                if (getElementVal('confirmPassword') == "") {
+                    issues.push("Please confirm your password")
+                }
+                if (getElementVal('password') != getElementVal('confirmPassword')) {
+                    issues.push("Passwords do not match")
+                }
+                if (getElementVal('password').length < 8) {
+                    issues.push("Password must be minimum 8 characters")
+                }
+                if (terms == false) {
+                    issues.push("Please agree to the terms and conditions")
+                }
+                for (var element of issues) {
+                    output += "<li>"+ element + "</li>"
+                }
+                document.getElementById("error-header").innerText = "Errors:"
+                document.getElementById('problems').innerHTML = output
+            } else {
+            document.getElementById("error-header").innerText = ""
+            document.getElementById('problems').innerHTML = ""
+
+            const name = getElementVal('name');
+            const emailId = getElementVal('emailId');
+            const birthdate = getElementVal('birthdate');
+            const phoneNumber = getElementVal('phoneNumber');
+            const password = getElementVal('password');
+            const gender = document.getElementsByName('gender');
+            const exerciseDaysCount = getElementVal('exerciseDays');
+            const fitnessLevel = getElementVal('fitnessLevel');
+            
+            const allergies = getElementVal('allergies');
+            const dietaryRestrictions = getElementVal('dietaryRestrictions');
+            
+            
+            const trainingLocation = getElementVal('trainingLocation');
+            const trainerInterest = getElementVal('trainerInterest');
+            const bookmarks = {"meals":[1], "workouts":[1]};
+            const chosenWorkoutSessions = getElementVal("chosenWorkoutSessions");
+            const completedWorkoutSessions = 0
+
+            createUserWithEmailAndPassword(auth, emailId, password)
+                    .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+                    var id = user.uid
+                    function writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions, bookmarks, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel,  allergies, dietaryRestrictions,  trainerInterest, trainingLocation) {
+                    const db = getDatabase();
+                    set(ref(db, 'userData/' + id), {
+                        username: name,
+                        chosensessions:chosenWorkoutSessions,
+                        completedsessions: completedWorkoutSessions,
+                        favourites: bookmarks ,
+                        birthday: birthdate,
+                        phone: phoneNumber,
+                        gender: gender,
+                        exerciseDaysCounter: exerciseDaysCount,
+                        fitnesslevel: fitnessLevel,
+                        
+                        allergies: allergies,
+                        diet: dietaryRestrictions,
+                                            
+                        trainerInterest: trainerInterest,
+                        trainingLocation : trainingLocation
+                    });
+                    }
+                    writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions, bookmarks, birthdate, phoneNumber, gender, exerciseDaysCount, fitnessLevel,  allergies, dietaryRestrictions,  trainerInterest, trainingLocation)
+                    //enable alert
+                    document.querySelector(".alert").style.display = "block";
+                    
+                    //remove the alert
+                    setTimeout(() => {
+                    document.querySelector(".alert").style.display = "none";
+                    }, 3000);
+                    
+                    //reset the form
+                    document.getElementById("registrationForm").reset();
+                    
+                    console.log(user)
+                    console.log("Success!")
+
+                    document.getElementById("previous").style.display = "none"
+                    document.getElementById("submit").style.display = "none"
+                    document.getElementById("gotologin").style.display = "block"
+                    document.getElementById("gotologin").addEventListener("click", function () {
+                        window.location.href = 'login.html'
+                    })
+                    
+                    // ...
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.log(errorMessage)
+                        document.getElementById("registrationForm").reset();
+                        alert("Please try again!")
+                    });
+            
+            
+            
+            
+                }
+            }
+            
+            
+            
+            function getElementVal(id) {
+            return document.getElementById(id).value;
+            }
+            
+            function getSelectedOptions(selectId) {
+                const selectElement = document.getElementById(selectId);
+                const selectedOptions = [];
+                for (let i = 0; i < selectElement.options.length; i++) {
+                    const option = selectElement.options[i];
+                    if (option.selected) {
+                    selectedOptions.push(option.value);
+                    }
+                }
+                return selectedOptions;
+                }
+      
+    </script>  -->
+
+    
+</body>
+</html>

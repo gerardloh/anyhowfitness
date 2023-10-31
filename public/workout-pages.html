@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
 Fitness Template
 http://www.templatemo.com/tm-487-fitness
 -->
-<title>Fitness - Responsive Blog Page</title>
+<title>Workouts</title>
 <meta name="description" content="">
 <meta name="author" content="">
 <meta charset="UTF-8">
@@ -59,13 +60,17 @@ http://www.templatemo.com/tm-487-fitness
 				<span class="icon icon-bar"></span>
 				<span class="icon icon-bar"></span>
 			</button>
-			<a href="index.html" class="navbar-brand">Fitness</a>
+			<a href="index.html" class="navbar-brand" id="return">Anyhow Fitness</a>
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="index.html#home" class="smoothScroll">Home</a></li>
-				<li><a href="index.html#overview" class="smoothScroll">About</a></li>
-				<li><a href="index.html#trainer" class="smoothScroll">Workouts</a></li>
+				<li><a href="index.html#home" class="smoothScroll" id="home6">Home</a></li>
+				<li><a href="index.html#overview" class="smoothScroll" id="about6">About</a></li>
+				<li><a href="index.html#trainer" class="smoothScroll" id="workout6">Workouts</a></li>
+				<li><a href="index.html#blog" class="smoothScroll" id="blog6">Blog</a></li>
+				<li><a href="index.html#price" class="smoothScroll" id="planner6">Planners</a></li>
+				<li><a href="profile.html" class="smoothScroll" id="profilepagelink" style="display: none;">Profile</a></li>
+				<li><a href="login.html" class="smoothScroll" id="log6">Login</a></li>
 			</ul>
 		</div>
 
@@ -100,26 +105,27 @@ http://www.templatemo.com/tm-487-fitness
 			<div class="col-md-8 col-sm-7 col-lg-12">
 
 				<div class="blog-content wow fadeInUp" data-wow-delay="1s">
-                	<h2 id="workout-header"></h2>
-					
-					<div class="blog-clear"></div>
-					<p id="workout-desc"></p>
-					
-                    <div class="blog-image wow fadeInUp" data-wow-delay="0.9s">
-						<iframe id="workout-video"width="1150" height="715"  src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        
-                    </div>
-                
-					<blockquote id="quotes">
-						“All our dreams can come true, if we have the courage to pursue them.” — Walt Disney
-					</blockquote>
-					<h3>Workout Components</h3>
 					<div id="app">
-					<ul>
-						<li v-for="component in this.workoutcomponents">{{component}}</li>
-					</ul>
+						<h2 id="workout-header">{{title}}</h2>
+						
+						<div class="blog-clear"></div>
+						<p id="workout-desc"> {{description}}</p>
+						
+						<div class="blog-image wow fadeInUp" data-wow-delay="0.9s">
+							<iframe id="workout-video"width="1150" height="715"  :src="url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+							
+						</div>
+					
+						<blockquote id="quotes">
+							{{quote}}
+						</blockquote>
+						<h3>Workout Components</h3>
+						<ul>
+							<li v-for="component in components">{{component}}</li>
+						</ul>
+						<p>Remember to stay hydrated and practice safety! If you feel uncomfortable at any point in time, please stop and have a rest.</p>
+						<button v-if="isAuthenticated" @click="bookmark === 'Bookmarked' ? removeBookmark() : bookmarkWorkout()" class="btn btn-primary" type="button">{{ bookmark }}</button>
 					</div>
-					<p>Remember to stay hydrated and practice safety! If you feel uncomfortable at any point in time, please stop and have a rest.</p>
 				</div>
 			</div>
 
@@ -138,19 +144,19 @@ http://www.templatemo.com/tm-487-fitness
 		<div class="row">
 
 			<div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.6s">
-				<h2>About Fitness</h2>
-				<p>Nunc id turpis tincidunt dui volutpat hendrerit et efficitur dolor. Morbi quis tempor felis, ut dictum ipsum. Praesent venenatis rutrum interdum.</p>
+				<h2>About Anyhow Fitness</h2>
+				<p>Anyhow Fitness is not just a company. It is a lifestyle. We aim to promote healthy living by providing suitable workout and meal plans for all.</p>
 			</div>
 
 			<div class="wow fadeInUp col-md-5 col-sm-4"  data-wow-delay="0.9s">
-				<h2>Sessions</h2>
+				<h2>Working Hours</h2>
 					<div>
 						<h5>Morning</h5>
-						<h4>6:00 AM - 11:00 PM</h4>
+						<h4>9:00 AM - 12:00 PM</h4>
 					</div>
 					<div>
-						<h5>Evening</h5>
-						<h4>4:00 PM - 9:00 PM</h4>
+						<h5>Afternoon</h5>
+						<h4>1:00 PM - 6:00 PM</h4>
 					</div>
 			</div>
 
@@ -168,9 +174,7 @@ http://www.templatemo.com/tm-487-fitness
 			<div class="clearfix"></div>
 
 			<div class="col-md-12 col-sm-12">
-				<p class="copyright-text">Copyright &copy; 2016 Your Company 
-                    
-                    | Design: TemplateMo</p>
+				<p class="copyright-text">Copyright &copy; 2023 Anyhow Fitness</p>
 			</div>
 			
 		</div>
@@ -182,11 +186,193 @@ http://www.templatemo.com/tm-487-fitness
 ============================== -->
 <script type="module">
 
+	// Import the functions you need from the SDKs you need
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+	import { getDatabase, ref, child, get, set } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+	import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+	// TODO: Add SDKs for Firebase products that you want to use
+	// https://firebase.google.com/docs/web/setup#available-libraries
+  
+	// Your web app's Firebase configuration
+	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	const firebaseConfig = {
+          apiKey: "AIzaSyAuv9pHvIhlo_wNj4tdkzNanWoGtQ-5-t4",
+          authDomain: "is216-g2.firebaseapp.com",
+          databaseURL: "https://is216-g2-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "is216-g2",
+          storageBucket: "is216-g2.appspot.com",
+          messagingSenderId: "426453655797",
+          appId: "1:426453655797:web:26878838329ce6c02365bc",
+          measurementId: "G-HYZ4GSYP9Y"
+        };
+  
+	// Initialize Firebase
+	const appFB = initializeApp(firebaseConfig);
+	const database = getDatabase(appFB)
+
+	// <div id='app'></div>
+	const app = Vue.createApp({ 
+		data() { 
+			return { 
+				  // key: value
+				  workoutid: '',
+
+				  data: null,
+				  title: '',
+				  description: '',
+				  url: '',
+				  components: [],
+				  isAuthenticated :false,
+				  quotes: ["“All our dreams can come true, if we have the courage to pursue them.” — Walt Disney", 
+				  	"“The secret of getting ahead is getting started.” — Mark Twain",
+					"“I’ve missed more than 9,000 shots in my career. I’ve lost almost 300 games. 26 times I’ve been trusted to take the game winning shot and missed. I’ve failed over and over and over again in my life, and that is why I succeed.” —Michael Jordan", 
+					"“If something is important enough, even if the odds are stacked against you, you should still do it.” — Elon Musk",
+					"“Hard work beats talent when talent doesn’t work hard.” ― Tim Notke", 
+					"“Unsuccessful people make their decisions based on their current situations. Successful people make their decisions based on where they want to be.” ― Benjamin Hardy"],
+				  quote: '“All our dreams can come true, if we have the courage to pursue them.” — Walt Disney',
+
+				  userid: '',
+				  bookmark: 'Add to bookmarks',
+			};
+		}, // data
+		methods: {
+			// getRandomInt(min, max) {
+			// 	min = Math.ceil(min);
+			// 	max = Math.floor(max);
+			// 	var int = Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+			// 	getRandomQuote(int);
+			// },
+			getRandomQuote() {
+				const randomIndex = Math.floor(Math.random() * this.quotes.length);
+				this.quote = this.quotes[randomIndex];
+			},
+			getWorkoutId() {
+				var id = localStorage.getItem("selected-workout")
+				this.workoutid = id
+				// console.log(id)
+				this.fetchData(id)
+			},
+			fetchData(id) {
+				var link = "workouts/"+id
+				const dbRef = ref(getDatabase());
+				get(child(dbRef, link)).then((snapshot) => {
+				if (snapshot.exists()) {
+					var gerard = snapshot.val()
+					this.data = gerard
+					console.log(this.data)
+					console.log(gerard)
+					this.title = gerard.title
+					this.description = gerard.description
+					this.url = gerard.url
+					this.components = gerard.components				
+				} else {
+					console.log("No data available");
+				}
+				}).catch((error) => {
+					console.error(error);
+				});
+								
+			},
+			bookmarkWorkout() {
+				const db = getDatabase(appFB);
+				const userid = this.userid;
+				console.log(userid)
+				const workoutId = this.workoutid; // custom key
+				const workoutData = this.data;
+				console.log(workoutData)
+
+				const workoutRef = ref(db, `userData/${userid}/favourites/workouts/${workoutId}`);
+
+				// Set the data under your specified key
+				set(workoutRef, workoutData)
+				.then(() => {
+					console.log("workout saved in firebase")
+					this.bookmark = "Bookmarked"
+				})
+				.catch(() => {
+					console.log("error saving workout in firebase")
+				})
+			},
+			removeBookmark() {
+				const db = getDatabase(appFB);
+				const userid = this.userid;
+				const workoutId = this.workoutid;
+
+				const workoutRef = ref(db, `userData/${userid}/favourites/workouts/${workoutId}`);
+
+				// Remove the data under your specified key
+				set(workoutRef, null)
+					.then(() => {
+						console.log("Workout removed from bookmarks");
+						this.bookmark = "Add to bookmarks";
+					})
+					.catch(() => {
+						console.log("Error removing workout from bookmarks");
+					});
+			}
+		}, 
+		created() { 
+			const auth = getAuth();
+            const user = auth.currentUser;
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    // User is signed in
+					this.isAuthenticated  =true
+                    this.userid = user.uid;
+					console.log(this.userid)
+
+					// Check if the workout is already bookmarked for the user
+					const workoutRef = ref(database, `userData/${this.userid}/favourites/workouts/${this.workoutid}`);
+
+					get(workoutRef).then((snapshot) => {
+						if (snapshot.exists()) {
+							// If the data exists, set the button text to "Bookmarked"
+							this.bookmark = "Bookmarked";
+						}
+					}).catch(() => {
+						console.log("Error checking workout bookmark status");
+					});
+					document.getElementById("return").setAttribute("href", "user.html#home")
+                    document.getElementById("home6").setAttribute("href", "user.html#home")
+                    document.getElementById("about6").style.display = "none"
+					document.getElementById("profilepagelink").style.display = "block"
+                    document.getElementById("workout6").setAttribute("href", "user.html#trainer")
+                    document.getElementById("blog6").setAttribute("href", "user.html#blog")
+                    document.getElementById("planner6").setAttribute("href", "user.html#price")
+                    document.getElementById("log6").setAttribute("href", "#")
+                    document.getElementById("log6").innerText = "Logout"
+                    document.getElementById("log6").addEventListener("click", function () {
+                        signOut(auth).then(() => {
+                            // Sign-out successful.
+                            location.replace("index.html")
+                            }).catch((error) => {
+                            // An error happened.
+                            console.log("Fail")
+                            });
+	            })
+                } else {
+                    // User is signed out
+					this.isAuthenticated = false
+                    console.log("User is not authenticated");
+                }
+            });
+
+            this.getWorkoutId();
+			this.getRandomQuote();
+		},
+		});
+	const vm = app.mount('#app'); 
+
+</script>
+
+<!-- <script type="module">
+
 	var id = localStorage.getItem("selected-workout")
 	// Import the functions you need from the SDKs you need
   
 	import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
-	import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+	import { getDatabase, ref, child, get, set } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+	import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
 	// TODO: Add SDKs for Firebase products that you want to use
 	// https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -206,11 +392,45 @@ http://www.templatemo.com/tm-487-fitness
 	// Initialize Firebase
 	const app = initializeApp(firebaseConfig);
 	const database = getDatabase(app)
+	const auth = getAuth(app);
+
+	// Define it as global scope
+	let uid;
+	let gerard;
+
+	onAuthStateChanged(auth, (user) => {
+  	if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+    uid = user.uid;
+	document.getElementById("home6").setAttribute("href", "user.html#home")
+	document.getElementById("about6").setAttribute("href", "user.html#overview")
+	document.getElementById("workout6").setAttribute("href", "user.html#trainer")
+	document.getElementById("blog6").setAttribute("href", "user.html#blog")
+	document.getElementById("planner6").setAttribute("href", "user.html#price")
+	document.getElementById("log6").setAttribute("href", "#")
+	document.getElementById("log6").innerText = "Logout"
+	document.getElementById("log6").addEventListener("click", function () {
+		signOut(auth).then(() => {
+            // Sign-out successful.
+            location.replace("index.html")
+            }).catch((error) => {
+            // An error happened.
+            console.log("Fail")
+            });
+	})
+
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
 	var link = "workouts/"+id
 	const dbRef = ref(getDatabase());
 	get(child(dbRef, link)).then((snapshot) => {
 	if (snapshot.exists()) {
-		var gerard = snapshot.val()
+		gerard = snapshot.val()
 		document.getElementById("workout-header").innerText = gerard.title
 		document.getElementById("workout-desc").innerText = gerard.description
 		document.getElementById("workout-video").setAttribute("src", gerard.url)
@@ -218,19 +438,20 @@ http://www.templatemo.com/tm-487-fitness
 			min = Math.ceil(min);
 			max = Math.floor(max);
 			return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
-}
+		}
 		var quotes = ["“All our dreams can come true, if we have the courage to pursue them.” — Walt Disney", "“The secret of getting ahead is getting started.” — Mark Twain",
 		"“I’ve missed more than 9,000 shots in my career. I’ve lost almost 300 games. 26 times I’ve been trusted to take the game winning shot and missed. I’ve failed over and over and over again in my life, and that is why I succeed.” —Michael Jordan", "“If something is important enough, even if the odds are stacked against you, you should still do it.” — Elon Musk",
 		"“Hard work beats talent when talent doesn’t work hard.” ― Tim Notke", "“Unsuccessful people make their decisions based on their current situations. Successful people make their decisions based on where they want to be.” ― Benjamin Hardy"]
 		document.getElementById("quotes").innerText = quotes[getRandomInt(0, quotes.length +1)]
 		console.log(getRandomInt(0, quotes.length +1))
 
+		
 		// <div id='app'></div>
 		const app = Vue.createApp({ 
 			data() { 
 				return { 
 					  // key: value
-					  workoutcomponents : gerard.components
+					  workoutcomponents : gerard.components,
 				};
 			}, // data
 			// computed: { 
@@ -241,22 +462,21 @@ http://www.templatemo.com/tm-487-fitness
 			// created() { 
 			// },
 			// mounted() { 
-			// },
-			methods: {
-				methodName() {
-					
-				}
-			} // methods
-		});
-		const vm = app.mount('#app'); 
-		console.log(snapshot.val());
-	} else {
-		console.log("No data available");
-	}
-}).catch((error) => {
+				// },
+				methods: {
+
+				} // methods
+			});
+			const vm = app.mount('#app'); 
+			console.log(snapshot.val());
+		} else {
+			console.log("No data available");
+		}
+	}).catch((error) => {
   console.error(error);
 });
-</script>
+</script> -->
+
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.parallax.js"></script>
