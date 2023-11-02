@@ -1,11 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+body {
+  font-family: Poppins, sans-serif;
+  background-color: #1a1a1a;
+}
+
+h1 {
+  text-align: center;
+  color: #d4d4d4;
+}
+
+.rings {
+  display: flex;
+  flex-direction: row;
+  margin-left: 490px;
+}
+
+.percent1, .percent2, svg, circle {
+  width: 200px;
+  height: 200px;
+}
+
+circle {
+  position: absolute;
+  fill: none;
+  stroke-width: 10;
+  transform: translate(10px, 10px);
+  stroke-dasharray: 440;
+  stroke-linecap: round;
+}
+
+circle:nth-child(1) {
+  stroke-dashoffset: 0;
+  stroke: #424242;
+}
+
+.percent1 circle:nth-child(2) {
+  stroke-dashoffset: calc(440 - (440 * 75) / 100);
+  stroke: gold;
+  animation: percent 1.5s linear;
+  animation-delay: 1s;
+}
+
+.percent2 circle:nth-child(2) {
+  stroke-dashoffset: calc(440 - (440 * 33) / 100);
+  stroke: salmon;
+  animation: percent 1.5s linear;
+  animation-delay: 1s;
+}
+
+.number {
+  position: relative;
+  bottom: 190px;
+  right: -50px;
+  color: #fff;
+}
+
+h2 {
+  font-size: 48px;
+}
+
+span {
+  font-size: 24px;
+  opacity: .7;
+}
+
+.percent1 span {
+  color: gold;
+}
+
+.percent2 span {
+  color: salmon;
+}
+
+@keyframes percent {
+  0% {
+    stroke-dashoffset: 0;
+    stroke-width: 0;
+  }
+}
+  </style>
+  
+
 
 </head>
 <body>
+    <h1>Here's your progress</h1> 
+<div class="rings">
+  <div class="percent1">
+      <svg>
+        <circle cx="70" cy="70" r="70"></circle>
+        <circle cx="70" cy="70" r="70"></circle>
+      </svg>
+      <div class="number">
+        <h2>75<span>%</span></h2>
+      </div>
+</div>
+  <div class="percent2">
+      <svg>
+        <circle cx="70" cy="70" r="70"></circle>
+        <circle cx="70" cy="70" r="70"></circle>
+      </svg>
+      <div class="number">
+        <h2>33<span>%</span></h2>
+      </div>
+</div>
+</div> 
+</div>
   
-    what areas would you like to focus on ??
+
+    <script>
+//      const ProgressRing = Vue.component('progress-ring', {
+//   props: {
+//     radius: Number,
+//     progress: Number,
+//     stroke: Number
+//   },
+//   data() {
+//     const normalizedRadius = this.radius - this.stroke * 2;
+//     const circumference = normalizedRadius * 2 * Math.PI;
+
+//     return {
+//       normalizedRadius,
+//       circumference
+//     };
+//   }
+// });
+// computed: {
+//   strokeDashoffset() {
+//     return this._circumference - percent / 100 * this._circumference;
+//   }
+// }
+    </script>
+
     
     <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
@@ -53,5 +182,8 @@
         
         
     </script>
+    <script type="application/ld+json" class="rank-math-schema">
+      {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://dashboardpack.com/#organization","name":"DashboardPack","url":"https://dashboardpack.com","sameAs":["https://www.facebook.com/pages/category/Information-Technology-Company/DashboardPack-2572210363005483/","https://twitter.com/DashboardPack"],"logo":{"@type":"ImageObject","@id":"https://dashboardpack.com/#logo","url":"https://149842454.v2.pressablecdn.com/wp-content/uploads/2022/02/7d84a2769b34d19b33bad710616b910c.webp","contentUrl":"https://149842454.v2.pressablecdn.com/wp-content/uploads/2022/02/7d84a2769b34d19b33bad710616b910c.webp","caption":"DashboardPack","inLanguage":"en-US","width":"160","height":"160"}},{"@type":"WebSite","@id":"https://dashboardpack.com/#website","url":"https://dashboardpack.com","name":"DashboardPack","publisher":{"@id":"https://dashboardpack.com/#organization"},"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://dashboardpack.com/live-demo-preview/#webpage","url":"https://dashboardpack.com/live-demo-preview/","name":"Live Demo Preview - DashboardPack","datePublished":"2019-01-08T10:57:27+00:00","dateModified":"2019-01-08T10:58:10+00:00","isPartOf":{"@id":"https://dashboardpack.com/#website"},"inLanguage":"en-US"},{"@type":"Person","@id":"https://dashboardpack.com/live-demo-preview/#author","name":"Aigars Silkalns","image":{"@type":"ImageObject","@id":"https://secure.gravatar.com/avatar/ca5d11b1d4ca059cb7089e2636ec952b?s=96&amp;d=mm&amp;r=g","url":"https://secure.gravatar.com/avatar/ca5d11b1d4ca059cb7089e2636ec952b?s=96&amp;d=mm&amp;r=g","caption":"Aigars Silkalns","inLanguage":"en-US"},"sameAs":["https://dashboardpack.mystagingwebsite.com"],"worksFor":{"@id":"https://dashboardpack.com/#organization"}},{"@type":"Article","headline":"Live Demo Preview - DashboardPack","datePublished":"2019-01-08T10:57:27+00:00","dateModified":"2019-01-08T10:58:10+00:00","author":{"@id":"https://dashboardpack.com/live-demo-preview/#author","name":"Aigars Silkalns"},"publisher":{"@id":"https://dashboardpack.com/#organization"},"name":"Live Demo Preview - DashboardPack","@id":"https://dashboardpack.com/live-demo-preview/#richSnippet","isPartOf":{"@id":"https://dashboardpack.com/live-demo-preview/#webpage"},"inLanguage":"en-US","mainEntityOfPage":{"@id":"https://dashboardpack.com/live-demo-preview/#webpage"}}]}
+  </script>
 
 </body>

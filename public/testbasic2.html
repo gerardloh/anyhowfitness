@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Chart.js Tutorial</title>
+
+    <!-- Chart.js import -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <!-- Bootstrap core CSS-->
+    <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Bootstrap core JS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+
+  </head>
+
+ <style>
+ 	body {
+    	margin-top: 20px;
+	}
+ </style>
+
+  <body id="page-top">
+
+    <div id="wrapper">
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <center>
+          	<h2>World Population Demographics: A Tutorial on Chart.js</h2>
+          	<h4>Asmi Kumar</h4>
+          </center>
+
+          <p></p>
+
+          <style type="text/css">
+          	  table#dataTable {
+			  	table-layout:fixed;
+			}
+          </style>
+
+          	<!-- DataTables Example -->
+            <div class="card mb-3">
+              <div class="card-header">
+                <i class="fas fa-table"></i>
+                Distribution of the global population in 2020, by age group and world region (%)</div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable">
+                    <thead>
+                      <tr>
+                        <th>World region</th>
+                        <th>0-14</th>
+                        <th>15-24</th>
+                        <th>25-49</th>
+                        <th>50 and over</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Asia</td>
+                        <td>23.5</td>
+                        <td>15.4</td>
+                        <td>36.6</td>
+                        <td>24.5</td>
+                      </tr>
+                      <tr>
+                        <td>Africa</td>
+                        <td>40.3</td>
+                        <td>19.3</td>
+                        <td>29.2</td>
+                        <td>11.2</td>
+                      </tr>
+                      <tr>
+                        <td>Latin America/Caribbean</td>
+                        <td>23.9</td>
+                        <td>16.5</td>
+                        <td>36.2</td>
+                        <td>23.4</td>
+                      </tr>
+                      <tr>
+                        <td>Europe</td>
+                        <td>16.1</td>
+                        <td>10.3</td>
+                        <td>34.1</td>
+                        <td>39.6</td>
+                      </tr>
+                      <tr>
+                        <td>Northern America</td>
+                        <td>18.1</td>
+                        <td>13.0</td>
+                        <td>33.0</td>
+                        <td>35.9</td>
+                      </tr>
+                      <tr>
+                        <td>Oceania</td>
+                        <td>23.6</td>
+                        <td>14.3</td>
+                        <td>33.6</td>
+                        <td>28.5</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          
+          <!-- Line Chart Example -->
+          <div class="row">
+          	<div class="col-lg-6">
+              <div class="card mb-3">
+	            <div class="card-header">
+	                Workouts completed </div>
+	            <div class="card-body">
+                  <canvas id="line"></canvas>
+                </div>
+              </div>
+            </div>
+            
+
+            <!-- Bar Chart Example -->
+            <!-- <div class="col-lg-6">
+              <div class="card mb-3">
+                <div class="card-header">
+                  India vs. China vs. United States population (in millions)</div>
+                <div class="card-body">
+                  <canvas id="bar"></canvas>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Scatter Chart Example -->
+          <!-- <div class="row">
+            <div class="col-lg-6">
+              <div class="card mb-3">
+                <div class="card-header">
+                  GDP per capita vs. life expectancy at birth</div>
+                <div class="card-body">
+                  <canvas id="scatter"></canvas>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- Pie Chart Example -->
+            <div class="col-lg-6">
+              <div class="card mb-3">
+                <div class="card-header">
+                  Focus Areas (%)</div>
+                <div class="card-body">
+                  <canvas id="pie" width="100%" height="50"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Demo scripts for this page-->
+    <script src="js/line.js"></script>
+    <script src="js/bar.js"></script>
+    <script src="js/scatter.js"></script>
+    <script src="js/pie.js"></script>
+
+  </body>
+  <script>
+    // Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#292b2c';
+
+// Pie Chart Example
+var ctx = document.getElementById("pie").getContext('2d');
+var pie = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ["aerobics", "strength", "flexibility", "core"],
+    datasets: [{
+      backgroundColor: [
+        "#2ecc71",
+        "#3498db",
+        "#9b59b6",
+        "#e74c3c",
+      ],
+      data: [18.1, 13.0, 33.0, 35.9]
+    }]
+  }
+});
+// Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#292b2c';
+
+// Area Chart Example
+var ctx = document.getElementById("line");
+var line = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ["week 1", "week 2", "week 3", "week 4", "week 5", "week 6"],
+    datasets: [{
+      label: "Number of workouts completed",
+      lineTension: false,
+      fill: false,
+      backgroundColor: "rgba(2,117,216,1)",
+      borderColor: "rgba(2,117,216,1)",
+      pointRadius: 10,
+      pointBackgroundColor: "rgba(2,117,216,1)",
+      pointBorderColor: "rgba(255,255,255,0.8)",
+      pointHoverRadius: 10,
+      pointHoverBackgroundColor: "rgba(2,117,216,1)",
+      pointHitRadius: 50,
+      pointBorderWidth: 2,
+      data: [2, 3, 4, 3, 1, 1],
+    },
+    // {
+    //   label: "Another Dataset",
+    //   lineTension: false,
+    //   fill: false,
+    //   backgroundColor: "rgba(204,102,0,0.2)",
+    //   borderColor: "rgba(204,102,0,1)",
+    //   pointRadius: 10,
+    //   pointBackgroundColor: "rgba(204,102,0,1)",
+    //   pointBorderColor: "rgba(255,255,255,0.8)",
+    //   pointHoverRadius: 10,
+    //   pointHoverBackgroundColor: "rgba(204,102,0,1)",
+    //   pointHitRadius: 50,
+    //   pointBorderWidth: 2,
+    //   data: [3.005, 3.090, 2.865, 2.749, 2.749, 2.736, 2.510, 2.323, 2.247, 2.203, 2.168, 2.075],
+    // }
+    ],
+  },
+  options: {
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'date'
+        },
+        gridLines: {
+          display: false
+        },
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+        },
+        gridLines: {
+          color: "rgba(0, 0, 0, .125)",
+        }
+      }],
+    },
+    legend: {
+      display: true
+    }
+  }
+});
+  </script>
+
+</html>
