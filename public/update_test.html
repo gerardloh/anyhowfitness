@@ -152,7 +152,7 @@
 
             <div class="form-group btns-group" style="margin-bottom: 2%;"> 
                 <a href="#" class="btn btn-outline-primary btn-prev" id="previous">Previous</a>
-                <button type="submit" class="btn btn-success" id="submit">Submit</button>
+                <button type="submit" class="btn btn-success" id="submit">Done</button>
                 <button type="btn" class="btn btn-success" style="display: none;" id="gotologin">Go to login page</button>
             </div>
             <p id="error-header"></p>
@@ -240,73 +240,32 @@
         const auth = getAuth(app);
 		const database = getDatabase(app)
 
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // User is signed in, see docs for a list of available properties
-                // https://firebase.google.com/docs/reference/js/auth.user
-				document.getElementById("yum1").addEventListener("click", function () {
-					window.location.href = 'recipefinder.html'
-				})
-				document.getElementById("shag1").addEventListener("click", function () {
-					window.location.href = 'workout-planner.html'
-				})
-                const uid = user.uid;
-				const dbRef = ref(getDatabase());
-				var link = "userData/" + uid
-				get(child(dbRef, link)).then((snapshot) => {
-				if (snapshot.exists()) {
-					var current_user = snapshot.val().username
-					// <div id='app'></div>
-					const app = Vue.createApp({ 
-						data() { 
-							return { 
-								  // key: value
-								  username : current_user
-							};
-						}, // data
-						 computed: { 
-						     display() {
-								return "Welcome back, " + current_user + "!"
-							}  
-						 }, // computed
-						// created() { 
-						// },
-						// mounted() { 
-						// },
-						methods: {
-							methodName() {
-								
-							}
-						} // methods
-					});
-					const vm = app.mount('#app'); 
-					console.log(snapshot.val());
-				} else {
-					console.log("No data available");
-				}
-				}).catch((error) => {
-				console.error(error);
-				});
-                // ...
-            } else {
-                // User is signed out
-                // ...
-                location.replace("index.html")
-                console.log("wrong")
-            }
-            });
-        
-        //Log Out
-        document.getElementById("logout").addEventListener("click", function (){
-            signOut(auth).then(() => {
-            // Sign-out successful.
-            location.replace("index.html")
-            }).catch((error) => {
-            // An error happened.
-            console.log("Fail")
-            });
+        function submitForm(e){
+            e.preventDefault();
 
-        })
+            const prevWorkouts = getElementVal();
+            const prevWorkoutsCompleted = getElementVal();
+            const prevMeals = getElementVal();
+            const prevMealsCompleted = getElementVal();
+
+            const nextWorkouts = getElementVal();
+            const nextMeals = getElementVal()
+
+            
+            const user = userCredential.user;
+            var id = user.uid
+                    function writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions) {
+                    const db = getDatabase();
+                    set(ref(db, 'userData/' + id), {
+                        username: name,
+                        chosensessions:chosenWorkoutSessions,
+                        completedsessions: completedWorkoutSessions,
+                
+                    });
+                    }
+            writeUserData(id, name, chosenWorkoutSessions, completedWorkoutSessions)
+
+        }
 
 </script>
 
