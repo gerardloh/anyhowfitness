@@ -329,6 +329,11 @@ a {
   padding: 0px;
 }
 
+.trainer-thumb img{
+  width: 100%; 
+  height: 175px; 
+}
+
 #trainer .trainer-thumb .trainer-overlay {
   background: #26253a;
   color: #ffffff;
@@ -452,7 +457,7 @@ a {
 }
 
 #blog .blog-thumb:hover {
-  background: url('../images/blog-thumb.jpg');
+  background: url('../images/purple.png');
    -webkit-background-size: cover;
   background-size: cover;
   background-position: center center;
