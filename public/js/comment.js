@@ -1,10 +1,10 @@
 const data = {
 currentUser: {
     image: {
-    png: "./images/avatars/image-juliusomo.png",
-    webp: "./images/avatars/image-juliusomo.webp",
+    png: "./images/avatars/image-amyrobson.png",
+    webp: "./images/avatars/image-amyrobson.webp",
     },
-    username: "juliusomo",
+    username: "amyrobson",
 },
 comments: [
     // {
