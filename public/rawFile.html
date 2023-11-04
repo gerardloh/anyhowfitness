@@ -5,209 +5,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
+    <style>
+        .modalDialog {
+            position: fixed;
+            font-family: Arial, Helvetica, sans-serif;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 99999;
+            opacity:0;
+            -webkit-transition: opacity 400ms ease-in;
+            -moz-transition: opacity 400ms ease-in;
+            transition: opacity 400ms ease-in;
+            pointer-events: none;
+        }
+        .modalDialog:target {
+            opacity:1;
+            pointer-events: auto;
+        }
+        .modalDialog > div {
+            width: 400px;
+            position: relative;
+            margin: 10% auto;
+            padding: 5px 20px 13px 20px;
+            border-radius: 10px;
+            background: #fff;
+            background: -moz-linear-gradient(#fff, #999);
+            background: -webkit-linear-gradient(#fff, #999);
+            background: -o-linear-gradient(#fff, #999);
+        }
+        .close {
+            background: #606061;
+            color: #FFFFFF;
+            line-height: 25px;
+            position: absolute;
+            right: -12px;
+            text-align: center;
+            top: -10px;
+            width: 24px;
+            text-decoration: none;
+            font-weight: bold;
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 12px;
+            border-radius: 12px;
+            -moz-box-shadow: 1px 1px 3px #000;
+            -webkit-box-shadow: 1px 1px 3px #000;
+            box-shadow: 1px 1px 3px #000;
+        }
+        .close:hover {
+            background: #00d9ff;
+        }
+        .getAssignment{
+        cursor:pointer;
+        }
+    </style>
 </head>
 <body>
     
+<input type="button" id="openModalBtn" value="Open Modal">
 
+<div id="openModal1" class="modalDialog" data-modalorder=1>
+    <div>
+    <input class="getAssignment2" type="button" value="Previous">
+    <input class="getAssignment" type="button" value="Next">
+    <a href="#close" title="Close" class="close">X</a>
+<h2>Modal Box 1</h2>
+        <p>This is a sample modal box that can be created using the powers of CSS3.</p>
+        <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+    </div>
+</div>
+
+<div id="openModal2" class="modalDialog" data-modalorder=2>
+    <div>	
+<input class="getAssignment2" type="button" value="Previous">
+<input class="getAssignment" type="button" value="Next">
+<a href="#close" title="Close" class="close">X</a>
+<h2>Modal Box 2</h2>
+        <p>This is a sample modal box that can be created using the powers of CSS3.</p>
+        <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+    </div>
+</div>
+
+<div id="openModal3" class="modalDialog" data-modalorder=3>
+    <div>	
+    <input class="getAssignment2" type="button" value="Previous">
+        <input class="getAssignment" type="button" value="Next">
+<a href="#close" title="Close" class="close">X</a>
+<h2>Modal Box 3</h2>
+        <p>This is a sample modal box that can be created using the powers of CSS3.</p>
+        <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+    </div>
+</div>
     
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">
-    Modal 1 
-    </button>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-       <div class="modal-dialog">
-          <div class="modal-content">
-             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title 1</h4>
-             </div>
-             <div class="modal-body">
-                <form role="form" action="" method="post" class="registration-form">
-                   <fieldset style="display: block;">
-                      <div class="form-top">
-                         <div class="form-top-left">
-                            <h3>Step 1 / 3</h3>
-                            <p>Tell us who you are:</p>
-                         </div>
-                         <div class="form-top-right">
-                            <i class="fa fa-user"></i>
-                         </div>
-                      </div>
-                      <div class="form-bottom">
-                         <div class="form-group">
-                            <label class="sr-only" for="form-first-name">First name</label>
-                            <input name="form-first-name" placeholder="First name..." class="form-first-name form-control input-error" id="form-first-name" type="text">
-                         </div>
-                         <div class="form-group">
-                            <label class="sr-only" for="form-last-name">Last name</label>
-                            <input name="form-last-name" placeholder="Last name..." class="form-last-name form-control input-error" id="form-last-name" type="text">
-                         </div>
-                         <div class="form-group">
-                            <label class="sr-only" for="form-about-yourself">About yourself</label>
-                            <textarea name="form-about-yourself" placeholder="About yourself..." class="form-about-yourself form-control input-error" id="form-about-yourself"></textarea>
-                         </div>
-                         <button type="button" class="btn btn-next">Next</button>
-                      </div>
-                   </fieldset>
-                   
-                </form>
-             </div>
-             <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-prev">Prev</button>
-                <button type="button" class="btn btn-default btn-next">Next</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-             </div>
-          </div>
-       </div>
-    </div>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">
-    Modal 2
-    </button>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-       <div class="modal-dialog">
-          <div class="modal-content">
-             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title 2</h4>
-             </div>
-             <div class="modal-body">
-               <form>
-                <fieldset>
-                      <div class="form-top">
-                         <div class="form-top-left">
-                            <h3>Step 2 / 3</h3>
-                            <p>Set up your account:</p>
-                         </div>
-                         <div class="form-top-right">
-                            <i class="fa fa-key"></i>
-                         </div>
-                      </div>
-                      <div class="form-bottom">
-                         <div class="form-group">
-                            <label class="sr-only" for="form-email">Email</label>
-                            <input name="form-email" placeholder="Email..." class="form-email form-control" id="form-email" type="text">
-                         </div>
-                         <div class="form-group">
-                            <label class="sr-only" for="form-password">Password</label>
-                            <input name="form-password" placeholder="Password..." class="form-password form-control" id="form-password" type="password">
-                         </div>
-                         <div class="form-group">
-                            <label class="sr-only" for="form-repeat-password">Repeat password</label>
-                            <input name="form-repeat-password" placeholder="Repeat password..." class="form-repeat-password form-control" id="form-repeat-password" type="password">
-                         </div>
-                         <button type="button" class="btn btn-previous">Previous</button>
-                         <button type="button" class="btn btn-next">Next</button>
-                      </div>
-                   </fieldset>
-               </form>
-             </div>
-             <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-prev">Prev</button>
-                <button type="button" class="btn btn-default btn-next">Next</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-             </div>
-          </div>
-       </div>
-    </div>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal3">
-     Modal 3
-    </button>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-       <div class="modal-dialog">
-          <div class="modal-content">
-             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title 3</h4>
-             </div>
-             <div class="modal-body">
-               <form>
-                <fieldset>
-                      <div class="form-top">
-                         <div class="form-top-left">
-                            <h3>Step 3 / 3</h3>
-                            <p>Social media profiles:</p>
-                         </div>
-                         <div class="form-top-right">
-                            <i class="fa fa-twitter"></i>
-                         </div>
-                      </div>
-                      <div class="form-bottom">
-                         <div class="form-group">
-                            <label class="sr-only" for="form-facebook">Facebook</label>
-                            <input name="form-facebook" placeholder="Facebook..." class="form-facebook form-control" id="form-facebook" type="text">
-                         </div>
-                         <div class="form-group">
-                            <label class="sr-only" for="form-twitter">Twitter</label>
-                            <input name="form-twitter" placeholder="Twitter..." class="form-twitter form-control" id="form-twitter" type="text">
-                         </div>
-                         <div class="form-group">
-                            <label class="sr-only" for="form-google-plus">Google plus</label>
-                            <input name="form-google-plus" placeholder="Google plus..." class="form-google-plus form-control" id="form-google-plus" type="text">
-                         </div>
-                         <button type="button" class="btn btn-previous">Previous</button>
-                         <button type="submit" class="btn">Sign me up!</button>
-                      </div>
-                   </fieldset>
-               </form>
-             </div>
-             <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-prev">Prev</button>
-                <button type="button" class="btn btn-default btn-next">Next</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-             </div>
-          </div>
-       </div>
-    </div>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal4">
-    Modal 4
-    </button>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-       <div class="modal-dialog">
-          <div class="modal-content">
-             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title 4</h4>
-             </div>
-             <div class="modal-body">
-                Thank For Register
-             </div>
-             <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-prev">Prev</button>
-                <button type="button" class="btn btn-default btn-next">Next</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-             </div>
-          </div>
-       </div>
-    </div>
-    
-<script>
-    $("div[id^='myModal']").each(function(){
-  
-        var currentModal = $(this);
+    <script>
+        $(document).ready(function() {
+            var data=[];
+        currentModal = 0;
         
-        //click next
-        currentModal.find('.btn-next').click(function(){
-          currentModal.modal('hide');
-          currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show'); 
-        });
+        $('.modalDialog').each(function(){
+            data.push({
+            id: $(this).attr('id'),
+            order: $(this).data('modalorder')
+            });
+        })
+            
+            $('#openModalBtn').click(function(){
+            currentModal = 0;
+            window.location.href = "#" + data[currentModal].id;
+            $('#'+data[currentModal].id).find('.getAssignment2').prop('disabled', true);
+        })
         
-        //click prev
-        currentModal.find('.btn-prev').click(function(){
-          currentModal.modal('hide');
-          currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show'); 
-        });
-      
-      });
-      
-</script>    
+        //prev
+        $('.getAssignment2').click(function(){
+            if (currentModal>0) {
+                currentModal--;
+            window.location.href = "#" + data[currentModal].id;
+            } else {
+            
+                window.location.href = '#'
+            }
+        })
+        
+        //next
+        $('.getAssignment').click(function(){
+            if (currentModal<data.length - 1) {
+                currentModal++;
+            if (currentModal===data.length - 1) $('#'+data[currentModal].id).find('.getAssignment').prop('disabled', true);
+            window.location.href = "#" + data[currentModal].id;
+            } else {
+                window.location.href = '#'
+            }
+        })
+        
+        })
+    </script>
 </body>
 </html>
