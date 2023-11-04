@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+    <button id="startButton">Start Messages</button>
+    <button id="stopButton">Stop Messages</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+        var name = "Rachel";
+
+        function showMessage() {
+            Swal.fire({
+                title: 'Hi ' + name + '!',
+                text: "Let's complete your weekly Check-In!",
+                imageUrl: 'img.png',
+                imageWidth: 300,
+                imageHeight: 200,
+                imageAlt: 'Custom image',
+                confirmButtonText: 'Complete Weekly Check-In', // Change the text of the Confirm button
+                showCancelButton: true, // Display a Cancel button
+                cancelButtonText: 'Later', // Change the text of the Cancel button
+            })
+            .then((result) => {
+                // If the user clicks on "See Weekly Update" button, redirect to weekly_update.html
+                if (result.isConfirmed) {
+                    window.location.href = "weekly_update.html";
+                }
+            });
+        }
+
+
+        let intervalId = null;
+
+        document.getElementById('startButton').addEventListener('click', () => {
+            if (intervalId === null) {
+                showMessage();
+                intervalId = setInterval(showMessage, 10000); 
+                // One week is (7 days * 24 hours * 60 minutes * 60 seconds * 1000 milliseconds)
+            }
+        });
+
+        document.getElementById('stopButton').addEventListener('click', () => {
+            if (intervalId !== null) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        });
+    </script>
+</body>
+</html>

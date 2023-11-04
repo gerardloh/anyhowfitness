@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- Chart.js import -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <!-- Bootstrap core CSS-->
+    <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Bootstrap core JS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+
+    <style>
+        .swal-wide{
+    width:1500px !important;
+},
+swal({
+    title: "Some Title",
+    html: "<b>Your HTML</b>",
+    width: '800px'
+})
+    </style>
+    <style>
+        body {
+           margin-top: 20px;
+       }
+    </style>
+   
+     <body id="page-top">
+   
+       <div id="wrapper">
+   
+         <div id="content-wrapper">
+   
+           <div class="container-fluid">
+   
+             <center>
+                 <h2></h2>
+                 <h4></h4>
+             </center>
+   
+             <p></p>
+   
+             <style type="text/css">
+                   table#dataTable {
+                     table-layout:fixed;
+               }
+             </style>
+    
+</head>
+<body>
+    <button id="test">Open Popup</button>
+    <div class="row">
+        <div class="col-lg-6">
+        <div class="card mb-3">
+          <div class="card-header">
+              Workouts completed </div>
+          <div class="card-body">
+            <canvas id="line"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card mb-3">
+          <div class="card-header">
+            Focus Areas (%)</div>
+          <div class="card-body">
+            <canvas id="pie" width="100%" height="50"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+<script src="js/line.js"></script>
+<script src="js/pie.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        var name = "Rachel";
+
+        document.getElementById('test').addEventListener('click', () => {
+
+            const swalContent = document.createElement('div');
+
+            // Create an input element of type range
+            const rangeInput = document.createElement('input');
+            rangeInput.setAttribute('type', 'range');
+            rangeInput.setAttribute('class', 'form-range');
+            rangeInput.setAttribute('name', 'workoutsCount');
+            rangeInput.setAttribute('id', 'workouts_thisWeek');
+            rangeInput.setAttribute('min', '0');
+            rangeInput.setAttribute('max', '5');
+            rangeInput.setAttribute('required', 'true');
+
+            // Create an output element for each range value
+            const outputContainer = document.createElement('div');
+            outputContainer.setAttribute('class', 'output-container');
+            for (let i = 0; i <= 5; i++) {
+                const outputElement = document.createElement('output');
+                outputElement.setAttribute('for', 'workouts_thisWeek');
+                outputElement.textContent = i + 'workout ';
+                outputContainer.appendChild(outputElement);
+            }
+
+            // Append the range input and output container to the Swal content
+            swalContent.appendChild(rangeInput);
+            swalContent.appendChild(outputContainer);
+
+            
+
+            
+            Swal.fire({
+                title: "Let's complete your Weekly Check-In!",
+                html: swalContent,
+                focusConfirm: false,
+                showCancelButton: true,
+                confirmButtonText: 'Next',
+                cancelButtonText: 'Cancel',
+                preConfirm: () => {
+                    const name = document.getElementById('name').value;
+                    const gender = document.querySelector('input[name="gender"]:checked');
+                    if (!name) {
+                        Swal.showValidationMessage('Your name is required');
+                    } else if (!gender) {
+                        Swal.showValidationMessage('Please select your gender');
+                    }
+                    return { name: name, gender: gender ? gender.value : '' };
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    secondPage();
+                }
+            });
+        
+        });    
+        var ctx = document.getElementById("pie").getContext('2d');
+var pie = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ["aerobics", "strength", "flexibility", "core"],
+    datasets: [{
+      backgroundColor: [
+        "#2ecc71",
+        "#3498db",
+        "#9b59b6",
+        "#e74c3c",
+      ],
+      data: [18.1, 13.0, 33.0, 35.9]
+    }]
+  }
+});
+// Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#292b2c';
+
+var ctx = document.getElementById("line");
+var line = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ["week 1", "week 2", "week 3", "week 4", "week 5", "week 6"],
+    datasets: [{
+      label: "Number of workouts completed",
+      lineTension: false,
+      fill: false,
+      backgroundColor: "rgba(2,117,216,1)",
+      borderColor: "rgba(2,117,216,1)",
+      pointRadius: 10,
+      pointBackgroundColor: "rgba(2,117,216,1)",
+      pointBorderColor: "rgba(255,255,255,0.8)",
+      pointHoverRadius: 10,
+      pointHoverBackgroundColor: "rgba(2,117,216,1)",
+      pointHitRadius: 50,
+      pointBorderWidth: 2,
+      data: [2, 3, 4, 3, 1, 1],
+    },
+    // {
+    //   label: "Another Dataset",
+    //   lineTension: false,
+    //   fill: false,
+    //   backgroundColor: "rgba(204,102,0,0.2)",
+    //   borderColor: "rgba(204,102,0,1)",
+    //   pointRadius: 10,
+    //   pointBackgroundColor: "rgba(204,102,0,1)",
+    //   pointBorderColor: "rgba(255,255,255,0.8)",
+    //   pointHoverRadius: 10,
+    //   pointHoverBackgroundColor: "rgba(204,102,0,1)",
+    //   pointHitRadius: 50,
+    //   pointBorderWidth: 2,
+    //   data: [3.005, 3.090, 2.865, 2.749, 2.749, 2.736, 2.510, 2.323, 2.247, 2.203, 2.168, 2.075],
+    // }
+    ],
+  },
+  options: {
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'date'
+        },
+        gridLines: {
+          display: false
+        },
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+        },
+        gridLines: {
+          color: "rgba(0, 0, 0, .125)",
+        }
+      }],
+    },
+    legend: {
+      display: true
+    }
+  }
+});
+    
+    </script>
+</body>
+</html>
