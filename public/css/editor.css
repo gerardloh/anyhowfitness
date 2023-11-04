@@ -1,5 +1,9 @@
-*{
-    font: source-sans-pro;
+
+body {
+    background: #ffffff;
+    font-family: 'Source Sans Pro', sans-serif;
+    /* font-style: normal;
+    font-weight: 300; */
 }
 
 .banner{
@@ -91,15 +95,36 @@ textarea::-webkit-scrollbar-thumb{
     margin: 5px; 
 }
 
-.btn{
+.blog-options .btn{
     border: none;
     outline: none;
     cursor: pointer;
+    width: auto;
+    padding: 15px; 
+    border-radius: 10px; 
 }
-
-.btn.grey{
+/* 
+.btn .grey{
     background: #a5a5a5;
     color: #fff;
     margin-left: 20px;
     font-size: 14px;
+} */
+
+.btn{
+    text-align: center; 
+    font-size: 15px;
+
+}
+
+.publish-btn{
+    background-color: #2d2d2d;
+    color: white;
+}
+
+.upload-btn{
+    background-color:rgb(102, 101, 101);
+    color: white;
+    margin-left: 20px; 
+
 }
