@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--  -->
+    <!-- Primary Meta Tags -->
+    <title>Interactive comments section | Frontend Mentor | Alamin</title>
+    <meta
+      name="title"
+      content="Interactive comments section | Frontend Mentor | Alamin"
+    />
+    <meta
+      name="description"
+      content="Nested comment section with Vanilla JS, utilizing MVC & Pub-Sub patterns."
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://interactive-comments-section-codepapa360.vercel.app/"
+    />
+    <meta
+      property="og:title"
+      content="Interactive comments section | Frontend Mentor | Alamin"
+    />
+    <meta
+      property="og:description"
+      content="Nested comment section with Vanilla JS, utilizing MVC & Pub-Sub patterns."
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/CodePapa360/Interactive-comments-section/main/screenshots/Interactive-comments-section-preview-codepapa360.png"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https://interactive-comments-section-codepapa360.vercel.app/"
+    />
+    <meta
+      property="twitter:title"
+      content="Interactive comments section | Frontend Mentor | Alamin"
+    />
+    <meta
+      property="twitter:description"
+      content="Nested comment section with Vanilla JS, utilizing MVC & Pub-Sub patterns."
+    />
+    <meta
+      property="twitter:image"
+      content="https://raw.githubusercontent.com/CodePapa360/Interactive-comments-section/main/screenshots/Interactive-comments-section-preview-codepapa360.png"
+    />
+
+    <!-- Optional -->
+    <meta name="author" content="Alamin , CodePapa360" />
+    <meta
+      name="keywords"
+      content="Nested comments, MVC pattern, Pub-Sub design pattern, Full-stack CRUD app, Comment and reply system, DOM manipulation, Responsive design, Frontend development, JavaScript project, FrontendMentor project"
+    />
+    <!--  -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <!--  -->
+    <script defer src="./bundles/controller.js"></script>
+    <link rel="stylesheet" href="./bundles/main.css" />
+    <!--  -->
+  </head>
+  <body>
+    <!--  -->
+    <div class="dark-mode-container">
+      <input
+        type="checkbox"
+        class="dark-mode-checkbox"
+        id="dark-mode-checkbox"
+      />
+      <label for="dark-mode-checkbox" class="dark-mode-lebel"></label>
+    </div>
+    <!--  -->
+    <main>
+      <div class="container">
+        <div class="all-comments-container"></div>
+
+        <!-- New comment -->
+        <div class="write-comment new-comment">
+          <div class="write-comment-avater">
+            <img
+              src="./images/avatars/image-juliusomo.png"
+              alt="Juliusomo's photo"
+            />
+          </div>
+
+          <textarea
+            class="write-comment-field write-main-comment-field"
+            rows="3"
+            placeholder="Add a comment..."
+          ></textarea>
+
+          <button
+            class="write-comment-btn write-main-comment-btn"
+            type="button"
+          >
+            Send
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="attribution-wrapper">
+        <div class="attribution">
+          <span>
+            Coded by
+            <a
+              class="attb-link"
+              href="https://twitter.com/CodePapa360"
+              target="_blank"
+              >Alamin</a
+            >
+          </span>
+          <span>
+            Challenge by
+            <a
+              class="attb-link attb-fem"
+              href="https://www.frontendmentor.io/profile/CodePapa360"
+              target="_blank"
+              >Frontend Mentor</a
+            >
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

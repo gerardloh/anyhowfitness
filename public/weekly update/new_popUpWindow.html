@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        .swal-wide{
+    width:1500px !important;
+},
+swal({
+    title: "Some Title",
+    html: "<b>Your HTML</b>",
+    width: '800px'
+})
+    </style>
+</head>
+<body>
+    <button id="test">Open Popup</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        var name = "Rachel";
+
+        document.getElementById('test').addEventListener('click', () => {
+
+            const swalContent = document.createElement('div');
+
+            // Create an input element of type range
+            const rangeInput = document.createElement('input');
+            rangeInput.setAttribute('type', 'range');
+            rangeInput.setAttribute('class', 'form-range');
+            rangeInput.setAttribute('name', 'workoutsCount');
+            rangeInput.setAttribute('id', 'workouts_thisWeek');
+            rangeInput.setAttribute('min', '0');
+            rangeInput.setAttribute('max', '5');
+            rangeInput.setAttribute('required', 'true');
+
+            // Create an output element for each range value
+            const outputContainer = document.createElement('div');
+            outputContainer.setAttribute('class', 'output-container');
+            for (let i = 0; i <= 5; i++) {
+                const outputElement = document.createElement('output');
+                outputElement.setAttribute('for', 'workouts_thisWeek');
+                outputElement.textContent = i + 'workout ';
+                outputContainer.appendChild(outputElement);
+            }
+
+            // Append the range input and output container to the Swal content
+            swalContent.appendChild(rangeInput);
+            swalContent.appendChild(outputContainer);
+
+            
+
+            
+            Swal.fire({
+                title: "Let's complete your Weekly Check-In!",
+                html: swalContent,
+                focusConfirm: false,
+                showCancelButton: true,
+                confirmButtonText: 'Next',
+                cancelButtonText: 'Cancel',
+                preConfirm: () => {
+                    const name = document.getElementById('name').value;
+                    const gender = document.querySelector('input[name="gender"]:checked');
+                    if (!name) {
+                        Swal.showValidationMessage('Your name is required');
+                    } else if (!gender) {
+                        Swal.showValidationMessage('Please select your gender');
+                    }
+                    return { name: name, gender: gender ? gender.value : '' };
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    secondPage();
+                }
+            });
+        
+        });    
+
+    
+    </script>
+</body>
+</html>
