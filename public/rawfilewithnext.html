@@ -8,7 +8,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Chart.js import -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
+    <!-- Bootstrap core CSS-->
+    <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Bootstrap core JS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+    <!-- demo scripts -->
+    <script src="js/line.js"></script>
+    <script src="js/bar.js"></script>
+    <script src="js/scatter.js"></script>
+    <script src="js/pie.js"></script>
 
     <style>
         .modalDialog {
@@ -125,6 +138,26 @@
 
         <!-- <p>This is a sample modal</p>
         <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p> -->
+        <div class="row">
+            <div class="col-lg-6">
+            <div class="card mb-3">
+              <div class="card-header">
+                  Workouts completed </div>
+              <div class="card-body">
+                <canvas id="line"></canvas>
+              </div>
+            </div>
+          </div>
+          </div>
+        <div class="col-lg-6">
+            <div class="card mb-3">
+              <div class="card-header">
+                Focus Areas (%)</div>
+              <div class="card-body">
+                <canvas id="pie" width="100%" height="50"></canvas>
+              </div>
+            </div>
+          </div>
     </div>
 </div>
 <div id="openModal5" class="modalDialog" data-modalorder=5>
@@ -133,8 +166,17 @@
         <input class="getAssignment" type="button" value="Next">
 <a href="#close" title="Close" class="close">X</a>
 <h2>Here are your focus area stats!</h2>
-        <p>This is a sample modal box that can be created using the powers of CSS3.</p>
-        <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+        <!-- <p>This is a sample modal box that can be created using the powers of CSS3.</p>
+        <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p> -->
+        <div class="col-lg-6">
+            <div class="card mb-3">
+              <div class="card-header">
+                Focus Areas (%)</div>
+              <div class="card-body">
+                <canvas id="pie" width="100%" height="50"></canvas>
+              </div>
+            </div>
+          </div>
     </div>
 </div>
 <div id="openModal6" class="modalDialog" data-modalorder=6>
@@ -190,6 +232,88 @@
         })
         
         })
+        var ctx = document.getElementById("pie").getContext('2d');
+var pie = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ["aerobics", "strength", "flexibility", "core"],
+    datasets: [{
+      backgroundColor: [
+        "#2ecc71",
+        "#3498db",
+        "#9b59b6",
+        "#e74c3c",
+      ],
+      data: [18.1, 13.0, 33.0, 35.9]
+    }]
+  }
+});
+// Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#292b2c';
+// Area Chart Example
+var ctx = document.getElementById("line");
+var line = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ["week 1", "week 2", "week 3", "week 4", "week 5", "week 6"],
+    datasets: [{
+      label: "Number of workouts completed",
+      lineTension: false,
+      fill: false,
+      backgroundColor: "rgba(2,117,216,1)",
+      borderColor: "rgba(2,117,216,1)",
+      pointRadius: 10,
+      pointBackgroundColor: "rgba(2,117,216,1)",
+      pointBorderColor: "rgba(255,255,255,0.8)",
+      pointHoverRadius: 10,
+      pointHoverBackgroundColor: "rgba(2,117,216,1)",
+      pointHitRadius: 50,
+      pointBorderWidth: 2,
+      data: [2, 3, 4, 3, 1, 1],
+    },
+    // {
+    //   label: "Another Dataset",
+    //   lineTension: false,
+    //   fill: false,
+    //   backgroundColor: "rgba(204,102,0,0.2)",
+    //   borderColor: "rgba(204,102,0,1)",
+    //   pointRadius: 10,
+    //   pointBackgroundColor: "rgba(204,102,0,1)",
+    //   pointBorderColor: "rgba(255,255,255,0.8)",
+    //   pointHoverRadius: 10,
+    //   pointHoverBackgroundColor: "rgba(204,102,0,1)",
+    //   pointHitRadius: 50,
+    //   pointBorderWidth: 2,
+    //   data: [3.005, 3.090, 2.865, 2.749, 2.749, 2.736, 2.510, 2.323, 2.247, 2.203, 2.168, 2.075],
+    // }
+    ],
+  },
+  options: {
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'date'
+        },
+        gridLines: {
+          display: false
+        },
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+        },
+        gridLines: {
+          color: "rgba(0, 0, 0, .125)",
+        }
+      }],
+    },
+    legend: {
+      display: true
+    }
+  }
+});
+
     </script>
 </body>
 </html>
