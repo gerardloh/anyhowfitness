@@ -96,6 +96,17 @@
 <h2>Your weekly Check-In is ready!</h2>
         <p>Click next to continue</p>
         <!-- <p>You could do a lot of things here </p> -->
+        <!-- <div id="app1">
+  
+          <div class="card" style="width: 18rem;" v-for="(element, index) in list" >
+            
+            <div class="card-body">
+              <h5 class="card-title">{{element.title}}</h5>
+              
+              <button  class="btn btn-primary" v-on:click="redirect($event, index)" :id="element.id">Go somewhere</button>
+            </div>
+          </div>
+        </div> -->
     </div>
 </div>
 
@@ -138,7 +149,7 @@
     <input class="getAssignment2" type="button" value="Previous">
         <input class="getAssignment" type="button" value="Next">
 <a href="#close" title="Close" class="close">X</a>
-<h2>Here's your progress so far!</h2>
+<h2>Here's your stats and progress so far!</h2>
 
         <!-- <p>This is a sample modal</p>
         <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p> -->
@@ -169,7 +180,7 @@
     <input class="getAssignment2" type="button" value="Previous">
         <input class="getAssignment" type="button" value="Next">
 <a href="#close" title="Close" class="close">X</a>
-<h2>Here's your progress so far!</h2>
+<!-- <h2>Here's your progress so far!</h2> -->
 
         <!-- <p>This is a sample modal</p>
         <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p> -->
@@ -207,16 +218,45 @@
     </div>
 </div>
 <div id="openModal7" class="modalDialog" data-modalorder=7>
-    <div>	
-    <input class="getAssignment2" type="button" value="Previous">
-        <input class="getAssignment" type="button" value="Next">
+  <div>	
+  <input class="getAssignment2" type="button" value="Previous">
+      <input class="getAssignment" type="button" value="Next">
 <a href="#close" title="Close" class="close">X</a>
 <h2>Goal Setting</h2>
-        <p>How many workouts would you like to complete this week? </p>
-        <p>What areas would you like to focus on this week?</p>
-    </div>
+      <p>How many workouts would you like to complete this week? </p>
+      <!-- input slider -->
+  </div>
 </div>
-<div id="app1">
+<div id="openModal8" class="modalDialog" data-modalorder=8>
+  <div>	
+  <input class="getAssignment2" type="button" value="Previous">
+      <input class="getAssignment" type="button" value="Next">
+<a href="#close" title="Close" class="close">X</a>
+<h2>Goal Setting</h2>
+      <p>How many meals would you like to make this week? </p>
+      <!-- input slider -->
+
+  </div>
+</div>
+<div id="openModal9" class="modalDialog" data-modalorder=9>
+  <div>	
+  <input class="getAssignment2" type="button" value="Previous">
+      <input class="getAssignment" type="button" value="Next">
+<a href="#close" title="Close" class="close">X</a>
+<h2>Goal Setting</h2>
+      <p>What do you want to achieve this week?</p>
+      <!-- input type drop down, examples- cardio, weightloss etc -->
+      
+  </div>
+</div>
+<div id="openModal10" class="modalDialog" data-modalorder=10>
+  <div>	
+  <input class="getAssignment2" type="button" value="Previous">
+      <input class="getAssignment" type="button" value="Next">
+<a href="#close" title="Close" class="close">X</a>
+<h2>Recommendation!</h2>
+      <p>Here are your workout recommendations for this week! </p>
+      <div id="app1">
   
   <div class="card" style="width: 18rem;" v-for="(element, index) in list" >
     
@@ -227,6 +267,30 @@
     </div>
   </div>
 </div>
+      
+  </div>
+</div>
+<div id="openModal11" class="modalDialog" data-modalorder=11>
+  <div>	
+  <input class="getAssignment2" type="button" value="Previous">
+      <input class="getAssignment" type="button" value="Next">
+<a href="#close" title="Close" class="close">X</a>
+<h2>Recommendation!</h2>
+      <p>Here are your meal recommendations for this week! </p>
+      
+  </div>
+</div>
+<!-- <div id="app1">
+  
+  <div class="card" style="width: 18rem;" v-for="(element, index) in list" >
+    
+    <div class="card-body">
+      <h5 class="card-title">{{element.title}}</h5>
+      
+      <button  class="btn btn-primary" v-on:click="redirect($event, index)" :id="element.id">Go somewhere</button>
+    </div>
+  </div>
+</div> -->
     
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
@@ -270,7 +334,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebas
 		}
 
     var cards = []
-    var counter = 2
+    //number of workouts displayed
+    var counter = 3
     for (var i= 0; i < counter; i++ ) {
       var ran_num = Math.floor(Math.random() * 9);
       cards.push(stuff[ran_num])
