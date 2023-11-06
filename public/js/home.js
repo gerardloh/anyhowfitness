@@ -15,7 +15,7 @@ const createBlog = (blog) => {
         <img src="${data.bannerImage}" class="blog-image" alt="">
         <h2 class="blog-title">${data.title.substring(0, 100) + '...'}</h2>
         <p class="blog-overview">${data.article.substring(0, 200) + '...'}</p>
-        <a href="/${blog.id}" class="btn dark">READ</a>
+        <a href="/blog?id=${blog.id}" class="btn dark">READ</a>
     </div>
     `;
 }

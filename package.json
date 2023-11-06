@@ -2,14 +2,15 @@
   "name": "bloggin-site",
   "version": "1.0.0",
   "description": "![Image](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/naxpa0453a6bhd69ci1c.png)",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express-fileupload": "^1.4.1",
+    "@vueup/vue-quill": "^1.2.0",
+    "express-fileupload": "^1.4.2",
     "express.js": "^1.0.0",
     "nodemon": "^2.0.22"
   },
