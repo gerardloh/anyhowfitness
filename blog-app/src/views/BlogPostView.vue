@@ -30,6 +30,10 @@ const blogPost = useDocument(doc(blogPostsRef, blogPostId))
   margin: 50px 20%;
 }
 
+.blog-content{
+  margin-left: 0;
+}
+
 h3.back-link {
   color: rgb(153, 153, 153);
   font-weight: 300;
