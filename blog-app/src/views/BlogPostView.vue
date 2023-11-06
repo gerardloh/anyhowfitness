@@ -12,7 +12,7 @@ const blogPost = useDocument(doc(blogPostsRef, blogPostId))
 
 <template>
   <div class="banner" v-bind:style="{ backgroundImage: 'url(' + blogPost.bannerImage + ')' }"></div>
-  <div class="container" style="margin-left:0px; margin-right:0px;">
+  <div class="container" v-bind:style="margin-left:0px; margin-right:0px;">
     <router-link to="/blog/">
       <h3 class="back-link">&lt; Back to overview</h3>
     </router-link>
