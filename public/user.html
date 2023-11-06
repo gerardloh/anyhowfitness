@@ -87,7 +87,7 @@ http://www.templatemo.com/tm-487-fitness
 				<h3 class="wow bounceIn" data-wow-delay="0.9s" v-html="display"></h3>
 				<h1 class="wow fadeInUp" data-wow-delay="1.6s">Anyhow Fitness<br>Workout Club</h1>
 				<a href="#trainer" class="wow fadeInUp smoothScroll btn btn-default" data-wow-delay="2s">LEARN MORE</a><br>
-				<button  class="wow fadeInUp smoothScroll btn btn-default" data-wow-delay="2s" disabled>View Progress</button>
+				<button  class="wow fadeInUp smoothScroll btn btn-default" data-wow-delay="2s" disabled id="viewprogress">View Progress</button>
 			</div>
 
 		</div>
@@ -458,7 +458,9 @@ http://www.templatemo.com/tm-487-fitness
                 console.log("wrong")
             }
             });
-        
+        document.getElementById("viewprogress").addEventListener("click",function (){
+		window.location.href = "rawfilewithnext.html"
+	}
         //Log Out
         document.getElementById("logout").addEventListener("click", function (){
             signOut(auth).then(() => {
