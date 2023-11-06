@@ -281,6 +281,8 @@ http://www.templatemo.com/tm-487-fitness
                         const data = snapshot.val();
                         this.bookmarkedMeals = data
                         console.log(this.bookmarkedMeals)
+                        console.log(this.userid)
+                        console.log(`userData/${userid}/favourites/meals`)
                     } else {
                         console.log("No data found.");
                         document.getElementById("empty2").innerText = "Nothing to see here...."
