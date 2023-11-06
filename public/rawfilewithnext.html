@@ -110,14 +110,14 @@
       <a href="#close" title="Close" class="close">X</a>
 
       <div style="text-align: center;font-family: Arial, Helvetica, sans-serif; font-weight: bold;">
-        <h1 style="margin-top: -20px;">Your weekly Check-In is ready!</h1>
+        <h1 style="margin-top: -20px; margin-left:35px;">Your weekly Check-In is ready!</h1>
         <p style="font-size: 12px; margin-top: 15px;">Let's click Next to continue</p>
       </div>
      
       <img src="images/weekly.jpg" alt="Your Image Description" style="display: block; width: 250px; height: 300px ;margin: 0 auto; max-width: 100%; height: auto;">
 
           <!-- <div id="app1">
-            <div class="card" style="width: 18rem;" v-for="(element, index) in list" >
+            <div class="card" style="width: 18rem;" v-for="(element, index) in list">
               
               <div class="card-body">
                 <h5 class="card-title">{{element.title}}</h5>
@@ -137,11 +137,11 @@
       <input class="getAssignment" type="button" value="Next>>">
       <a href="#close" title="Close" class="close">X</a>
 
-      <h2 style="text-align: center; margin-top: -20px;">About this week:</h2>
+      <h2 style="text-align: center; margin-top: -20px;">About Last Week:</h2>
 
       <div class="col-sm-12 form-group" style="margin-bottom: 45px; margin-top: 20px;">
-          <label for="name"><strong><h3>How many workouts did you complete this week?</h3></strong></label>
-          <input type="range" class="form-range" name="workoutsCount" id="workouts_thisWeek" min="0" max="5" required>
+          <label for="name"><strong><h3>How many workouts did you complete Last Week?</h3></strong></label>
+          <input type="range" class="form-range" name="workoutsCount" id="workouts_lastWeek" min="0" max="5" required>
           <div class="output-container">
               <output for="exerciseDays" class="output">0</output> 
               <output for="exerciseDays" class="output">1</output>
@@ -153,8 +153,8 @@
       </div>
 
       <div class="col-sm-12 form-group">
-        <label for="name"><strong><h3>How many meals did you complete this week?</h3></strong></label>
-        <input type="range" class="form-range" name="workoutsCount" id="meals_thisWeek" min="0" max="5" required>
+        <label for="name"><strong><h3>How many meals did you complete Last Week?</h3></strong></label>
+        <input type="range" class="form-range" name="workoutsCount" id="meals_lastWeek" min="0" max="5" required>
         <div class="output-container">
             <output for="exerciseDays" class="output">0</output> 
             <output for="exerciseDays" class="output">1</output>
@@ -246,11 +246,11 @@
         <input class="getAssignment" type="button" value="Next>>">
         <a href="#close" title="Close" class="close">X</a>
 
-        <h2 style="text-align: center; margin-top: -20px;">Goal Setting for next week:</h2>
+        <h2 style="text-align: center; margin-top: -20px;">Goal Setting for Workouts and Meals:</h2>
 
         <div class="col-sm-12 form-group" style="margin-bottom: 45px; margin-top: 20px;">
-            <label for="name"><strong><h3>How many workouts would you like to complete next week?</h3></strong></label>
-            <input type="range" class="form-range" name="workoutsCount" id="workouts_nextWeek" min="0" max="5" required>
+            <label for="name"><strong><h3>How many workouts would you like to complete This Week?</h3></strong></label>
+            <input type="range" class="form-range" name="workoutsCount" id="workouts_thisWeek" min="0" max="5" required>
             <div class="output-container">
                 <output for="exerciseDays" class="output">0</output> 
                 <output for="exerciseDays" class="output">1</output>
@@ -262,8 +262,8 @@
         </div>
   
         <div class="col-sm-12 form-group">
-            <label for="name"><strong><h3>How many meals would you like to complete next week?</h3></strong></label>
-            <input type="range" class="form-range" name="workoutsCount" id="meals_nextWeek" min="0" max="5" required>
+            <label for="name"><strong><h3>How many meals would you like to complete This Week?</h3></strong></label>
+            <input type="range" class="form-range" name="workoutsCount" id="meals_thisWeek" min="0" max="5" required>
             <div class="output-container">
                 <output for="exerciseDays" class="output">0</output> 
                 <output for="exerciseDays" class="output">1</output>
@@ -286,8 +286,8 @@
         <a href="#close" title="Close" class="close">X</a>
 
         <div style="text-align:center;">
-            <h2 style="margin-bottom:20px;">Goal Setting for Focus Area</h2>
-            <h4 style="margin-bottom:20px;">What do you want to achieve next week?</h4>
+            <h2 style="margin-bottom:20px; margin-top:-20px; margin-left:20px;">Goal Setting for Focus Area</h2>
+            <h4 style="margin-bottom:20px;">What do you want to achieve This Week?</h4>
 
             <select name="keyword" id="keyword" style="width: 200px; height: 40px;">
                 <option value="cardio" style="font-size: 13px;">Cardio</option>
@@ -298,10 +298,10 @@
         </div>
 
         <div id="image-container">
-          <img id="cardio-image" src="images/cardio.png" alt="Cardio Image" style="position: absolute; width:180px; height:110px; left: 50%; top: 80%; transform: translate(-50%, -55%);">
-          <img id="aerobics-image" src="images/aerobics.png" alt="Aerobics Image" style="position: absolute; width:180px; height:115px; left: 50%; top: 80%; transform: translate(-50%, -55%);">
-          <img id="hiit-image" src="images/hiit.png" alt="HIIT Image" style="position: absolute; width:180px; height:110px; left: 50%; top: 80%; transform: translate(-50%, -55%);">
-          <img id="weight-loss-image" src="images/weight_loss.png" alt="Weight Loss Image" style="position: absolute; width:180px; height:115px; left: 50%; top: 80%; transform: translate(-50%, -55%);">
+          <img id="cardio-image" src="images/cardio.png" alt="Cardio Image" style="position: absolute; width:190px; height:130px; left: 50%; top: 80%; transform: translate(-50%, -60%);">
+          <img id="aerobics-image" src="images/aerobics.png" alt="Aerobics Image" style="position: absolute; width:190px; height:130px; left: 50%; top: 80%; transform: translate(-50%, -60%);">
+          <img id="hiit-image" src="images/hiit.png" alt="HIIT Image" style="position: absolute; width:190px; height:130px; left: 50%; top: 80%; transform: translate(-50%, -60%);">
+          <img id="weight-loss-image" src="images/weight_loss.png" alt="Weight Loss Image" style="position: absolute; width:190px; height:130px; left: 50%; top: 80%; transform: translate(-50%, -60%);">
         </div>
  
 
@@ -347,15 +347,15 @@
         <a href="#close" title="Close" class="close">X</a>
 
         <div style="text-align:center; margin-top:-20px">
-            <h2 style="margin-bottom:20px;">Recommendation!</h2>
-            <h4 style="margin-bottom:20px;">Here are your workout recommendations for next week!</h4>
+            <h2 style="margin-bottom:20px;">Workout Recommendation!</h2>
+            <h4 style="margin-bottom:20px;">Here are your workout recommendations for This Week!</h4>
         </div>
 
         <div id="app1" style="margin-left: 328px; margin-right: 0;">
             <div class="card" style="width: 18rem;" v-for="(element, index) in list">
                 <div class="card-body">
                     <h5 class="card-title">{{element.title}}</h5>
-                    <button  class="btn btn-primary" v-on:click="redirect($event, index)" :id="element.id">Go somewhere</button>
+                    <button  class="btn btn-primary" v-on:click="redirect($event, index)" :id="element.id">Click Me</button>
                 </div>
             </div>
         </div>
@@ -373,15 +373,15 @@
 
 
         <div style="text-align:center; margin-top:-20px">
-          <h2 style="margin-bottom:20px;">Recommendation!</h2>
-          <h4 style="margin-bottom:20px;">Here are your meal recommendations for this week!</h4>
+          <h2 style="margin-bottom:20px;">Meal Recommendation!</h2>
+          <h4 style="margin-bottom:20px;">Here are your meal recommendations for This Week!</h4>
         </div>
 
         <div id="app2" style="margin-left: 328px; margin-right: 0;">
             <div class="card" style="width: 18rem;" v-for="(element2, index) in list2" >
                 <div class="card-body">
                     <h5 class="card-title">{{element2.name}}</h5>
-                    <button  class="btn btn-primary" v-on:click="redirect2($event, index)" :id="element2.id2">Go somewhere</button>
+                    <button  class="btn btn-primary" v-on:click="redirect2($event, index)" :id="element2.id2">Click Me</button>
                 </div>
             </div>
         </div>
@@ -411,7 +411,7 @@
 
       <div style="text-align:center;font-family: Arial, Helvetica, sans-serif; font-weight: bold;">
         <h1 style="margin-top: -20px; margin-left:27px;">Good Job!</h1>
-        <p style="font-size: 12px; margin-top: 15px;">See you next week!</p>
+        <p style="font-size: 12px; margin-top: 15px;">See you Next Week!</p>
       </div>
      
       <img src="images/weekly.jpg" alt="Your Image Description" style="display: block; width: 250px; height: 300px ;margin: 0 auto; max-width: 100%; height: auto;">
