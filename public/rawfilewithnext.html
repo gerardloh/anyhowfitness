@@ -22,6 +22,9 @@
     <script src="js/bar.js"></script>
     <script src="js/scatter.js"></script>
     <script src="js/pie.js"></script>
+    <!-- Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
 
     <style>
         .modalDialog {
@@ -93,6 +96,17 @@
 <h2>Your weekly Check-In is ready!</h2>
         <p>Click next to continue</p>
         <!-- <p>You could do a lot of things here </p> -->
+        <!-- <div id="app1">
+  
+          <div class="card" style="width: 18rem;" v-for="(element, index) in list" >
+            
+            <div class="card-body">
+              <h5 class="card-title">{{element.title}}</h5>
+              
+              <button  class="btn btn-primary" v-on:click="redirect($event, index)" :id="element.id">Go somewhere</button>
+            </div>
+          </div>
+        </div> -->
     </div>
 </div>
 
@@ -135,7 +149,7 @@
     <input class="getAssignment2" type="button" value="Previous">
         <input class="getAssignment" type="button" value="Next">
 <a href="#close" title="Close" class="close">X</a>
-<h2>Here's your progress so far!</h2>
+<h2>Here's your stats and progress so far!</h2>
 
         <!-- <p>This is a sample modal</p>
         <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p> -->
@@ -166,7 +180,7 @@
     <input class="getAssignment2" type="button" value="Previous">
         <input class="getAssignment" type="button" value="Next">
 <a href="#close" title="Close" class="close">X</a>
-<h2>Here's your progress so far!</h2>
+<!-- <h2>Here's your progress so far!</h2> -->
 
         <!-- <p>This is a sample modal</p>
         <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p> -->
@@ -204,140 +218,367 @@
     </div>
 </div>
 <div id="openModal7" class="modalDialog" data-modalorder=7>
-    <div>	
-    <input class="getAssignment2" type="button" value="Previous">
-        <input class="getAssignment" type="button" value="Next">
+  <div>	
+  <input class="getAssignment2" type="button" value="Previous">
+      <input class="getAssignment" type="button" value="Next">
 <a href="#close" title="Close" class="close">X</a>
 <h2>Goal Setting</h2>
-        <p>How many workouts would you like to complete this week? </p>
-        <p>What areas would you like to focus on this week?</p>
-    </div>
+      <p>How many workouts would you like to complete this week? </p>
+      <!-- input slider -->
+  </div>
 </div>
+<div id="openModal8" class="modalDialog" data-modalorder=8>
+  <div>	
+  <input class="getAssignment2" type="button" value="Previous">
+      <input class="getAssignment" type="button" value="Next">
+<a href="#close" title="Close" class="close">X</a>
+<h2>Goal Setting</h2>
+      <p>How many meals would you like to make this week? </p>
+      <!-- input slider -->
+
+  </div>
+</div>
+<div id="openModal9" class="modalDialog" data-modalorder=9>
+  <div>	
+  <input class="getAssignment2" type="button" value="Previous">
+      <input class="getAssignment" type="button" value="Next">
+<a href="#close" title="Close" class="close">X</a>
+<h2>Goal Setting</h2>
+      <p>What do you want to achieve this week?</p>
+      <!-- input type drop down, examples- cardio, weightloss etc -->
+      <!-- change to autofill?? -->
+  
+      <select name="keyword" id="keyword">
+        <option value="cardio">Cardio</option>
+        <option value="aerobics">Aerobics</option>
+        <option value="HIIT">HIIT</option>
+        <option value="weight loss">Weight Loss</option>
+      </select>
+
+      
+  </div>
+</div>
+<div id="openModal10" class="modalDialog" data-modalorder=10>
+  <div>	
+  <input class="getAssignment2" type="button" value="Previous">
+      <input class="getAssignment" type="button" value="Next">
+<a href="#close" title="Close" class="close">X</a>
+<h2>Recommendation!</h2>
+      <p>Here are your workout recommendations for this week! </p>
+      <div id="app1">
+  
+        <div id="app1">
+  
+          <div class="card" style="width: 18rem;" v-for="(element, index) in list" >
+            
+            <div class="card-body">
+              <h5 class="card-title">{{element.title}}</h5>
+              
+              <button  class="btn btn-primary" v-on:click="redirect($event, index)" :id="element.id">Go somewhere</button>
+            </div>
+          </div>
+        </div>
+      
+  </div>
+</div>
+<div id="openModal11" class="modalDialog" data-modalorder=11>
+  <div>	
+  <input class="getAssignment2" type="button" value="Previous">
+      <input class="getAssignment" type="button" value="Next">
+<a href="#close" title="Close" class="close">X</a>
+<h2>Recommendation!</h2>
+      <p>Here are your meal recommendations for this week! </p>
+      <div id="app2">
+  
+        <div class="card" style="width: 18rem;" v-for="(element2, index) in list2" >
+          
+          <div class="card-body">
+            <h5 class="card-title">{{element2.name}}</h5>
+            
+            <button  class="btn btn-primary" v-on:click="redirect2($event, index)" :id="element2.id2">Go somewhere</button>
+          </div>
+        </div>
+      </div>
+      
+  </div>
+</div>
+<!-- <div id="app1">
+  
+  <div class="card" style="width: 18rem;" v-for="(element, index) in list" >
     
-
-    <script>
-        $(document).ready(function() {
-            var data=[];
-        currentModal = 0;
-        
-        $('.modalDialog').each(function(){
-            data.push({
-            id: $(this).attr('id'),
-            order: $(this).data('modalorder')
-            });
-        })
-            
-            $('#openModalBtn').click(function(){
-            currentModal = 0;
-            window.location.href = "#" + data[currentModal].id;
-            $('#'+data[currentModal].id).find('.getAssignment2').prop('disabled', true);
-        })
-        
-        //prev
-        $('.getAssignment2').click(function(){
-            if (currentModal>0) {
-                currentModal--;
-            window.location.href = "#" + data[currentModal].id;
-            } else {
-            
-                window.location.href = '#'
-            }
-        })
-        
-        //next
-        $('.getAssignment').click(function(){
-            if (currentModal<data.length - 1) {
-                currentModal++;
-            if (currentModal===data.length - 1) $('#'+data[currentModal].id).find('.getAssignment').prop('disabled', true);
-            window.location.href = "#" + data[currentModal].id;
-            } else {
-                window.location.href = '#'
-            }
-        })
-        
-        })
-        var ctx = document.getElementById("pie").getContext('2d');
-var pie = new Chart(ctx, {
-  type: 'pie',
-  data: {
-    labels: ["aerobics", "strength", "flexibility", "core"],
-    datasets: [{
-      backgroundColor: [
-        "#2ecc71",
-        "#3498db",
-        "#9b59b6",
-        "#e74c3c",
-      ],
-      data: [18.1, 13.0, 33.0, 35.9]
-    }]
-  }
-});
-// Set new default font family and font color to mimic Bootstrap's default styling
-Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-Chart.defaults.global.defaultFontColor = '#292b2c';
-// Area Chart Example
-var ctx = document.getElementById("line");
-var line = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ["week 1", "week 2", "week 3", "week 4", "week 5", "week 6"],
-    datasets: [{
-      label: "Number of workouts completed",
-      lineTension: false,
-      fill: false,
-      backgroundColor: "rgba(2,117,216,1)",
-      borderColor: "rgba(2,117,216,1)",
-      pointRadius: 10,
-      pointBackgroundColor: "rgba(2,117,216,1)",
-      pointBorderColor: "rgba(255,255,255,0.8)",
-      pointHoverRadius: 10,
-      pointHoverBackgroundColor: "rgba(2,117,216,1)",
-      pointHitRadius: 50,
-      pointBorderWidth: 2,
-      data: [2, 3, 4, 3, 1, 1],
-    },
-    // {
-    //   label: "Another Dataset",
-    //   lineTension: false,
-    //   fill: false,
-    //   backgroundColor: "rgba(204,102,0,0.2)",
-    //   borderColor: "rgba(204,102,0,1)",
-    //   pointRadius: 10,
-    //   pointBackgroundColor: "rgba(204,102,0,1)",
-    //   pointBorderColor: "rgba(255,255,255,0.8)",
-    //   pointHoverRadius: 10,
-    //   pointHoverBackgroundColor: "rgba(204,102,0,1)",
-    //   pointHitRadius: 50,
-    //   pointBorderWidth: 2,
-    //   data: [3.005, 3.090, 2.865, 2.749, 2.749, 2.736, 2.510, 2.323, 2.247, 2.203, 2.168, 2.075],
-    // }
-    ],
-  },
-  options: {
-    scales: {
-      xAxes: [{
-        time: {
-          unit: 'date'
-        },
-        gridLines: {
-          display: false
-        },
-      }],
-      yAxes: [{
-        ticks: {
-          min: 0,
-        },
-        gridLines: {
-          color: "rgba(0, 0, 0, .125)",
+    <div class="card-body">
+      <h5 class="card-title">{{element.title}}</h5>
+      
+      <button  class="btn btn-primary" v-on:click="redirect($event, index)" :id="element.id">Go somewhere</button>
+    </div>
+  </div>
+</div> -->
+    
+<script type="module">
+  
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+    import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+            apiKey: "AIzaSyAuv9pHvIhlo_wNj4tdkzNanWoGtQ-5-t4",
+            authDomain: "is216-g2.firebaseapp.com",
+            databaseURL: "https://is216-g2-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "is216-g2",
+            storageBucket: "is216-g2.appspot.com",
+            messagingSenderId: "426453655797",
+            appId: "1:426453655797:web:26878838329ce6c02365bc",
+            measurementId: "G-HYZ4GSYP9Y"
+          };
+    
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app)
+    const auth = getAuth(app);
+    const dbRef = ref(getDatabase());
+    var goal = "losing-weight"
+    get(child(dbRef, `workouts`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      var arr = snapshot.val()
+      
+      var stuff = []
+      for (var element in arr) {
+        if (arr[element].tags.includes(goal)) {
+          var title = arr[element].title
+          var id = element
+          var w = arr[element]
+          var difficulty = arr[element].difficulty
+          var duration = arr[element].duration
+          stuff.push({ title, id, difficulty, duration})
         }
-      }],
-    },
-    legend: {
-      display: true
+      }
+  
+      var cards = []
+      var counter = 2
+      for (var i= 0; i < counter; i++ ) {
+        var ran_num = Math.floor(Math.random() * (stuff.length -1));
+        while(cards.includes(stuff[ran_num])) {
+          ran_num = Math.floor(Math.random() * (stuff.length -1));
+          
+        }
+        
+        cards.push(stuff[ran_num])
+      }
+     
+      // <div id='app'></div>
+      const app1 = Vue.createApp({ 
+        data() { 
+            return { 
+                  // key: value
+                  list: cards,
+              
+            };
+        }, // data
+        // computed: { 
+        //     derivedProperty() {
+        //         return false;
+        //     }  
+        // }, // computed
+        // created() { 
+        // },
+        // mounted() { 
+        // },
+        methods: {
+            redirect(event, index) {
+              var value = event.target.getAttribute('id')
+              localStorage.setItem("selected-workout", value)
+              window.location.href = "workout-pages.html"
+            }
+        } // methods
+    });
+    const vm = app1.mount('#app1'); 
+    }})
+  
+    get(child(dbRef, `meals`)).then((snapshot2) => {
+    if (snapshot2.exists()) {
+      var arr2 = snapshot2.val()
+      
+      var stuff2 = []
+      for (var element2 in arr2) {
+        if (arr2[element2].tags.includes(goal)) {
+          var name = arr2[element2].name
+          var id2 = element2
+          var w2 = arr2[element2]
+          var ingredients = arr2[element2].ingredients
+          var instructions = arr2[element2].instructions
+          stuff2.push({ name, id2, ingredients, instructions})
+        }
+      }
+  
+      var cards2 = []
+      var counter2 = 2
+      for (var i= 0; i < counter2; i++ ) {
+        var ran_num2 = Math.floor(Math.random() * (stuff2.length) - 1);
+        while (cards2.includes(stuff2[ran_num2])) {
+          ran_num2 = Math.floor(Math.random() * (stuff2.length) - 1);
+        }
+        cards2.push(stuff2[ran_num2])
+      }
+      console.log(cards2)
+      // <div id='app'></div>
+      const app2 = Vue.createApp({ 
+        data() { 
+            return { 
+                  // key: value
+                  list2: cards2,
+              
+            };
+        }, // data
+        // computed: { 
+        //     derivedProperty() {
+        //         return false;
+        //     }  
+        // }, // computed
+        // created() { 
+        // },
+        // mounted() { 
+        // },
+        methods: {
+            redirect2(event, index) {
+              var value2 = event.target.getAttribute('id')
+              localStorage.setItem("selected-meal", value2)
+              window.location.href = "meal-pages.html"
+            }
+        } // methods
+    });
+    const vm2 = app2.mount('#app2'); 
+    }})
+  // GERARD'S CODE END
+    
+  </script>
+      <script>
+          $(document).ready(function() {
+              var data=[];
+          currentModal = 0;
+          
+          $('.modalDialog').each(function(){
+              data.push({
+              id: $(this).attr('id'),
+              order: $(this).data('modalorder')
+              });
+          })
+              
+              $('#openModalBtn').click(function(){
+              currentModal = 0;
+              window.location.href = "#" + data[currentModal].id;
+              $('#'+data[currentModal].id).find('.getAssignment2').prop('disabled', true);
+          })
+          
+          //prev
+          $('.getAssignment2').click(function(){
+              if (currentModal>0) {
+                  currentModal--;
+              window.location.href = "#" + data[currentModal].id;
+              } else {
+              
+                  window.location.href = '#'
+              }
+          })
+          
+          //next
+          $('.getAssignment').click(function(){
+              if (currentModal<data.length - 1) {
+                  currentModal++;
+              if (currentModal===data.length - 1) $('#'+data[currentModal].id).find('.getAssignment').prop('disabled', true);
+              window.location.href = "#" + data[currentModal].id;
+              } else {
+                  window.location.href = '#'
+              }
+          })
+          
+          })
+          var ctx = document.getElementById("pie").getContext('2d');
+  var pie = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ["aerobics", "strength", "flexibility", "core"],
+      datasets: [{
+        backgroundColor: [
+          "#2ecc71",
+          "#3498db",
+          "#9b59b6",
+          "#e74c3c",
+        ],
+        data: [18.1, 13.0, 33.0, 35.9]
+      }]
     }
-  }
-});
-
-    </script>
+  });
+  // Set new default font family and font color to mimic Bootstrap's default styling
+  Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+  Chart.defaults.global.defaultFontColor = '#292b2c';
+  // Area Chart Example
+  var ctx = document.getElementById("line");
+  var line = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ["week 1", "week 2", "week 3", "week 4", "week 5", "week 6"],
+      datasets: [{
+        label: "Number of workouts completed",
+        lineTension: false,
+        fill: false,
+        backgroundColor: "rgba(2,117,216,1)",
+        borderColor: "rgba(2,117,216,1)",
+        pointRadius: 10,
+        pointBackgroundColor: "rgba(2,117,216,1)",
+        pointBorderColor: "rgba(255,255,255,0.8)",
+        pointHoverRadius: 10,
+        pointHoverBackgroundColor: "rgba(2,117,216,1)",
+        pointHitRadius: 50,
+        pointBorderWidth: 2,
+        data: [2, 3, 4, 3, 1, 1],
+      },
+      // {
+      //   label: "Another Dataset",
+      //   lineTension: false,
+      //   fill: false,
+      //   backgroundColor: "rgba(204,102,0,0.2)",
+      //   borderColor: "rgba(204,102,0,1)",
+      //   pointRadius: 10,
+      //   pointBackgroundColor: "rgba(204,102,0,1)",
+      //   pointBorderColor: "rgba(255,255,255,0.8)",
+      //   pointHoverRadius: 10,
+      //   pointHoverBackgroundColor: "rgba(204,102,0,1)",
+      //   pointHitRadius: 50,
+      //   pointBorderWidth: 2,
+      //   data: [3.005, 3.090, 2.865, 2.749, 2.749, 2.736, 2.510, 2.323, 2.247, 2.203, 2.168, 2.075],
+      // }
+      ],
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          time: {
+            unit: 'date'
+          },
+          gridLines: {
+            display: false
+          },
+        }],
+        yAxes: [{
+          ticks: {
+            min: 0,
+          },
+          gridLines: {
+            color: "rgba(0, 0, 0, .125)",
+          }
+        }],
+      },
+      legend: {
+        display: true
+      }
+    }
+  });
+  
+      </script>
+      </script>
 </body>
 </html>
