@@ -12,7 +12,7 @@ const blogPost = useDocument(doc(blogPostsRef, blogPostId))
 
 <template>
   <div class="banner" v-bind:style="{ backgroundImage: 'url(' + blogPost.bannerImage + ')' }"></div>
-  <div class="container" >
+  <div class="container">
     <router-link to="/blog/">
       <h3 class="back-link">&lt; Back to overview</h3>
     </router-link>
@@ -26,7 +26,9 @@ const blogPost = useDocument(doc(blogPostsRef, blogPostId))
 </template>
 
 <style scoped>
-
+.container {
+  margin: 50px 20%;
+}
 
 
 h3.back-link {
@@ -56,8 +58,7 @@ h3.back-link {
   border-radius: 10px;
 }
 
-.article,
-.title {
+.article,.title {
   min-height: auto;
   height: fit-content;
   padding: 0 10px;
@@ -82,7 +83,6 @@ h3.back-link {
   font-size: 1.5rem;
   margin-top: 20px;
   line-height: 1.8rem;
-  font-weight: 500;
 }
 
 .article * {
