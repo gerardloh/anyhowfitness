@@ -143,7 +143,7 @@ http://www.templatemo.com/tm-487-fitness
         </div>
         <div class="wow fadeInUp col-lg-4 col-mg-12" data-wow-delay="1.9s" v-for="(workout, index) in bookmarkedWorkouts" :key="index">
             <div class="trainer-thumb wo" style="background-color: aqua;">
-                <img :src="this.workoutImage" class="img-responsive" alt="image">
+                <img :src="this.workoutImage" class="img-responsive" alt="image" style="height: 230px !important;">
                     <div class="trainer-overlay ">
                         <div class="trainer-des">
                             <h2 style="font-size: 15px;">{{workout.title}}</h2>
@@ -252,10 +252,10 @@ http://www.templatemo.com/tm-487-fitness
             },
             removeBookmarkedMeal(index) {
                 const db = getDatabase(appFB);
-                const userid = this.userid; // Replace with your user-specific path
-                const bookmarkedMealsRef = ref(db, `userData/${userid}/favourites/meals`);
+                 // Replace with your user-specific path
+                const bookmarkedMealsRef = ref(db, `userData/${this.userid}/favourites/meals`);
 
-                const mealRef = ref(db, `userData/${userid}/favourites/meals/${index}`);
+                const mealRef = ref(db, `userData/${this.userid}/favourites/meals/${index}`);
                 
                 // Remove the data at the specified path
                 set(mealRef, null)
@@ -270,9 +270,12 @@ http://www.templatemo.com/tm-487-fitness
             },
             fetchBookmarkedMeals() {
                 const db = getDatabase(appFB);
-                const userid = this.userid; // Replace with your user-specific path
-                const bookmarkedMealsRef = ref(db, `userData/${userid}/favourites/meals`);
+                // Replace with your user-specific path
+                
+                const bookmarkedMealsRef = ref(db, `userData/${this.userid}/favourites/meals`);
                 console.log(bookmarkedMealsRef)
+                console.log(this.userid)
+                console.log(`userData/${this.userid}/favourites/meals`)
                 // Use the get() method to retrieve the data
                 get(bookmarkedMealsRef)
                 .then((snapshot) => {
@@ -281,6 +284,7 @@ http://www.templatemo.com/tm-487-fitness
                         const data = snapshot.val();
                         this.bookmarkedMeals = data
                         console.log(this.bookmarkedMeals)
+                        
                     } else {
                         console.log("No data found.");
                         document.getElementById("empty2").innerText = "Nothing to see here...."
@@ -292,8 +296,8 @@ http://www.templatemo.com/tm-487-fitness
             },
             removeBookmarkedWorkout(index) {
                 const db = getDatabase(appFB);
-                const userid = this.userid; // Replace with your user-specific path
-                const bookmarkedWorkoutsRef = ref(db, `userData/${userid}/favourites/workouts/${index}`);
+                 // Replace with your user-specific path
+                const bookmarkedWorkoutsRef = ref(db, `userData/${this.userid}/favourites/workouts/${index}`);
 
                 // Remove the data at the specified path
                 set(bookmarkedWorkoutsRef, null)
@@ -308,8 +312,9 @@ http://www.templatemo.com/tm-487-fitness
             },
             fetchBookmarkedWorkouts() {
                 const db = getDatabase(appFB);
-                const userid = this.userid; // Replace with your user-specific path
-                const bookmarkedWorkoutsRef = ref(db, `userData/${userid}/favourites/workouts`);
+                 // Replace with your user-specific path
+              
+                const bookmarkedWorkoutsRef = ref(db, `userData/${this.userid}/favourites/workouts`);
                 console.log(bookmarkedWorkoutsRef)
                 // Use the get() method to retrieve the data
                 get(bookmarkedWorkoutsRef)
@@ -356,16 +361,17 @@ http://www.templatemo.com/tm-487-fitness
                         // An error happened.
                         console.log("Fail")
                         });
-                            })
-                            } else {
-                                // User is signed out
-                            this.isAuthenticated = false;
-                            console.log("User is not authenticated");
+                    })
+                    this.fetchBookmarkedMeals();
+                    this.fetchBookmarkedWorkouts();
+                } else {
+                    // User is signed out
+                this.isAuthenticated = false;
+                console.log("User is not authenticated");
             } 
              });
 
-            this.fetchBookmarkedMeals();
-            this.fetchBookmarkedWorkouts();
+            
         },
     }).mount('#app');
 
