@@ -87,7 +87,7 @@ http://www.templatemo.com/tm-487-fitness
 				<h3 class="wow bounceIn" data-wow-delay="0.9s" v-html="display"></h3>
 				<h1 class="wow fadeInUp" data-wow-delay="1.6s">Anyhow Fitness<br>Workout Club</h1>
 				<a href="#overview" class="wow fadeInUp smoothScroll btn btn-default" data-wow-delay="2s">LEARN MORE</a><br>
-				<a href="login.html" class="wow fadeInUp smoothScroll btn btn-default" data-wow-delay="2s">Login</a>
+				<button  class="wow fadeInUp smoothScroll btn btn-default" data-wow-delay="2s" disabled>View Progress</button>
 			</div>
 
 		</div>
@@ -240,7 +240,7 @@ http://www.templatemo.com/tm-487-fitness
 				<p>With the help of AI, we will help generate workout and meal plans for you!</p>
 			</div>
 
-			<div class="wow fadeInUp col-md-6 col-sm-6" data-wow-delay="1s">
+			<div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="1s">
 
 				<div class="pricing__item">
                     <h3 class="pricing__title">Meals</h3>
@@ -255,7 +255,7 @@ http://www.templatemo.com/tm-487-fitness
                 </div>
 			</div>
 
-			<div class="wow fadeInUp col-md-6 col-sm-6" data-wow-delay="1.3s">
+			<div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="1.3s">
 				<div class="pricing__item">
                     <h3 class="pricing__title">Workouts</h3>
                     <div class="pricing__price"><span class="pricing__currency fa fa-heart"></span></div>                  
@@ -266,6 +266,20 @@ http://www.templatemo.com/tm-487-fitness
                         <li class="pricing__feature">Track your progress</li>
                     </ul>
                     <button class="pricing__action" id="shag1">Take me there!</button>
+                </div>
+			</div>
+
+			<div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="1.6s">
+
+				<div class="pricing__item">
+                    <h3 class="pricing__title">BMI</h3>
+                    <div class="pricing__price"><span class="pricing_currency fa fa-calculator"></span></div>
+                    <ul class="pricing__feature-list">
+                        <li class="pricing__feature">Calculate your BMI</li>
+						
+                        <li class="pricing__feature">See if you are in the acceptable, underweight or overweright range</li>
+                    </ul>
+                    <button class="pricing__action" id="bmi">Take me there!</button>
                 </div>
 			</div>
 
@@ -400,6 +414,9 @@ http://www.templatemo.com/tm-487-fitness
 				})
 				document.getElementById("shag1").addEventListener("click", function () {
 					window.location.href = 'workout-planner.html'
+				})
+				document.getElementById("bmi").addEventListener("click", function () {
+					window.location.href = 'bmi-calculator.html'
 				})
                 const uid = user.uid;
 				const dbRef = ref(getDatabase());

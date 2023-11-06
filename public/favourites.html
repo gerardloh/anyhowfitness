@@ -236,7 +236,7 @@ http://www.templatemo.com/tm-487-fitness
             return {
 
                 isAuthenticated: true,
-                userid: 'userid1',
+                userid: '',
                 workoutImage: "images/a-workouts.jpg", 
                 bookmark: "Unbookmark",
                 bookmarkedMeals: [],
@@ -272,7 +272,7 @@ http://www.templatemo.com/tm-487-fitness
                 const db = getDatabase(appFB);
                 const userid = this.userid; // Replace with your user-specific path
                 const bookmarkedMealsRef = ref(db, `userData/${userid}/favourites/meals`);
-                
+                console.log(bookmarkedMealsRef)
                 // Use the get() method to retrieve the data
                 get(bookmarkedMealsRef)
                 .then((snapshot) => {
@@ -310,7 +310,7 @@ http://www.templatemo.com/tm-487-fitness
                 const db = getDatabase(appFB);
                 const userid = this.userid; // Replace with your user-specific path
                 const bookmarkedWorkoutsRef = ref(db, `userData/${userid}/favourites/workouts`);
-
+                console.log(bookmarkedWorkoutsRef)
                 // Use the get() method to retrieve the data
                 get(bookmarkedWorkoutsRef)
                 .then((snapshot) => {
@@ -338,6 +338,7 @@ http://www.templatemo.com/tm-487-fitness
                      // User is signed in
                     this.isAuthenticated = true;
                     this.userid = user.uid;
+                    
                     document.getElementById("return").setAttribute("href", "user.html#home")
                     document.getElementById("home0").setAttribute("href", "user.html#home")
                     document.getElementById("about").style.display = "none"
@@ -360,7 +361,7 @@ http://www.templatemo.com/tm-487-fitness
                                 // User is signed out
                             this.isAuthenticated = false;
                             console.log("User is not authenticated");
-            }
+            } 
              });
 
             this.fetchBookmarkedMeals();
