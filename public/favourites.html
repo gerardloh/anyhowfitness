@@ -236,7 +236,7 @@ http://www.templatemo.com/tm-487-fitness
             return {
 
                 isAuthenticated: true,
-                userid: '',
+                userid: 'mgV4SivrR6erOmH6ka5HSsPUnpi1',
                 workoutImage: "images/a-workouts.jpg", 
                 bookmark: "Unbookmark",
                 bookmarkedMeals: [],
@@ -252,10 +252,10 @@ http://www.templatemo.com/tm-487-fitness
             },
             removeBookmarkedMeal(index) {
                 const db = getDatabase(appFB);
-                const userid = this.userid; // Replace with your user-specific path
-                const bookmarkedMealsRef = ref(db, `userData/${userid}/favourites/meals`);
+                 // Replace with your user-specific path
+                const bookmarkedMealsRef = ref(db, `userData/${this.userid}/favourites/meals`);
 
-                const mealRef = ref(db, `userData/${userid}/favourites/meals/${index}`);
+                const mealRef = ref(db, `userData/${this.userid}/favourites/meals/${index}`);
                 
                 // Remove the data at the specified path
                 set(mealRef, null)
@@ -270,9 +270,12 @@ http://www.templatemo.com/tm-487-fitness
             },
             fetchBookmarkedMeals() {
                 const db = getDatabase(appFB);
-                const userid = this.userid; // Replace with your user-specific path
-                const bookmarkedMealsRef = ref(db, `userData/${userid}/favourites/meals`);
+                // Replace with your user-specific path
+                
+                const bookmarkedMealsRef = ref(db, `userData/${this.userid}/favourites/meals`);
                 console.log(bookmarkedMealsRef)
+                console.log(this.userid)
+                console.log(`userData/${this.userid}/favourites/meals`)
                 // Use the get() method to retrieve the data
                 get(bookmarkedMealsRef)
                 .then((snapshot) => {
@@ -281,8 +284,7 @@ http://www.templatemo.com/tm-487-fitness
                         const data = snapshot.val();
                         this.bookmarkedMeals = data
                         console.log(this.bookmarkedMeals)
-                        console.log(this.userid)
-                        console.log(`userData/${userid}/favourites/meals`)
+                        
                     } else {
                         console.log("No data found.");
                         document.getElementById("empty2").innerText = "Nothing to see here...."
@@ -294,8 +296,8 @@ http://www.templatemo.com/tm-487-fitness
             },
             removeBookmarkedWorkout(index) {
                 const db = getDatabase(appFB);
-                const userid = this.userid; // Replace with your user-specific path
-                const bookmarkedWorkoutsRef = ref(db, `userData/${userid}/favourites/workouts/${index}`);
+                 // Replace with your user-specific path
+                const bookmarkedWorkoutsRef = ref(db, `userData/${this.userid}/favourites/workouts/${index}`);
 
                 // Remove the data at the specified path
                 set(bookmarkedWorkoutsRef, null)
@@ -310,8 +312,9 @@ http://www.templatemo.com/tm-487-fitness
             },
             fetchBookmarkedWorkouts() {
                 const db = getDatabase(appFB);
-                const userid = this.userid; // Replace with your user-specific path
-                const bookmarkedWorkoutsRef = ref(db, `userData/${userid}/favourites/workouts`);
+                 // Replace with your user-specific path
+              
+                const bookmarkedWorkoutsRef = ref(db, `userData/${this.userid}/favourites/workouts`);
                 console.log(bookmarkedWorkoutsRef)
                 // Use the get() method to retrieve the data
                 get(bookmarkedWorkoutsRef)
