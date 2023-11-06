@@ -84,224 +84,258 @@
         }
     </style>
 </head>
+
+
 <body>
-    
+
+<!-- Open Modal Button -->
 <input type="button" id="openModalBtn" value="Open Modal">
 
+
+<!-- First Page -->
 <div id="openModal1" class="modalDialog" data-modalorder=1>
     <div>
-    <input class="getAssignment2" type="button" value="Previous">
-    <input class="getAssignment" type="button" value="Next">
-    <a href="#close" title="Close" class="close">X</a>
-<h2>Your weekly Check-In is ready!</h2>
-        <p>Click next to continue</p>
-        <!-- <p>You could do a lot of things here </p> -->
-        <!-- <div id="app1">
-  
-          <div class="card" style="width: 18rem;" v-for="(element, index) in list" >
-            
-            <div class="card-body">
-              <h5 class="card-title">{{element.title}}</h5>
+      <input class="getAssignment2" type="button" value="Previous">
+      <input class="getAssignment" type="button" value="Next">
+      <a href="#close" title="Close" class="close">X</a>
+          <h2>Your weekly check-in is ready!</h2>
+          <p>Click Next to continue</p>
+          <p>You could do a lot of things here </p> 
+
+          <!-- <div id="app1">
+            <div class="card" style="width: 18rem;" v-for="(element, index) in list" >
               
-              <button  class="btn btn-primary" v-on:click="redirect($event, index)" :id="element.id">Go somewhere</button>
-            </div>
-          </div>
-        </div> -->
-    </div>
-</div>
-
-<div id="openModal2" class="modalDialog" data-modalorder=2>
-    <div>	
-<input class="getAssignment2" type="button" value="Previous">
-<input class="getAssignment" type="button" value="Next">
-<a href="#close" title="Close" class="close">X</a>
-<div class="col-sm-12 form-group">
-    <label for="name"><strong>How many workouts did you complete this week?</strong></label>
-    <input type="range" class="form-range" name="workoutsCount" id="workouts_thisWeek" min="0" max="5" required>
-    <div class="output-container">
-        <output for="exerciseDays" class="output">0 </output>
-        <output for="exerciseDays" class="output">1 </output>
-        <output for="exerciseDays" class="output">2 </output>
-        <output for="exerciseDays" class="output">3 </output>
-        <output for="exerciseDays" class="output">4 </output>
-        <output for="exerciseDays" class="output">5 </output>
-    </div>
-</div>
-        <p>This is a sample </p>
-        <p>You could do a lot of things here </p>
-    </div>
-</div>
-
-<div id="openModal3" class="modalDialog" data-modalorder=3>
-    <div>	
-    <input class="getAssignment2" type="button" value="Previous">
-        <input class="getAssignment" type="button" value="Next">
-<a href="#close" title="Close" class="close">X</a>
-<h2>How many meals did you make last week?</h2>
-
-        <p>This is a sample modal box that can be created using the powers of CSS3.</p>
-        <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
-    </div>
-</div>
-
-<div id="openModal4" class="modalDialog" data-modalorder=4>
-    <div>	
-    <input class="getAssignment2" type="button" value="Previous">
-        <input class="getAssignment" type="button" value="Next">
-<a href="#close" title="Close" class="close">X</a>
-<h2>Here's your stats and progress so far!</h2>
-
-        <!-- <p>This is a sample modal</p>
-        <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p> -->
-        <!-- <div class="row">
-            <div class="col-lg-6">
-            <div class="card mb-3">
-              <div class="card-header">
-                  Workouts completed </div>
               <div class="card-body">
-                <canvas id="line"></canvas>
-              </div>
-            </div>
-          </div>
-          </div>
-        <div class="col-lg-6">
-            <div class="card mb-3">
-              <div class="card-header">
-                Focus Areas (%)</div>
-              <div class="card-body">
-                <canvas id="pie" width="100%" height="50"></canvas>
+                <h5 class="card-title">{{element.title}}</h5>
+                
+                <button  class="btn btn-primary" v-on:click="redirect($event, index)" :id="element.id">Go somewhere</button>
               </div>
             </div>
           </div> -->
     </div>
 </div>
-<div id="openModal5" class="modalDialog" data-modalorder=5>
+
+
+<!-- Second Page -->
+<div id="openModal2" class="modalDialog" data-modalorder=2>
     <div>	
-    <input class="getAssignment2" type="button" value="Previous">
-        <input class="getAssignment" type="button" value="Next">
-<a href="#close" title="Close" class="close">X</a>
-<!-- <h2>Here's your progress so far!</h2> -->
+      <input class="getAssignment2" type="button" value="Previous">
+      <input class="getAssignment" type="button" value="Next">
+      <a href="#close" title="Close" class="close">X</a>
 
-        <!-- <p>This is a sample modal</p>
-        <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p> -->
-        <div class="row">
-            <div class="col-lg-6">
-            <div class="card mb-3">
-              <div class="card-header">
-                  Workouts completed </div>
-              <div class="card-body">
-                <canvas id="line"></canvas>
-              </div>
-            </div>
+      <div class="col-sm-12 form-group">
+          <label for="name"><strong>How many workouts did you complete this week?</strong></label>
+          <input type="range" class="form-range" name="workoutsCount" id="workouts_thisWeek" min="0" max="5" required>
+          <div class="output-container">
+              <output for="exerciseDays" class="output">0</output> 
+              <output for="exerciseDays" class="output">1</output>
+              <output for="exerciseDays" class="output">2</output>
+              <output for="exerciseDays" class="output">3</output>
+              <output for="exerciseDays" class="output">4</output>
+              <output for="exerciseDays" class="output">5</output>
           </div>
-          </div>
-    
-    </div>
-</div>
-<div id="openModal6" class="modalDialog" data-modalorder=6>
-    <div>	
-    <input class="getAssignment2" type="button" value="Previous">
-        <input class="getAssignment" type="button" value="Next">
-<a href="#close" title="Close" class="close">X</a>
-<h2>Here are your focus area stats!</h2>
-        <!-- <p>This is a sample modal box that can be created using the powers of CSS3.</p>
-        <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p> -->
-        <div class="col-lg-6">
-            <div class="card mb-3">
-              <div class="card-header">
-                Focus Areas (%)</div>
-              <div class="card-body">
-                <canvas id="pie" width="100%" height="50"></canvas>
-              </div>
-            </div>
-          </div>
-    </div>
-</div>
-<div id="openModal7" class="modalDialog" data-modalorder=7>
-  <div>	
-  <input class="getAssignment2" type="button" value="Previous">
-      <input class="getAssignment" type="button" value="Next">
-<a href="#close" title="Close" class="close">X</a>
-<h2>Goal Setting</h2>
-      <p>How many workouts would you like to complete this week? </p>
-      <!-- input slider -->
-  </div>
-</div>
-<div id="openModal8" class="modalDialog" data-modalorder=8>
-  <div>	
-  <input class="getAssignment2" type="button" value="Previous">
-      <input class="getAssignment" type="button" value="Next">
-<a href="#close" title="Close" class="close">X</a>
-<h2>Goal Setting</h2>
-      <p>How many meals would you like to make this week? </p>
-      <!-- input slider -->
-
-  </div>
-</div>
-<div id="openModal9" class="modalDialog" data-modalorder=9>
-  <div>	
-  <input class="getAssignment2" type="button" value="Previous">
-      <input class="getAssignment" type="button" value="Next">
-<a href="#close" title="Close" class="close">X</a>
-<h2>Goal Setting</h2>
-      <p>What do you want to achieve this week?</p>
-      <!-- input type drop down, examples- cardio, weightloss etc -->
-      <!-- change to autofill?? -->
-  
-      <select name="keyword" id="keyword">
-        <option value="cardio">Cardio</option>
-        <option value="aerobics">Aerobics</option>
-        <option value="HIIT">HIIT</option>
-        <option value="weight loss">Weight Loss</option>
-      </select>
-
-      
-  </div>
-</div>
-<div id="openModal10" class="modalDialog" data-modalorder=10>
-  <div>	
-  <input class="getAssignment2" type="button" value="Previous">
-      <input class="getAssignment" type="button" value="Next">
-<a href="#close" title="Close" class="close">X</a>
-<h2>Recommendation!</h2>
-      <p>Here are your workout recommendations for this week! </p>
-      <div id="app1">
-  
-        <div id="app1">
-  
-          <div class="card" style="width: 18rem;" v-for="(element, index) in list" >
-            
-            <div class="card-body">
-              <h5 class="card-title">{{element.title}}</h5>
-              
-              <button  class="btn btn-primary" v-on:click="redirect($event, index)" :id="element.id">Go somewhere</button>
-            </div>
-          </div>
-        </div>
-      
-  </div>
-</div>
-<div id="openModal11" class="modalDialog" data-modalorder=11>
-  <div>	
-  <input class="getAssignment2" type="button" value="Previous">
-      <input class="getAssignment" type="button" value="Next">
-<a href="#close" title="Close" class="close">X</a>
-<h2>Recommendation!</h2>
-      <p>Here are your meal recommendations for this week! </p>
-      <div id="app2">
-  
-        <div class="card" style="width: 18rem;" v-for="(element2, index) in list2" >
-          
-          <div class="card-body">
-            <h5 class="card-title">{{element2.name}}</h5>
-            
-            <button  class="btn btn-primary" v-on:click="redirect2($event, index)" :id="element2.id2">Go somewhere</button>
-          </div>
-        </div>
       </div>
       
-  </div>
+      <p>This is a sample</p>
+      <p>You could do a lot of things here</p>
+    </div>
 </div>
+
+
+<!-- Third Page -->
+<div id="openModal3" class="modalDialog" data-modalorder=3>
+    <div>	
+        <input class="getAssignment2" type="button" value="Previous">
+        <input class="getAssignment" type="button" value="Next">
+        <a href="#close" title="Close" class="close">X</a>
+
+        <h2>How many meals did you make last week?</h2>
+        <p>This is a sample</p>
+        <p>You could do a lot of things here.</p>
+    </div>
+</div>
+
+
+<!-- Forth Page -->
+<div id="openModal4" class="modalDialog" data-modalorder=4>
+    <div>	
+      <input class="getAssignment2" type="button" value="Previous">
+      <input class="getAssignment" type="button" value="Next">
+      <a href="#close" title="Close" class="close">X</a>
+
+      <h2>Here's your stats and progress so far!</h2>
+
+          <!-- <p>This is a sample modal</p>
+          <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p> -->
+          <!-- <div class="row">
+              <div class="col-lg-6">
+              <div class="card mb-3">
+                <div class="card-header">
+                    Workouts completed </div>
+                <div class="card-body">
+                  <canvas id="line"></canvas>
+                </div>
+              </div>
+            </div>
+            </div>
+          <div class="col-lg-6">
+              <div class="card mb-3">
+                <div class="card-header">
+                  Focus Areas (%)</div>
+                <div class="card-body">
+                  <canvas id="pie" width="100%" height="50"></canvas>
+                </div>
+              </div>
+            </div> -->
+      </div>
+</div>
+
+
+<!-- Fifth Page -->
+<div id="openModal5" class="modalDialog" data-modalorder=5>
+    <div>	
+      <input class="getAssignment2" type="button" value="Previous">
+      <input class="getAssignment" type="button" value="Next">
+      <a href="#close" title="Close" class="close">X</a>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Workouts completed 
+                    </div>
+                    <div class="card-body">
+                        <canvas id="line"> </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+
+<!-- Sixth Page -->
+<div id="openModal6" class="modalDialog" data-modalorder=6>
+    <div>	
+        <input class="getAssignment2" type="button" value="Previous">
+        <input class="getAssignment" type="button" value="Next">
+        <a href="#close" title="Close" class="close">X</a>
+
+        <h2>Here are your focus area stats!</h2>
+        
+        <div class="col-lg-6">
+            <div class="card mb-3">
+                <div class="card-header">
+                    Focus Areas (%)
+                </div>
+                <div class="card-body">
+                  <canvas id="pie" width="100%" height="50"> </canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Seventh Page -->
+<div id="openModal7" class="modalDialog" data-modalorder=7>
+    <div>	
+        <input class="getAssignment2" type="button" value="Previous">
+        <input class="getAssignment" type="button" value="Next">
+        <a href="#close" title="Close" class="close">X</a>
+
+        <h2>Goal Setting for workouts</h2>
+        <p>How many workouts would you like to complete this week? </p>
+          <!-- input slider -->
+    </div>
+</div>
+
+
+<!-- Eighth Page -->
+<div id="openModal8" class="modalDialog" data-modalorder=8>
+    <div>	
+        <input class="getAssignment2" type="button" value="Previous">
+        <input class="getAssignment" type="button" value="Next">
+        <a href="#close" title="Close" class="close">X</a>
+
+        <h2>Goal Setting for meals</h2>
+        <p>How many meals would you like to make this week? </p>
+        <!-- input slider -->
+    </div>
+</div>
+
+
+<!-- Ninth Page -->
+<div id="openModal9" class="modalDialog" data-modalorder=9>
+    <div>	
+        <input class="getAssignment2" type="button" value="Previous">
+        <input class="getAssignment" type="button" value="Next">
+        <a href="#close" title="Close" class="close">X</a>
+
+        <h2>Goal Setting</h2>
+        <p>What do you want to achieve this week?</p>
+        <!-- input type drop down, examples- cardio, weightloss etc -->
+        <!-- change to autofill?? -->
+    
+        <select name="keyword" id="keyword">
+          <option value="cardio">Cardio</option>
+          <option value="aerobics">Aerobics</option>
+          <option value="HIIT">HIIT</option>
+          <option value="weight loss">Weight Loss</option>
+        </select>
+    </div>
+</div>
+
+
+<!-- Tenth Page -->
+<div id="openModal10" class="modalDialog" data-modalorder=10>
+    <div>	
+        <input class="getAssignment2" type="button" value="Previous">
+        <input class="getAssignment" type="button" value="Next">
+        <a href="#close" title="Close" class="close">X</a>
+
+        <h2>Recommendation!</h2>
+        <p>Here are your workout recommendations for this week!</p>
+
+        <div id="app1">
+            <div class="card" style="width: 18rem;" v-for="(element, index) in list">
+              
+                <div class="card-body">
+                    <h5 class="card-title">{{element.title}}</h5>
+                    <button  class="btn btn-primary" v-on:click="redirect($event, index)" :id="element.id">Go somewhere</button>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+<!-- Eleventh Page -->
+<div id="openModal11" class="modalDialog" data-modalorder=11>
+    <div>	
+        <input class="getAssignment2" type="button" value="Previous">
+        <input class="getAssignment" type="button" value="Next">
+        <a href="#close" title="Close" class="close">X</a>
+
+        <h2>Recommendation!</h2>
+        <p>Here are your meal recommendations for this week! </p>
+
+        <div id="app2">
+            <div class="card" style="width: 18rem;" v-for="(element2, index) in list2" >
+                <div class="card-body">
+                    <h5 class="card-title">{{element2.name}}</h5>
+                    <button  class="btn btn-primary" v-on:click="redirect2($event, index)" :id="element2.id2">Go somewhere</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
 <!-- <div id="app1">
   
   <div class="card" style="width: 18rem;" v-for="(element, index) in list" >
@@ -314,9 +348,9 @@
   </div>
 </div> -->
     
+
 <script type="module">
-  
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
     import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
     // TODO: Add SDKs for Firebase products that you want to use
@@ -578,7 +612,6 @@
     }
   });
   
-      </script>
-      </script>
+</script>
 </body>
 </html>
