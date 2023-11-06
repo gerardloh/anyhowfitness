@@ -47,7 +47,7 @@ h3.back-link {
   min-height: 100px;
   height: auto;
   outline: none;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 600;
   color: #2d2d2d;
   resize: none;
@@ -78,7 +78,7 @@ h3.back-link {
 }
 
 .article {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-top: 20px;
   line-height: 1.8rem;
 }
