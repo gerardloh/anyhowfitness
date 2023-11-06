@@ -26,10 +26,7 @@ const blogPost = useDocument(doc(blogPostsRef, blogPostId))
 </template>
 
 <style scoped>
-.container {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
+
 
 
 h3.back-link {
