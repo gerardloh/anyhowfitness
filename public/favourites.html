@@ -361,16 +361,17 @@ http://www.templatemo.com/tm-487-fitness
                         // An error happened.
                         console.log("Fail")
                         });
-                            })
-                            } else {
-                                // User is signed out
-                            this.isAuthenticated = false;
-                            console.log("User is not authenticated");
+                    })
+                    this.fetchBookmarkedMeals();
+                    this.fetchBookmarkedWorkouts();
+                } else {
+                    // User is signed out
+                this.isAuthenticated = false;
+                console.log("User is not authenticated");
             } 
              });
 
-            this.fetchBookmarkedMeals();
-            this.fetchBookmarkedWorkouts();
+            
         },
     }).mount('#app');
 
