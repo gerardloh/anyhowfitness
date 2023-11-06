@@ -34,7 +34,7 @@
             right: 0;
             bottom: 0;
             left: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: grey;
             z-index: 99999;
             opacity:0;
             -webkit-transition: opacity 400ms ease-in;
@@ -42,10 +42,12 @@
             transition: opacity 400ms ease-in;
             pointer-events: none;
         }
+
         .modalDialog:target {
             opacity:1;
             pointer-events: auto;
         }
+
         .modalDialog > div {
             width: 70%;
             height: 50%;
@@ -53,16 +55,13 @@
             margin: 10% auto;
             padding: 5px 20px 13px 20px;
             border-radius: 10px;
-            background: #fff;
-            background: -moz-linear-gradient(#fff, #959);
-            background: -webkit-linear-gradient(#fff, #999);
-            background: -o-linear-gradient(#fff, #999);
+            background: white;
         }
+
         .close {
-            background: #606061;
-            color: #FFFFFF;
-            line-height: 25px;
-            position: absolute;
+            background: red;
+            color: white;
+            line-height: 30px;
             right: -12px;
             text-align: center;
             top: -10px;
@@ -72,15 +71,26 @@
             -webkit-border-radius: 12px;
             -moz-border-radius: 12px;
             border-radius: 12px;
-            -moz-box-shadow: 1px 1px 3px #000;
-            -webkit-box-shadow: 1px 1px 3px #000;
-            box-shadow: 1px 1px 3px #000;
         }
-        .close:hover {
-            background: #00d9ff;
+
+        .getAssignment, .getAssignment2{
+            cursor:pointer;
+            background-color: rgb(137, 137, 255);
+            color: white;
+            font-size: 12px;
+            padding: 5px 10px;
+            margin:  5px;
         }
-        .getAssignment{
-        cursor:pointer;
+
+        .output-container {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 5px;
+        }
+      
+        .output {
+            text-align: center;
+            width: 5%; /* Set the width of each output element for proper alignment */
         }
     </style>
 </head>
@@ -95,12 +105,16 @@
 <!-- First Page -->
 <div id="openModal1" class="modalDialog" data-modalorder=1>
     <div>
-      <input class="getAssignment2" type="button" value="Previous">
-      <input class="getAssignment" type="button" value="Next">
+      <input class="getAssignment2" type="button" value="<<Previous">
+      <input class="getAssignment" type="button" value="Next>>">
       <a href="#close" title="Close" class="close">X</a>
-          <h2>Your weekly check-in is ready!</h2>
-          <p>Click Next to continue</p>
-          <p>You could do a lot of things here </p> 
+
+      <div style="text-align: center;font-family: Arial, Helvetica, sans-serif; font-weight: bold;">
+        <h1 style="margin-top: -20px;">Your weekly Check-In is ready!</h1>
+        <p style="font-size: 12px; margin-top: 15px;">Let's click Next to continue</p>
+      </div>
+     
+      <img src="images/weekly.jpg" alt="Your Image Description" style="display: block; width: 250px; height: 300px ;margin: 0 auto; max-width: 100%; height: auto;">
 
           <!-- <div id="app1">
             <div class="card" style="width: 18rem;" v-for="(element, index) in list" >
@@ -119,12 +133,14 @@
 <!-- Second Page -->
 <div id="openModal2" class="modalDialog" data-modalorder=2>
     <div>	
-      <input class="getAssignment2" type="button" value="Previous">
-      <input class="getAssignment" type="button" value="Next">
+      <input class="getAssignment2" type="button" value="<<Previous">
+      <input class="getAssignment" type="button" value="Next>>">
       <a href="#close" title="Close" class="close">X</a>
 
-      <div class="col-sm-12 form-group">
-          <label for="name"><strong>How many workouts did you complete this week?</strong></label>
+      <h2 style="text-align: center; margin-top: -20px;">About this week:</h2>
+
+      <div class="col-sm-12 form-group" style="margin-bottom: 45px; margin-top: 20px;">
+          <label for="name"><strong><h3>How many workouts did you complete this week?</h3></strong></label>
           <input type="range" class="form-range" name="workoutsCount" id="workouts_thisWeek" min="0" max="5" required>
           <div class="output-container">
               <output for="exerciseDays" class="output">0</output> 
@@ -135,35 +151,43 @@
               <output for="exerciseDays" class="output">5</output>
           </div>
       </div>
+
+      <div class="col-sm-12 form-group">
+        <label for="name"><strong><h3>How many meals did you complete this week?</h3></strong></label>
+        <input type="range" class="form-range" name="workoutsCount" id="meals_thisWeek" min="0" max="5" required>
+        <div class="output-container">
+            <output for="exerciseDays" class="output">0</output> 
+            <output for="exerciseDays" class="output">1</output>
+            <output for="exerciseDays" class="output">2</output>
+            <output for="exerciseDays" class="output">3</output>
+            <output for="exerciseDays" class="output">4</output>
+            <output for="exerciseDays" class="output">5</output>
+        </div>
+    </div>
       
-      <p>This is a sample</p>
-      <p>You could do a lot of things here</p>
+     
     </div>
 </div>
 
 
 <!-- Third Page -->
-<div id="openModal3" class="modalDialog" data-modalorder=3>
-    <div>	
-        <input class="getAssignment2" type="button" value="Previous">
-        <input class="getAssignment" type="button" value="Next">
-        <a href="#close" title="Close" class="close">X</a>
-
-        <h2>How many meals did you make last week?</h2>
-        <p>This is a sample</p>
-        <p>You could do a lot of things here.</p>
-    </div>
-</div>
-
-
-<!-- Forth Page -->
 <div id="openModal4" class="modalDialog" data-modalorder=4>
     <div>	
-      <input class="getAssignment2" type="button" value="Previous">
-      <input class="getAssignment" type="button" value="Next">
-      <a href="#close" title="Close" class="close">X</a>
+        <input class="getAssignment2" type="button" value="<<Previous">
+        <input class="getAssignment" type="button" value="Next>>">
+        <a href="#close" title="Close" class="close">X</a>
 
-      <h2>Here's your stats and progress so far!</h2>
+        <h2 style="text-align: center; margin-top: -20px; margin-bottom: 20px;">Here's your workout progress so far!</h2>
+
+          <div class="row">
+              <div class="col-lg-6" style="margin-left: 200px; margin-right: 0;">
+                  <div class="card mb-3">
+                        <div class="card-body">
+                            <canvas id="line"></canvas>
+                        </div>
+                  </div>
+              </div>
+          </div>
 
           <!-- <p>This is a sample modal</p>
           <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p> -->
@@ -187,42 +211,18 @@
                 </div>
               </div>
             </div> -->
-      </div>
-</div>
-
-
-<!-- Fifth Page -->
-<div id="openModal5" class="modalDialog" data-modalorder=5>
-    <div>	
-      <input class="getAssignment2" type="button" value="Previous">
-      <input class="getAssignment" type="button" value="Next">
-      <a href="#close" title="Close" class="close">X</a>
-
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="card mb-3">
-                    <div class="card-header">
-                        Workouts completed 
-                    </div>
-                    <div class="card-body">
-                        <canvas id="line"> </canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-      
     </div>
 </div>
 
 
-<!-- Sixth Page -->
+<!-- Fifth Page -->
 <div id="openModal6" class="modalDialog" data-modalorder=6>
     <div>	
-        <input class="getAssignment2" type="button" value="Previous">
-        <input class="getAssignment" type="button" value="Next">
+        <input class="getAssignment2" type="button" value="<<Previous">
+        <input class="getAssignment" type="button" value="Next>>">
         <a href="#close" title="Close" class="close">X</a>
 
-        <h2>Here are your focus area stats!</h2>
+        <h2 style="text-align: center; margin-top: -20px; margin-bottom: 20px;">Here are your focus area stats!</h2>
         
         <div class="col-lg-6">
             <div class="card mb-3">
@@ -239,61 +239,111 @@
 </div>
 
 
-<!-- Seventh Page -->
+<!-- Fifth Page -->
 <div id="openModal7" class="modalDialog" data-modalorder=7>
     <div>	
-        <input class="getAssignment2" type="button" value="Previous">
-        <input class="getAssignment" type="button" value="Next">
+        <input class="getAssignment2" type="button" value="<<Previous">
+        <input class="getAssignment" type="button" value="Next>>">
         <a href="#close" title="Close" class="close">X</a>
 
-        <h2>Goal Setting for workouts</h2>
-        <p>How many workouts would you like to complete this week? </p>
-          <!-- input slider -->
+        <h2 style="text-align: center;">Goal Setting for next week:</h2>
+
+        <div class="col-sm-12 form-group" style="margin-bottom: 40px; margin-top: 10px;">
+            <label for="name"><strong><h3>How many workouts would you like to complete next week?</h3></strong></label>
+            <input type="range" class="form-range" name="workoutsCount" id="workouts_nextWeek" min="0" max="5" required>
+            <div class="output-container">
+                <output for="exerciseDays" class="output">0</output> 
+                <output for="exerciseDays" class="output">1</output>
+                <output for="exerciseDays" class="output">2</output>
+                <output for="exerciseDays" class="output">3</output>
+                <output for="exerciseDays" class="output">4</output>
+                <output for="exerciseDays" class="output">5</output>
+            </div>
+        </div>
+  
+        <div class="col-sm-12 form-group">
+            <label for="name"><strong><h3>How many meals would you like to complete next week?</h3></strong></label>
+            <input type="range" class="form-range" name="workoutsCount" id="meals_nextWeek" min="0" max="5" required>
+            <div class="output-container">
+                <output for="exerciseDays" class="output">0</output> 
+                <output for="exerciseDays" class="output">1</output>
+                <output for="exerciseDays" class="output">2</output>
+                <output for="exerciseDays" class="output">3</output>
+                <output for="exerciseDays" class="output">4</output>
+                <output for="exerciseDays" class="output">5</output>
+            </div>
+      </div>
+
     </div>
 </div>
 
 
 <!-- Eighth Page -->
-<div id="openModal8" class="modalDialog" data-modalorder=8>
+<div id="openModal9" class="modalDialog" data-modalorder=9>
     <div>	
-        <input class="getAssignment2" type="button" value="Previous">
-        <input class="getAssignment" type="button" value="Next">
+        <input class="getAssignment2" type="button" value="<<Previous">
+        <input class="getAssignment" type="button" value="Next>>">
         <a href="#close" title="Close" class="close">X</a>
 
-        <h2>Goal Setting for meals</h2>
-        <p>How many meals would you like to make this week? </p>
-        <!-- input slider -->
+        <div style="text-align:center;">
+            <h2 style="margin-bottom:20px;">Goal Setting for Focus Area</h2>
+            <h4 style="margin-bottom:20px;">What do you want to achieve next week?</h4>
+
+            <select name="keyword" id="keyword" style="width: 200px; height: 40px;">
+                <option value="cardio" style="font-size: 13px;">Cardio</option>
+                <option value="aerobics" style="font-size: 13px;">Aerobics</option>
+                <option value="HIIT" style="font-size: 13px;">HIIT</option>
+                <option value="weight loss" style="font-size: 13px;">Weight Loss</option>
+            </select>
+        </div>
+
+        <div id="image-container">
+          <img id="cardio-image" src="images/cardio.png" alt="Cardio Image" style="position: absolute; width:180px; height:110px; left: 50%; top: 80%; transform: translate(-50%, -55%);">
+          <img id="aerobics-image" src="images/aerobics.png" alt="Aerobics Image" style="position: absolute; width:180px; height:115px; left: 50%; top: 80%; transform: translate(-50%, -55%);">
+          <img id="hiit-image" src="images/hiit.png" alt="HIIT Image" style="position: absolute; width:180px; height:110px; left: 50%; top: 80%; transform: translate(-50%, -55%);">
+          <img id="weight-loss-image" src="images/weight_loss.png" alt="Weight Loss Image" style="position: absolute; width:180px; height:115px; left: 50%; top: 80%; transform: translate(-50%, -55%);">
+        </div>
+ 
+
+        <script>
+            const keywordSelect = document.getElementById("keyword");
+            const cardioImage = document.getElementById("cardio-image");
+            const aerobicsImage = document.getElementById("aerobics-image");
+            const hiitImage = document.getElementById("hiit-image");
+            const weightLossImage = document.getElementById("weight-loss-image");
+        
+            function displaySelectedImage() {
+                const selectedOptionValue = keywordSelect.value;
+        
+                cardioImage.style.display = "none";
+                aerobicsImage.style.display = "none";
+                hiitImage.style.display = "none";
+                weightLossImage.style.display = "none";
+        
+                if (selectedOptionValue === "cardio") {
+                    cardioImage.style.display = "block";
+                } else if (selectedOptionValue === "aerobics") {
+                    aerobicsImage.style.display = "block";
+                } else if (selectedOptionValue === "HIIT") {
+                    hiitImage.style.display = "block";
+                } else if (selectedOptionValue === "weight loss") {
+                    weightLossImage.style.display = "block";
+                }
+            }
+        
+            keywordSelect.addEventListener("change", displaySelectedImage);
+            displaySelectedImage();
+        </script>
+    
     </div>
 </div>
 
 
 <!-- Ninth Page -->
-<div id="openModal9" class="modalDialog" data-modalorder=9>
-    <div>	
-        <input class="getAssignment2" type="button" value="Previous">
-        <input class="getAssignment" type="button" value="Next">
-        <a href="#close" title="Close" class="close">X</a>
-
-        <h2>Goal Setting</h2>
-        <p>What do you want to achieve this week?</p>
-        <!-- input type drop down, examples- cardio, weightloss etc -->
-        <!-- change to autofill?? -->
-    
-        <select name="keyword" id="keyword">
-          <option value="cardio">Cardio</option>
-          <option value="aerobics">Aerobics</option>
-          <option value="HIIT">HIIT</option>
-          <option value="weight loss">Weight Loss</option>
-        </select>
-    </div>
-</div>
-
-
-<!-- Tenth Page -->
 <div id="openModal10" class="modalDialog" data-modalorder=10>
     <div>	
-        <input class="getAssignment2" type="button" value="Previous">
-        <input class="getAssignment" type="button" value="Next">
+        <input class="getAssignment2" type="button" value="<<Previous">
+        <input class="getAssignment" type="button" value="Next>>">
         <a href="#close" title="Close" class="close">X</a>
 
         <h2>Recommendation!</h2>
@@ -314,11 +364,11 @@
 </div>
 
 
-<!-- Eleventh Page -->
+<!-- Tenth Page -->
 <div id="openModal11" class="modalDialog" data-modalorder=11>
     <div>	
-        <input class="getAssignment2" type="button" value="Previous">
-        <input class="getAssignment" type="button" value="Next">
+        <input class="getAssignment2" type="button" value="<<Previous">
+        <input class="getAssignment" type="button" value="Next>>">
         <a href="#close" title="Close" class="close">X</a>
 
         <h2>Recommendation!</h2>
@@ -348,6 +398,25 @@
   </div>
 </div> -->
     
+
+<!-- Eleventh Page -->
+<div id="openModal12" class="modalDialog" data-modalorder=12>
+  <div>	
+      <input class="getAssignment2" type="button" value="Previous">
+      <input class="getAssignment" type="button" value="Next">
+      <a href="#close" title="Close" class="close">X</a>
+
+      <div style="text-align: center;font-family: Arial, Helvetica, sans-serif; font-weight: bold;">
+        <h1>Good Job!</h1>
+        <p style="font-size: 12px;">See you next week!</p>
+      </div>
+     
+      <img src="images/weekly.jpg" alt="Your Image Description" style="display: block; width: 250px; height: 300px ;margin: 0 auto; max-width: 100%; height: auto;">
+
+  </div>
+</div>
+
+
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
