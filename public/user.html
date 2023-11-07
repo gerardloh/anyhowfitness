@@ -87,7 +87,7 @@ http://www.templatemo.com/tm-487-fitness
 				<h3 class="wow bounceIn" data-wow-delay="0.9s" v-html="display"></h3>
 				<h1 class="wow fadeInUp" data-wow-delay="1.6s">Anyhow Fitness<br>Workout Club</h1>
 				<a href="#trainer" class="wow fadeInUp smoothScroll btn btn-default" data-wow-delay="2s">LEARN MORE</a><br>
-				<button  class="wow fadeInUp smoothScroll btn btn-default" data-wow-delay="2s" disabled>View Progress</button>
+				<a href="rawfilewithnext.html" class="wow fadeInUp smoothScroll btn btn-default" data-wow-delay="2s" >View Progress</a>
 			</div>
 
 		</div>
@@ -374,6 +374,7 @@ http://www.templatemo.com/tm-487-fitness
 <!-- =========================
      SCRIPTS   
 ============================== -->
+
 <script type="module">
 	    // Import the functions you need from the SDKs you need
 		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
@@ -453,7 +454,6 @@ http://www.templatemo.com/tm-487-fitness
                 // ...
             } else {
                 // User is signed out
-                // ...
                 location.replace("index.html")
                 console.log("wrong")
             }
