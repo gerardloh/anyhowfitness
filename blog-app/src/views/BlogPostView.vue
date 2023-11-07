@@ -26,8 +26,11 @@ const blogPost = useDocument(doc(blogPostsRef, blogPostId))
 </template>
 
 <style scoped>
+html{
+  width:100%;
+}
 .container {
-  margin:auto;
+  margin: 50px 20%;
 }
 h3.back-link {
   color: rgb(153, 153, 153);

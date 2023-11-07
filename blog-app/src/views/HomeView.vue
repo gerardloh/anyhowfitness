@@ -13,3 +13,13 @@ import TheWelcome from '../components/TheWelcome.vue';
   </section>
 </template>
 
+<style scoped>
+.container{
+  margin-left: 0;
+  margin-right: 0; 
+}
+
+html{
+  width: 100%;
+}
+</style>

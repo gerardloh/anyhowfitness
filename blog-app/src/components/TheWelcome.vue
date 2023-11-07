@@ -3,7 +3,7 @@
     <section id="home" class="parallax-section">
       <div class="home-title">
         <h3 class="wow bounceIn" data-wow-delay="0.9s">Anyhow Fitness</h3>
-        <h1 class="wow fadeInUp" data-wow-delay="1.6s">Community Forum</h1>
+        <h1 class="wow fadeInUp col-sm-12" data-wow-delay="1.6s" style="text-align: center;">Community Forum</h1>
         <router-link to="/editor/">
           <button class="btn" id="editor">
             WRITE A BLOG
@@ -28,6 +28,7 @@
   justify-content: center;
   align-items: center;
   height: calc(100vh - 90px);
+  min-width:575px;
 }
 
 .home-title {

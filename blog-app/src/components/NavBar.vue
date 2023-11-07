@@ -1,10 +1,13 @@
 <template>
     <div class="container">
         <div class="blog-name">
-            Anyhow Fitness - Blog
+            Anyhow Fitness Blogs
         </div>
         <div class="blog-links">
-            <a href="/">Back to Site</a>
+            <a href="/">Home</a>
+            <a href="#">Write a Blog</a>
+            <a href="#">Write a Blog</a>
+            <a href="#">Write a Blog</a>
         </div>
     </div>
 </template>
@@ -14,6 +17,7 @@ export default {
 }
 </script>
 <style scoped>
+@import"../../public/css/style.css";
 .container {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 36px;
@@ -24,12 +28,13 @@ export default {
     box-shadow: none;
     display: flex;
     padding: 1rem;
-    justify-content: center;
+    justify-content: space-between;
     max-width: none;
- 
+
 }
 
 a {
+    margin-right:200px;
     text-decoration: none !important;
     color: rgb(153, 153, 153);
     font-size: 24px;
@@ -46,6 +51,7 @@ a:hover {
 
 .blog-name {
     width: 40%;
+    margin-left:250px;
 }
 
 </style>
